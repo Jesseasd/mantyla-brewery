@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@font-face {
+    font-family: heap;
+    src: local(heavyHeap),
+        url("../fonts/heavyHeap.ttf") format("truetype");
+}
+
+nav {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 10rem;
+    width: 100%;
+    z-index: 999;
+}
+
+.nav-bg {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(0);
+    z-index: -1;
+    transform: translateY(-100%);
+    transition: transform 0.5s ease, background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+.nav-visible .nav-bg {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transform: translateY(0);
+}
+
+.nav-hidden .nav-bg {
+    background-color: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(0);
+    transform: translateY(-100%);
+}
+
+.nav-bg .cone-svg:hover path {
+    stroke: #D1D28D;
+}
+
+.nav-links {
+    display: flex;
+    gap: 6rem;
+    list-style: none;
+    z-index: -1;
+}
+
+.nav-links.nav-active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /*background-color: #1e1e1e;*/
+    background-color: #071111;
+    width: 100%;
+    height: 100vh;
+
+    gap: 2rem;
+    z-index: -1;
+    text-align: center;
+}
+
+.nav-links.nav-active a {
+    font-size: 8rem;
+    font-family: heap;
+}
+
+.nav-item {
+    color: #fff;
+    text-decoration: none;
+    font-size: 2rem;
+}
+
+.nav-item:hover {
+    color: #D1D28D;
+}
+
+.logo {
+    margin-left: 5rem;
+    width: 3rem;
+    position: relative;
+}
+
+.cart {
+    margin-right: 4rem;
+    margin-left: 6rem;
+    width: 5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.cart:hover .cart-svg path {
+    stroke: #D1D28D;
+}
+
+/* HAMBURGER */
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.menu-icon {
+    width: 5rem;
+    margin-left: 4rem;
+    display: none;
+    cursor: pointer;
+    z-index: 999;
+}
+
+.menu-icon:hover rect {
+    fill: #D1D28D;
+}
+
+.close-icon {
+    position: absolute;
+    left: 5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2.4rem;
+    cursor: pointer;
+}
+
+.close-icon:hover path {
+    fill: #D1D28D;
+}
+
+.menu-cone {
+    width: 10rem;
+    height: 8rem;
+    margin-top: 5rem;
+}
+
+.menu-cone:hover path {
+    stroke: #D1D28D;
+}
+
+
+
+@media only screen and (max-width: 1100px) {
+    .nav-bg {
+        transition: none;
+    }
+
+    .nav-hidden .nav-bg {
+        background-color: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        transform: translateY(0);
+    }
+
+    .logo {
+        display: none;
+        z-index: 999;
+    }
+
+    .menu-icon {
+        display: block;
+        z-index: 999;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+        z-index: 999;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .cart {
+        margin-right: 1rem;
+    }
+
+    .menu-icon {
+        margin-left: 1rem;
+    }
+}

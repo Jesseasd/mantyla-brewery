@@ -1,0 +1,272 @@
+html {
+  overflow-x: hidden;
+}
+
+.about-container {
+  margin-bottom: clamp(20rem, 35vw, 50rem);
+}
+
+.about-hero {
+  height: 200vh;
+}
+
+.video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.video-container2 {
+  width: 25rem;
+  height: 40rem;
+  position: absolute;
+  transform-origin: center center;
+  will-change: width, height;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(.7);
+  z-index: 998;
+}
+
+.shadow {
+  position: absolute;
+  width: 100%;
+  height: 100.1%;
+  /*box-shadow: inset 0 -50px 100px -30px black;*/
+  background: linear-gradient(0, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) 50%);
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+.cone {
+  position: absolute;
+  width: auto;
+  height: auto;
+  z-index: 999;
+  opacity: 0;
+}
+
+.story {
+  height: 550vh;
+  background-color: #000;
+}
+
+.story-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.text {
+  font-size: clamp(9.6rem, 15vw, 30rem);
+  font-family: heap;
+  font-weight: normal;
+  color: #D1D28D;
+  position: relative;
+  
+  /*margin-bottom: 15rem;*/
+}
+
+.horizontal {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  /*padding: 0 10rem;
+  /*background-color: #071111;*/
+}
+
+
+.horizontal-image {
+  flex-shrink: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #071111;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /*margin: 0 5rem;
+  /*margin-left: 10rem;*/
+  /*background-position: 50%;*/
+}
+
+.horizontal-image1 {
+  background-image: url(../images/about-images/garage2.png);
+  background-position: 25% 60%;
+}
+
+.horizontal-image2 {
+  background-image: url(../images/about-images/acid.png)
+}
+
+.horizontal-image3 {
+  
+  background-image: url(../images/about-images/pexels-lebele-14346111.jpg);
+}
+
+.horizontal-image4 {
+  background-image: url(../images/about-images/pour.png);
+}
+
+.horizontal-image5 {
+  background-image: url(../images/about-images/beers.png);
+}
+
+.wrapper {
+  height: auto;
+  width: 100vw;
+}
+
+.long {
+  background-color: red;
+  width: 100vw;
+  height: 300vh;
+  /*position: sticky;*/
+  top: 0;
+  background-image: url(../images/about-images/cheers-long.png);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-position: 10% 80%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+
+.text-section3 {
+  /*position: relative;
+  height: 300vh;*/
+  width: 100vw;
+  background-color: #D1D28D;
+}
+/*
+.text-section2 {
+  opacity: 0;
+  scale: 0;
+}
+*/
+/*
+.text-section {
+  /*height: 730vh;*/
+  /*position: relative;*/
+  /*overflow-x: hidden;
+}*/
+
+.text-item {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  /*height: 100vh;*/
+  padding-left: 10rem;
+  padding-right: 10rem;
+}
+
+.text-item p {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 3rem;
+  /*color: #000;*/
+  word-break: keep-all;
+  overflow-wrap: normal;
+  white-space: normal;
+}
+
+.text-item1 {
+  z-index: 999;
+  position: absolute;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  color: #fff;
+  font-size: 3rem;
+  opacity: 0;
+  padding-left: 20rem;
+  padding-right: 20rem;
+  transform: scale(.5);
+}
+
+.text-item2 {
+  /*background-color: #071111;*/
+  padding-left: 20rem;
+  padding-right: 20rem;
+  color: #000;
+  /*position: absolute;
+  bottom: 0;
+  left: 0;*/
+}
+
+.text2 {
+  color: #000;
+  opacity: 0;
+  scale: 0;
+}
+
+.text-item3 {
+  background-color: #071111;
+  /*position: relative;*/
+  padding-left: 20rem;
+  padding-right: 20rem;
+  padding-top: 50vh;
+  height: 500vh;
+  align-items: start;
+}
+
+.text3 {
+  color:#fff;
+  /*height: 100vh;*/
+}
+
+.cone2-wrapper {
+  height: 600vh;
+  width: 100vw;
+  background-color: #000;
+  /*
+  background: linear-gradient(
+    to bottom,
+    #071111 0%, 
+    #000 40%,
+    #000 60%,
+    #071111 100%
+  );
+  */
+}
+
+.cone2 {
+  /*transform: scale(5);*/
+  opacity: 0;
+  margin-top: 50vh;
+}
+
+.cone2 path {
+  stroke: #fff;
+}
+
+.gradient1 {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    #071111 0%, 
+    #000 100%
+  );
+}
+
+.gradient2 {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+    to top,
+    #071111 0%, 
+    #000 100%
+  );
+}

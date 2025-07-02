@@ -8,8 +8,9 @@
 
 .shop-container {
     background-color: #071111;
-    margin-left: 5rem;
-    margin-right: 5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
     margin-bottom: clamp(20rem, 35vw, 50rem);
 }
 
@@ -35,7 +36,9 @@
 }
 
 .product {
+    opacity: 0;
     cursor: pointer;
+    
 }
 
 .product-image-wrapper {
@@ -59,12 +62,12 @@
 }
 
 .product-image {
-  z-index: 1;
+  z-index: 3;
   opacity: 1;
 }
 
 .product-image2 {
-  z-index: 2;
+  z-index: 1;
   opacity: 0;
 }
 
@@ -76,25 +79,25 @@
   opacity: 0;
 }
 
-.cone-icon {
-    width: 90%;
-    height: auto;
-    aspect-ratio: 1 / 1;
-}
-/*
-.cone-icon .cls-1 {
-    
-    stroke: rgba(255, 255, 255, 0.5);
-}
-*/
 .product-info {
     position: absolute;
-    top: 0;
+    height: 100%;
+    top: 0rem;
+    left: 1rem;
+    z-index: 2;
+}
+/*
+.product-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+*/
+
+.e-l {
+    position: absolute;
+    bottom: 0;
     left: 0;
-    padding-top: 2rem;
-    padding-left: 2rem;
-    padding: 2rem;
-    z-index: 1;
 }
 
 .product h3 {
@@ -109,4 +112,20 @@
     font-weight: 400;
     font-size: 3rem;
     color: #D1D28D;
+}
+
+.cone-icon {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    height: 4rem;
+    z-index: 4;
+}
+
+.cone-icon .cls-1 {
+    stroke: #fff;
+}
+
+.product-image-wrapper:hover .cone-icon .cls-1 {
+    stroke: #D1D28D;
 }

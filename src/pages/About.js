@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import "../style/About.css"
 import bg from "../videos/coverr-woods-covered-by-fog-8066-1080p.mp4"
 import video1 from "../videos/coverr-water-droplets-on-a-branch-7524-1080p.mp4"
@@ -190,21 +190,7 @@ export default function About() {
             duration: 10,
           }
         )
-/*
-        gsap.to(".cone2",
-        {
-          opacity: 1,
-          scale: 10,
-          scrollTrigger: {
-            trigger: ".cone2",
-            start: "-=1000",
-            end: "+=1000",
-            scrub: true,
-            markers: true,
-          },
-        }
-      )
-*/
+
     }, component)
 
     return () => ctx.revert()

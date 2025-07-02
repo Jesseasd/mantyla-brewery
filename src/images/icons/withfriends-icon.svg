@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 17.94 16.02">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+      }
+
+      .cls-4 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-2 {
+        stroke-linecap: round;
+      }
+
+      .cls-2, .cls-3 {
+        stroke: #000;
+        stroke-miterlimit: 10;
+        stroke-width: .76px;
+      }
+
+      .cls-5 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-1" y="2.55" width="8.62" height="13.47"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="cls-1" x="9.32" y="2.55" width="8.62" height="13.47"/>
+    </clipPath>
+  </defs>
+  <g id="With_Friends" data-name="With Friends">
+    <g>
+      <g class="cls-5">
+        <path class="cls-3" d="M.51,14.3s.44-1.52.07-2.24c-.4-.77-.09-2.12.03-2.57.03-.11.06-.23.08-.34L1.86,3.17c.03-.16.19-.27.35-.24l5.79,1.14c.16.03.27.19.24.35l-1.19,6.36c-.05.29-.13.57-.24.84-.23.62-.68,1.73-1,2.07-.36.4-.45,1.7-.45,1.7-.03.16-.19.27-.35.24l-4.28-.99c-.16-.03-.27-.19-.24-.35Z"/>
+        <path class="cls-3" d="M1.22,6.45s1.42-.45,3.44.38,3.1.19,3.1.19"/>
+      </g>
+      <g class="cls-4">
+        <path class="cls-3" d="M17.43,14.3s-.44-1.52-.07-2.24c.4-.77.09-2.12-.03-2.57-.03-.11-.06-.23-.08-.34l-1.18-5.98c-.03-.16-.19-.27-.35-.24l-5.79,1.14c-.16.03-.27.19-.24.35l1.19,6.36c.05.29.13.57.24.84.23.62.68,1.73,1,2.07.36.4.45,1.7.45,1.7.03.16.19.27.35.24l4.28-.99c.16-.03.27-.19.24-.35Z"/>
+        <path class="cls-3" d="M16.72,6.45s-1.42-.45-3.44.38-3.1.19-3.1.19"/>
+      </g>
+    </g>
+    <line class="cls-2" x1="7.04" y1=".38" x2="7.84" y2="2.05"/>
+    <line class="cls-2" x1="10.82" y1=".38" x2="10.02" y2="2.05"/>
+  </g>
+</svg>

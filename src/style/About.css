@@ -52,10 +52,15 @@ video {
 
 .cone {
   position: absolute;
-  width: auto;
+  width: 32px;
   height: auto;
   z-index: 999;
   opacity: 0;
+}
+
+.cone .cls-1 {
+  stroke: #fff;
+  stroke-width: .75;
 }
 
 .story {
@@ -243,6 +248,7 @@ video {
 
 .cone2 {
   /*transform: scale(5);*/
+  width: 32px;
   opacity: 0;
   margin-top: 50vh;
 }

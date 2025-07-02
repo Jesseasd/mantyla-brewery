@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@font-face {
+  font-family: heap;
+  src: local(heavyHeap),
+    url("../fonts/heavyHeap.ttf") format("truetype");
+}
+
+.beers-container {
+  margin-bottom: clamp(20rem, 35vw, 50rem);
+}
+
+.overview {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 20rem;
+  /*background-color: #071111;*/
+  height: 100vh;
+  font-size: 4rem;
+  font-weight: 300;
+  color: #fff;
+}
+
+.overview h1 {
+  font-family: heap;
+  font-size: clamp(9.6rem, 15vw, 30rem);
+  font-weight: 400;
+  color: #fff;
+  z-index: 2;
+
+  position: relative;
+  background: linear-gradient(to bottom, #fff 0%, #fff 50%, #D1D28D 50%, #D1D28D 100%);
+  background-size: 100% 200%;
+  background-position: 0% 0%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.mask {
+  background-color: rgba(0, 0, 0, .3);
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+}
+
+.beers-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.beers-text {
+  display: flex;
+  align-self: center;
+  gap: 10rem;
+  z-index: 2;
+}
+
+.overview p {
+  align-self: center;
+  font-size: 3rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  max-width: 200rem;
+}
+
+.image-pin {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background-color: #071111;
+}
+
+.beer-image {
+  height: 100vh;
+  width: 50vw;
+  object-fit: cover;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  height: 200vh;
+  color: #fff;
+  background-color: #071111;
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+.info h2 {
+  font-size: 20rem;
+  font-family: heap;
+  margin-top: 20%;
+  font-weight: 400;
+}
+
+.info p {
+  font-size: 3rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 200;
+}
+
+.product-name {
+  position: relative;
+  /*font-weight: bold;*/
+  background: linear-gradient(to bottom, #fff 0%, #fff 50%, #D1D28D 50%, #D1D28D 100%);
+  background-size: 100% 200%;
+  background-position: 0% 0%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.product-story {
+  margin-top: 110rem;
+}
+
+.info-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.info-wrap {
+  display: flex;
+  gap: 5rem;
+  margin-top: 10rem;
+}
+
+.info-wrap p {
+  font-family: heap;
+  font-weight: 400;
+}
+
+.fits {
+  display: flex;
+  margin-top: 10rem;
+  gap: 5rem;
+}
+
+.icons {
+  display: flex;
+  gap: 2rem;
+}
+
+.icon-content {
+  display: flex;
+  height: 8rem;
+  width: 8rem;
+}
+
+.icon-wrapper p {
+  font-size: 2.5rem;
+}
+
+.icon {
+  height: 100%;
+  width: 100%;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  padding: .2rem;
+  cursor: pointer;
+}
+
+.icon:hover {
+  border-color: #D1D28D;
+}
+
+.icon-wrapper:hover {
+  border-color: #D1D28D;
+}
+
+.icon .cls-1, 
+.icon .cls-2, 
+.icon .cls-3, 
+.icon .cls-4 {
+  stroke: #fff;
+}
+
+.icon:hover .cls-1, 
+.icon:hover .cls-2,
+.icon:hover .cls-3,
+.icon:hover .cls-4 {
+  stroke: #D1D28D;
+}
+
+.icon-wrapper {
+  width: 20rem;
+  height: 8rem;
+  overflow: hidden;
+  position: relative;
+  cursor: default;
+}
+
+.icon-slide-container {
+  display: flex;
+  flex-direction: column;
+  height: 200%;
+  transform: translateY(0%);
+  transition: transform 0.4s ease-in-out 0.4s; /* delay to match fade */
+}
+
+.icon-wrapper.active .icon-slide-container {
+  transform: translateY(-50%);
+}
+
+.icon-slide {
+  height: 8rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-part {
+  transition: opacity 0.4s ease-in-out;
+}
+
+.icon-wrapper.active .icon-part {
+  opacity: 0;
+}
+
+.icon-part .icon {
+  width: 6rem;
+  height: 6rem;
+}
+
+.text-part p {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+}
+
+.icon-keyword {
+  font-size: 1.8rem;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+}
+
+.icon-keyword:hover {
+  color: #D1D28D;
+}

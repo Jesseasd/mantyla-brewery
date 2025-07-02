@@ -1,4 +1,3 @@
-import React from 'react'
 import "../fonts/heavyHeap.ttf"
 import { ReactComponent as Cone } from "../images/pine-cone/cone.svg"
 import { ReactComponent as Arrow } from "../images/arrow.svg"

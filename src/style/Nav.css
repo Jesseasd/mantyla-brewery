@@ -19,6 +19,19 @@ nav {
     z-index: 999;
 }
 
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    z-index: 999;
+}
+
 .nav-bg {
     position: absolute;
     display: flex;
@@ -46,12 +59,14 @@ nav {
     transform: translateY(-100%);
 }
 
-.nav-bg .cone-svg:hover path {
+.cone-svg:hover path {
     stroke: #D1D28D;
 }
 
 .nav-links {
     display: flex;
+
+    align-items: center;
     gap: 6rem;
     list-style: none;
     z-index: -1;

@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
 @font-face {
   font-family: heap;
   src: local(heavyHeap),
@@ -8,37 +6,136 @@
 
 .shop-container {
     background-color: #071111;
-    padding-left: 1rem;
+    /* padding-left: 1rem;
     padding-right: 1rem;
-    padding-bottom: 1rem;
+    padding-bottom: 1rem; */
     margin-bottom: clamp(20rem, 35vw, 50rem);
 }
 
 .title-container {
     display: flex;
-    height: 80vh;
-    align-items: center;
-    justify-content: center;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 20rem;
+  /*background-color: #071111;*/
+  height: 100vh;
+  font-size: 4rem;
+  font-weight: 300;
+  color: #fff;
 }
 
 .title-container h1 {
-    font-size: clamp(9.6rem, 15vw, 30rem);
     font-family: heap;
+    font-size: clamp(9.6rem, 15vw, 30rem);
     font-weight: 400;
-    color: #D1D28D;
+    color: #fff;
+    z-index: 2;
+}
+
+.title-container p {
+  align-self: center;
+  font-size: 3rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  max-width: 200rem;
+}
+
+.mask {
+  background-color: rgba(0, 0, 0, .3);
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+}
+
+.beers-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.beers-text {
+  display: flex;
+  align-self: center;
+  gap: 10rem;
+  z-index: 2;
 }
 
 .shop-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
+    padding: 6rem 1rem;
     /*padding-bottom: 5rem;*/
 }
 
 .product {
+    position: relative;
     opacity: 0;
     cursor: pointer;
-    
+}
+
+.product:hover .product-image-mask, 
+.product:hover .cone-icon {
+    opacity: 1;
+}
+
+.product-image-mask {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    z-index: 50;
+    opacity: 0;
+}
+
+.product::after,
+.product::before {
+    content: "";
+    position: absolute;
+    background-color: #D1D28D;
+    transition: width .3s ease, height .3s ease;
+    opacity: 0;
+    z-index: 51;
+}
+
+.product::after {
+    height: 3px;
+    width: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.product::before {
+    width: 3px;
+    height: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.product:hover::after {
+    width: 30%;
+}
+
+.product:hover::before {
+    height: 30%;
+}
+
+.product:hover::after,
+.product:hover::before {
+    opacity: 1;
+} 
+
+.product:hover .product-info {
+    opacity: 1;
 }
 
 .product-image-wrapper {
@@ -71,21 +168,30 @@
   opacity: 0;
 }
 
-.product-image-wrapper:hover .product-image2 {
+/* .product-image-wrapper:hover .product-image2 {
   opacity: 1;
 }
 
 .product-image-wrapper:hover .product-image {
   opacity: 0;
-}
+} */
 
 .product-info {
     position: absolute;
-    height: 100%;
-    top: 0rem;
-    left: 1rem;
-    z-index: 2;
+    inset: 0;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    padding: 2rem;
+    z-index: 51;
 }
+
+
+
 /*
 .product-info {
     display: flex;
@@ -96,36 +202,47 @@
 
 .e-l {
     position: absolute;
-    bottom: 0;
-    left: 0;
+    bottom: 2rem;
+    left: 2rem;
 }
+
+/* .e-l p {
+    font-size: 20rem;
+} */
 
 .product h3 {
     font-family: heap;
     font-weight: 400;
-    font-size: 5rem;
+    font-size: 8rem;
     color: #D1D28D;
+    margin-top: 2rem;
+    margin-left: 2rem;
 }
 
 .product p {
     font-family: heap;
     font-weight: 400;
-    font-size: 3rem;
+    font-size: 4rem;
     color: #D1D28D;
 }
 
 .cone-icon {
     position: absolute;
-    bottom: 1rem;
-    right: 1rem;
-    height: 4rem;
-    z-index: 4;
+    bottom: 2rem;
+    right: 2rem;
+    height: 5rem;
+    z-index: 51;
+    opacity: 0;
 }
 
 .cone-icon .cls-1 {
-    stroke: #fff;
+    stroke: #D1D28D;
+}
+
+/* .product-image-wrapper:hover .cone-icon .cls-1 {
+    stroke: #D1D28D;
 }
 
 .product-image-wrapper:hover .cone-icon .cls-1 {
     stroke: #D1D28D;
-}
+} */

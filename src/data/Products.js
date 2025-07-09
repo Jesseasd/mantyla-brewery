@@ -26,19 +26,51 @@ import talviyo2 from "../images/beers/no-bg/talviyo.png"
 import tervaporter2 from "../images/beers/no-bg/terva.png"
 import yotaivas2 from "../images/beers/no-bg/yotaivas.png"
 
+// Backgrounds
+import juniperBg from "../images/beers/bg/juniper2.png"
+import bockBg from "../images/beers/bg/bock-bg1.png"
+import kaskiBg from "../images/beers/bg/kaski-bg.png"
+import kesailtaBg from "../images/beers/bg/kesailta-bg.png"
+import kevatkylmaBg from "../images/beers/bg/kevatkylma-bg.png"
+import kuusenkerkkaBg from "../images/beers/bg/kuusenkerkka-bg.png"
+import luotolampiBg from "../images/beers/bg/luotolampi-bg.png"
+import metsamarjaBg from "../images/beers/bg/metsamarja-bg.png"
+import pellavaBg from "../images/beers/bg/pellava-bg.png"
+import savusahtiBg from "../images/beers/bg/savusahti-bg.png"
+import talviyoBg from "../images/beers/bg/talviyo-bg.png"
+import tervaBg from "../images/beers/bg/terva-bg.png"
+import yotaivasBg from "../images/beers/bg/yotaivas-bg.png"
+
+// Bottles
+import juniperBottle from "../images/beers/no-bg/juniper1.png"
+import bockBottle from "../images/beers/no-bg/bock1.png"
+import kaskiBottle from "../images/beers/no-bg/kaski1.png"
+import kesailtaBottle from "../images/beers/no-bg/kesailta1.png"
+import kevatkylmaBottle from "../images/beers/no-bg/kevatkylma1.png"
+import kuusenkerkkaBottle from "../images/beers/no-bg/kuusenkerkka1.png"
+import luotolampiBottle from "../images/beers/no-bg/luotolampi1.png"
+import metsamarjaBottle from "../images/beers/no-bg/metsamarja1.png"
+import pellavaBottle from "../images/beers/no-bg/pellava1.png"
+import savusahtiBottle from "../images/beers/no-bg/savusahti1.png"
+import talviyoBottle from "../images/beers/no-bg/talviyo1.png"
+import tervaBottle from "../images/beers/no-bg/terva1.png"
+import yotaivasBottle from "../images/beers/no-bg/yotaivas1.png"
+
 export const products = [
     {
+        id: 1,
         name: "Mänty Bock",
         image: bock,
-        image2: bock2, 
+        image2: bock2,
+        bg: bockBg,
+        bottle: bockBottle,
         price: 4.90,
         alcohol: 6.7,
         volume: 0.33,
         style: "Tumma bock",
         fits: [
-            "Pimeät illat ja takkatuli", 
-            "Mökki ja metsä", 
-            "Ruokapöytään"
+            'Nuotion äärelle', 
+            'Ruokapöydän paras kaveri'
         ],
         story: [
             "Mänty Bock on kunnianosoitus suomalaisen metsän jylhälle rauhalle ja vanhoille juurille. Tämä tumma ja täyteläinen bock-olut syntyi halusta tuoda jotakin perinteikästä, mutta silti omaleimaista Mäntylän Panimon valikoimaan. ",
@@ -47,17 +79,19 @@ export const products = [
         ]
     },
     {
+        id: 2,
         name: "Juniper Pale Ale",
         image: juniper,
-        image2: juniper2, 
+        image2: juniper2,
+        bg: juniperBg,
+        bottle: juniperBottle,
         price: 4.70,
         alcohol: 5.2,
         volume: 0.33,
         style: "Pale Ale katajanmarjalla",
         fits: [
-            "Saunan jälkeen", 
-            "Mökki ja metsä", 
-            "Ruokapöytään"
+            'Kesäpäivän pelastaja', 
+            'Mielen kohottaja'
         ],
         story: [
             "Juniper Pale Ale syntyi kaipuusta metsään – sinne, missä ilma on raikasta ja katajapensaat tuoksuvat auringon lämmössä. Tämä raikas, havuinen pale ale yhdistää modernin oluttyylin ja pohjoisen luonnon omaleimaisen sävyn: katajanmarjan. ",
@@ -66,17 +100,19 @@ export const products = [
         ]
     },
     {
+        id: 3,
         name: "Kaski Red Ale",
         image: kaski,
-        image2: kaski2, 
+        image2: kaski2,
+        bg: kaskiBg,
+        bottle: kaskiBottle,
         price: 4.80,
         alcohol: 5.5,
         volume: 0.33,
         style: "Red Ale",
         fits: [
-            "Pimeät illat ja takkatuli", 
-            "Mökki ja metsä", 
-            "Ruokapöytään"
+            'Ruokapöydän paras kaveri', 
+            'Nuotion äärelle'
         ],
         story: [
             "Kaski Red Ale sai alkunsa tarinasta, joka on yhtä vanha kuin suomalainen maanviljelys – kasken poltosta. Siinä, missä metsä palaa hallitusti ja uusi kasvu versoo tuhkasta, syntyy myös tämä olut: lämmin, syvä ja mausteinen. ",
@@ -85,17 +121,19 @@ export const products = [
         ]
     },
     {
+        id: 4,
         name: "Kesäilta Session Ipa",
         image: kesailta,
         image2: kesailta2, 
+        bg: kesailtaBg,
+        bottle: kesailtaBottle,
         price: 4.50,
         alcohol: 4.2,
         volume: 0.33,
         style: "Session IPA",
         fits: [
-            "Kesäillat ja aurinko", 
-            "Ystävien kanssa jaettavaksi", 
-            "Saunan jälkeen"
+            'Kesäpäivän pelastaja', 
+            'Mielen kohottaja'
         ],
         story: [
             "Kesäilta Session IPA on pullotettu hetki suomalaista kesää. Se tuo mieleen lämpimän kallion, hyttysten surinan ja ilta-auringon, joka ei malta laskea horisonttiin. Tämä kepeä ja raikkaasti humaloitu session IPA on suunniteltu nautittavaksi silloin, kun illat venyvät – ja jano pysyy kevyenä. ", 
@@ -104,17 +142,19 @@ export const products = [
         ]
     },
     {
+        id: 5,
         name: "Kevätkylmä Lager",
         image: kevatkylma,
-        image2: kevatkylma2, 
+        image2: kevatkylma2,
+        bg: kevatkylmaBg,
+        bottle: kevatkylmaBottle,
         price: 4.50,
         alcohol: 4.7,
         volume: 0.33,
         style: "Helles Lager",
         fits: [
-            "Kesäillat ja aurinko", 
-            "Saunan jälkeen", 
-            "Ruokapöytään"
+            'Herää eloon -olut', 
+            'Darran selättäjä'
         ],
         story: [
             "Kevät ei koskaan saavu huutaen. Se hiipii hiljaa yöpakkasten sekaan, rohkenee valoon ja sulattaa lumen kulman kerrallaan. Kevätkylmä Lager syntyi juuri tästä odotuksesta – siitä hetkestä, kun aurinko alkaa viipyä vähän pidempään ja ilma tuoksuu uudelta alulta. ",
@@ -122,17 +162,19 @@ export const products = [
         ]
     },
     {
+        id: 6,
         name: "Kuusenkerkkä Ipa",
         image: kuusenkerkka,
-        image2: kuusenkerkka2, 
+        image2: kuusenkerkka2,
+        bg: kuusenkerkkaBg,
+        bottle: kuusenkerkkaBottle,
         price: 5.20,
         alcohol: 5.5,
         volume: 0.33,
         style: "India Pale Ale maustettuna kuusenkerkällä",
         fits: [
-            "Mökki ja metsä", 
-            "Saunan jälkeen", 
-            "Ruokapöytään"
+            'Mielen kohottaja', 
+            'Saunajuoman kuningas'
         ],
         story: [
             "Keväällä metsässä tuoksuu uudelta – maa herää, ja kuusenoksien päissä versoo vihreää. Siitä tuoreudesta, luonnon villistä voimasta ja kevään rohkeasta energiasta sai alkunsa Kuusenkerkkä IPA. ",
@@ -141,17 +183,19 @@ export const products = [
         ]
     },
     {
+        id: 7,
         name: "Luotolampi Wheat Ale",
         image: luotolampi,
-        image2: luotolampi2, 
+        image2: luotolampi2,
+        bg: luotolampiBg,
+        bottle: luotolampiBottle,
         price: 4.80,
         alcohol: 4.8,
         volume: 0.33,
         style: "Vehnäolut",
         fits: [
-            "Kesäillat ja aurinko", 
-            "Mökki ja metsä", 
-            "Ystävien kanssa jaettavaksi"
+            'Kesäpäivän pelastaja', 
+            'Herää eloon -olut'
         ],
         story: [
             "Hiljainen lammen pinta, jossa heijastuu pilvetön kesätaivas. Kaskisen saariston kupeessa oleva luotolampi oli paikka, johon ystävykset vetäytyivät hengittämään, ideoimaan – ja joskus myös maistelemaan uusia kokeiluja. Siellä syntyi ajatus oluesta, joka olisi yhtä lempeä ja kirkas kuin tuo hetki veden äärellä. ",
@@ -159,17 +203,19 @@ export const products = [
         ]
     },
     {
+        id: 8,
         name: "Metsämarja Stout",
         image: metsamarja,
-        image2: metsamarja2, 
+        image2: metsamarja2,
+        bg: metsamarjaBg,
+        bottle: metsamarjaBottle,
         price: 5.40,
         alcohol: 5.9,
         volume: 0.33,
         style: "Marjastout",
         fits: [
-            "Yö ja tunnelma", 
-            "Saunan jälkeen", 
-            "Ruokapöytään"
+            'Nuotion äärelle', 
+            'Ruokapöydän paras kaveri'
         ],
         story: [
             "Kosteassa havumetsässä, poimittujen variksenmarjojen, mustikoiden ja puolukoiden keskellä syntyy muistoja, jotka eivät unohdu. Metsämarja Stout on kunnianosoitus suomalaiselle marjametsälle – hiljaiselle, mutta täynnä elämää. Se sai alkunsa, kun panijat halusivat yhdistää vahvan, paahteisen stoutin ja pohjoisen metsän omat makeat ja hapokkaat aarteet. ",
@@ -177,17 +223,19 @@ export const products = [
         ]    
     },
     {
+        id: 9,
         name: "Pellava Blonde Ale",
         image: pellava,
         image2: pellava2,
+        bg: pellavaBg,
+        bottle: pellavaBottle,
         price: 4.80,
         alcohol: 4.9,
         volume: 0.33,
         style: "Blonde Ale",
         fits: [
-            "Ystävien kanssa jaettavaksi", 
-            "Kesäillat ja aurinko", 
-            "Ruokapöytään"
+            'Kesäpäivän pelastaja', 
+            'Darran selättäjä'
         ],
         story: [
             "Pellava Blonde Ale on kuin loppukesän pellon laita – vaalea, lempeä ja selkeälinjainen. Se sai alkunsa ajatuksesta luoda olut, joka olisi yhtä ajaton ja luonnollinen kuin pellavakangas: yksinkertainen, mutta täynnä sävyjä, kun sitä katsoo lähempää. ",
@@ -195,17 +243,19 @@ export const products = [
         ]
     },
     {
+        id: 10,
         name: "Savusahti Farmhouse Ale",
         image: savusahti,
         image2: savusahti2,
+        bg: savusahtiBg,
+        bottle: savusahtiBottle,
         price: 5.60,
         alcohol: 6.2,
         volume: 0.33,
         style: "Farmhouse Ale, savumaltainen",
         fits: [
-            "Saunan jälkeen", 
-            "Mökki ja metsä", 
-            "Ruokapöytään"
+            'Nuotion äärelle', 
+            'Saunajuoman kuningas'
         ],
         story: [
             "Savusahti Farmhouse Ale on kunnianosoitus suomalaiselle sahtiperinteelle ja maatilan arjelle. Se yhdistää perinteisen savuisuuden rustiikkiseen farmhouse-tyyliin – syntyen jossain savusaunan, viljapellon ja vanhan navetan välimaastossa. ",
@@ -214,18 +264,19 @@ export const products = [
         ]
     },
     {
+        id: 11,
         name: "Talviyö Winter Ale",
         image: talviyo,
         image2: talviyo2,
+        bg: talviyoBg,
+        bottle: talviyoBottle,
         price: 5.60,
         alcohol: 6.5,
         volume: 0.33,
         style: "Winter Ale",
         fits: [
-            "Yö ja tunnelma", 
-            "Saunan jälkeen", 
-            "Ystävien kanssa jaettavaksi",
-            "Ruokapöytään"
+            'Nuotion äärelle', 
+            'Ruokapöydän paras kaveri'
         ],
         story: [
             "Talviyö on olut, joka syntyi pimeästä, mutta lämmittää valolla. Se on kunnianosoitus suomalaiselle talvelle – niille hetkille, kun pakkanen paukkuu nurkissa, tähdet näkyvät kirkkaina ja lumi hiljentää kaiken muun. ",
@@ -234,18 +285,19 @@ export const products = [
         ]
     },
     {
+        id: 12,
         name: "Tervaporter",
         image: tervaporter,
         image2: tervaporter2,
+        bg: tervaBg,
+        bottle: tervaBottle,
         price: 5.60,
         alcohol: 6.8,
         volume: 0.33,
         style: "Porter, tervalla maustettu",
         fits: [
-            "Saunan jälkeen", 
-            "Yö ja tunnelma",
-            "Ruokapöytään",
-            "Mökki ja metsä"
+            'Nuotion äärelle', 
+            'Mielen kohottaja'
         ],
         story: [
             "Tervaporter on kuin harmaa marraskuun ilta, jolloin sade ropisee kattoon ja ulkona tuoksuu märkä metsä ja vanha savusauna. Tämä olut ei ole kiireiselle – se on niille, jotka haluavat pysähtyä hetkeksi ja maistaa menneisyyttä. ",
@@ -254,18 +306,19 @@ export const products = [
         ]
     },
     {
+        id: 13,
         name: "Yötaivas Imperial Stout",
         image: yotaivas,
         image2: yotaivas2,
+        bg: yotaivasBg,
+        bottle: yotaivasBottle,
         price: 6.20,
         alcohol: 9.2,
         volume: 0.33,
         style: "Imperial Stout",
         fits: [
-            "Yö ja tunnelma", 
-            "Saunan jälkeen", 
-            "Ystävien kanssa jaettavaksi",
-            "Ruokapöytään"
+            'Nuotion äärelle', 
+            'Ruokapöydän paras kaveri'
         ],
         story: [
             "Yötaivas syntyi hiljaisuudesta – siitä hetkestä, kun tähdet syttyvät metsän ylle ja koko maailma pysähtyy. Se on kunnianosoitus arktiselle pimeydelle, jonka keskellä pieni valo, lämpö ja vahva maku tuntuvat suuremmilta kuin koskaan. ",

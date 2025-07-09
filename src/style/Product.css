@@ -1,0 +1,462 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@font-face {
+    font-family: heap;
+    src: local(heavyHeap),
+        url("../fonts/heavyHeap.ttf") format("truetype");
+}
+
+.product-page {
+    background-color: #071111;
+    margin-bottom: clamp(20rem, 35vw, 50rem);
+}
+
+.product-page-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.product-page-info {
+    position: absolute;
+    left: 30rem;
+    bottom: 20rem;
+    max-width: 70rem;
+    z-index: 2;
+}
+
+.alcohol {
+    margin-top: 1rem;
+}
+
+.product-page-image-wrapper {
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.product-page-bg-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.product-page-bottle-image {
+    height: 100%;
+    position: absolute;
+    top: 2%;
+    left: 33%;
+    z-index: 2;
+}
+
+.product-page-info h1 {
+    font-family: heap;
+    font-size: 10rem;
+    color: #D1D28D;
+    font-weight: 400;
+}
+
+.product-page-info p {
+    font-family: "Montserrat", sans-serif;
+    font-size: 3rem;
+    color: #D1D28D;
+    font-weight: 400;
+}
+
+.add-to-cart-section {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 30rem;
+    bottom: 20rem;
+}
+
+.amount-wrapper {
+    position: relative;
+    width: 35rem;
+}
+
+.amount-label {
+    padding: 1rem 1rem;
+    font-family: "Montserrat", sans-serif;
+    font-size: 2rem;
+    letter-spacing: .08rem;
+    color: #D1D28D;
+    z-index: 1;
+}
+
+.amount-section {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    width: 35rem;
+    padding: 1.5rem 1rem 1rem 1rem;
+    border: 2px solid #D1D28D;
+    border-radius: 20px;
+    box-sizing: border-box;
+    max-height: 15.8rem;
+    overflow: hidden;
+    transition: max-height .4s ease;
+}
+
+.amount-section.expanded {
+    max-height: 30rem;
+}
+
+/* Hide number inputs arrows in Chrome, Safari, Edge */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hide in Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.custom-input-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+.custom-input {
+    font-size: 2.4rem;
+    font-family: heap;
+    padding: 1rem 1.6rem 1rem 1.6rem;
+    border: 2px solid #D1D28D;
+    border-radius: 10px;
+    background: none;
+    color: #D1D28D;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.custom-input:focus {
+  border-color: #D1D28D;
+  outline: none;
+  box-shadow: none;
+}
+
+.amount-option {
+    font-size: 3rem;
+    font-family: heap;
+    color: #D1D28D;
+    background: none;
+    border: 2px solid #D1D28D;
+    border-radius: 10px;
+    padding: 1rem 0;
+    text-align: center;
+    cursor: pointer;
+}
+
+.amount-section .amount-option:hover,
+.arrow-button:hover
+{
+    background-color: #D1D28D;
+    color: #071111;
+}
+
+.input-container {
+    position: relative;
+    grid-column: 1 / -1;
+    margin-top: 1.5rem;
+} 
+
+.amount-plus,
+.amount-minus
+{
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.arrow-button {
+    font-size: 3rem;
+    color: #D1D28D;
+    background: none;
+    border: 2px solid #D1D28D;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+}
+
+.input-label {
+    background: none;
+    padding: 1rem 0;
+    font-family: "Montserrat", sans-serif;
+    font-size: 2rem;
+    letter-spacing: .08rem;
+    color: #D1D28D;
+    border: none;
+    z-index: 1;
+}
+
+.plus-container {
+    display: flex;
+    justify-content: center;
+    width: 35rem;
+}
+
+.plus {
+    color: #D1D28D;
+    font-size: 3rem;
+    cursor: pointer;
+}
+
+.plus:hover {
+    color: #fff;
+}
+
+.add-to-cart-button {
+    color: #D1D28D;
+    font-family: heap;
+    font-weight: 400;
+    font-size: 6rem;
+    background: none;
+    border: 3px solid #D1D28D;
+    border-radius: 10px;
+    width: 35rem;
+    height: 10rem;
+    margin-top: 3rem;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.add-to-cart-button:hover {
+    background-color: #D1D28D;
+    color: #071111;
+}
+
+.add-to-cart-button:hover .slide-container {
+    transform: translateY(-50%);
+}
+
+.add-to-cart span {
+    height: 10rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide-container {
+    display: flex;
+    flex-direction: column;
+    height: 200%;
+    transform: translateY(0%);
+    transition: transform 0.4s ease-in-out;
+}
+
+.text-default,
+.text-hover {
+    height: 10rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-page-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* flex-direction: column; */
+    /* text-align: center; */
+    /* align-content: center; */
+    align-items: center;
+    height: 120vh;
+    background-color: #071111;
+}
+
+.product-page-details p {
+    /* grid-column: 2; */
+    color: #fff;
+    font-size: 3rem;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 200;
+    
+    /* padding-right: 5rem; */
+}
+
+.info-wrapper {
+    /* grid-column: 2; */
+    margin-top: 20rem;
+    padding-right: 5rem;
+    padding-left: 30rem;
+}
+
+/* .fits {
+  display: flex;
+  justify-content: center;
+  margin-top: 10rem;
+  gap: 5rem;
+  grid-column: 1 / -1;
+} */
+
+/* .icon-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 8rem;
+} */
+
+/* .icon-slide-container {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* text-align: center; */
+/* } */ 
+
+/* .icon-part {
+    height: 8rem;
+    width: 8rem;
+} */
+
+/* .icon-label {
+    font-size: 1.6rem;
+    margin-top: .5rem;
+    color: #D1D28D;
+} */
+
+/* .text-part {
+    width: 8rem;
+    height: 8rem;
+} */
+
+/* .text-part p {
+    font-size: 1.8rem;
+    height: 8rem;
+    width: 8rem;
+} */
+
+.fits {
+  display: flex;
+  margin-top: 10rem;
+  gap: 5rem;
+}
+
+.icons {
+  display: flex;
+  gap: 2rem;
+}
+
+.icon-content {
+  display: flex;
+  height: 8rem;
+  width: 8rem;
+}
+
+.icon-wrapper p {
+  font-size: 2.5rem;
+}
+
+.icon {
+  height: 100%;
+  width: 100%;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  padding: .2rem;
+  cursor: pointer;
+}
+
+.icon:hover {
+  border-color: #D1D28D;
+}
+
+.icon-wrapper:hover {
+  border-color: #D1D28D;
+}
+
+.icon .cls-1, 
+.icon .cls-2, 
+.icon .cls-3, 
+.icon .cls-4 {
+  stroke: #fff;
+}
+
+.icon:hover .cls-1, 
+.icon:hover .cls-2,
+.icon:hover .cls-3,
+.icon:hover .cls-4 {
+  stroke: #D1D28D;
+}
+
+.icon-wrapper {
+  width: 20rem;
+  height: 8rem;
+  overflow: hidden;
+  position: relative;
+  cursor: default;
+}
+
+.icon-slide-container {
+  display: flex;
+  flex-direction: column;
+  height: 200%;
+  transform: translateY(0%);
+  transition: transform 0.4s ease-in-out 0.4s; /* delay to match fade */
+}
+
+.icon-wrapper.active .icon-slide-container {
+  transform: translateY(-50%);
+}
+
+.icon-slide {
+  height: 8rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-part {
+  transition: opacity 0.4s ease-in-out;
+}
+
+.icon-wrapper.active .icon-part {
+  opacity: 0;
+}
+
+.icon-part .icon {
+  width: 6rem;
+  height: 6rem;
+}
+
+.text-part p {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+}
+
+.icon-keyword {
+  font-size: 1.8rem;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+}
+
+.icon-keyword:hover {
+  color: #D1D28D;
+}
+
+.product-page-details-image-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-page-details-image-wrapper img{
+    width: 70%;
+} 

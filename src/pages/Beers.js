@@ -13,7 +13,7 @@ import { ReactComponent as FireplaceIcon } from "../images/icons/fireplace75.svg
 import { ReactComponent as SunsetIcon } from "../images/icons/sunset75.svg"
 import beersVideo from "../videos/6682813_Bottle_Glass_1920x1080.mp4"
 
-gsap.registerPlugin(useGSAP,ScrollTrigger);
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function Beers() {
 
@@ -23,26 +23,26 @@ export default function Beers() {
 
     // Icon for each category
     const iconMap = [
-      {keywords: ["Mökki ja metsä"], icon: <CottageIcon className='icon' />},
-      {keywords: ["Pimeät illat ja takkatuli"], icon: <FireplaceIcon className='icon' />},
-      {keywords: ["Ruokapöytään"], icon: <DiningIcon className='icon' />},
-      {keywords: ["Saunan jälkeen"], icon: <SaunaIcon className='icon' />},
-      {keywords: ["Kesäillat ja aurinko"], icon: <SunsetIcon className='icon' />},
-      {keywords: ["Ystävien kanssa jaettavaksi"], icon: <PartyIcon className='icon' />},
+      { keywords: ["Mökki ja metsä"], icon: <CottageIcon className='icon' /> },
+      { keywords: ["Pimeät illat ja takkatuli"], icon: <FireplaceIcon className='icon' /> },
+      { keywords: ["Ruokapöytään"], icon: <DiningIcon className='icon' /> },
+      { keywords: ["Saunan jälkeen"], icon: <SaunaIcon className='icon' /> },
+      { keywords: ["Kesäillat ja aurinko"], icon: <SunsetIcon className='icon' /> },
+      { keywords: ["Ystävien kanssa jaettavaksi"], icon: <PartyIcon className='icon' /> },
     ]
 
     // Looks through a list of possible icons and returns those that matches the situation
     return iconMap
-      .filter(entry => 
-        entry.keywords.some(kw => 
+      .filter(entry =>
+        entry.keywords.some(kw =>
           fits.some(fit => fit.includes(kw))
         )
       )
       .map((entry, i) => (
-        <div 
-          className='icon-wrapper' 
+        <div
+          className='icon-wrapper'
           key={i}
-          onClick={(e) => e.currentTarget.classList.toggle("active")}  
+          onClick={(e) => e.currentTarget.classList.toggle("active")}
         >
           <div className='icon-slide-container'>
             <div className='icon-slide icon-part'>{entry.icon}</div>
@@ -57,15 +57,15 @@ export default function Beers() {
   useEffect(() => {
     let ctx = gsap.context(() => {
 
-    ScrollTrigger.create({
-      trigger: ".overview",
-      start: "top",
-      end: "bottom",
-      pin: ".overview",
-      markers: false,
-    })
+      ScrollTrigger.create({
+        trigger: ".overview",
+        start: "top",
+        end: "bottom",
+        pin: ".overview",
+        markers: false,
+      })
 
-    gsap.to(".overview h1", {
+      gsap.to(".overview h1", {
         backgroundPosition: "0% 100%", // Move gradient down fully
         ease: "none",
         scrollTrigger: {
@@ -80,7 +80,7 @@ export default function Beers() {
       gsap.utils.toArray(".image-pin").forEach((section) => {
         const image = section.querySelector(".beer-image")
         const title = section.querySelector(".product-name")
-        
+
         // Pin the image
         ScrollTrigger.create({
           trigger: section,

@@ -98,6 +98,40 @@ nav {
     color: #fff;
     text-decoration: none;
     font-size: 2rem;
+    position: relative;
+    transition: color .3s ease;
+}
+
+.nav-item.active {
+    color: #D1D28D;
+    position: relative;
+}
+
+.nav-item.active {
+    color: #D1D28D;
+    position: relative;
+}
+
+.nav-item.active::after {
+    content: "";
+    position: absolute;
+    bottom: -1.5rem;
+    left: 50%;
+    transform: translate(-50%, -2rem);
+    opacity: 0;
+    width: .6rem;
+    height: .6rem;
+    background-color: #D1D28D;
+    border-radius: 50%;
+    animation: dotDrop .3s ease forwards;
+}
+
+.nav-item.active .cone-svg path {
+    stroke: #D1D28D;
+}
+
+.nav-item.active .cart-svg path {
+    stroke: #D1D28D;
 }
 
 .nav-item:hover {
@@ -116,6 +150,7 @@ nav {
     width: 5rem;
     display: flex;
     justify-content: center;
+    position: relative;
 }
 
 .cart:hover .cart-svg path {
@@ -164,7 +199,39 @@ nav {
     stroke: #D1D28D;
 }
 
+.cart-count {
+    position: absolute;
+    top: -0.8rem;
+    right: -0.8rem;
+    background-color: #D1D28D;
+    color: #071111;
+    border-radius: 50%;
+    font-size: 1.4rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    z-index: 999;
+}
 
+@keyframes dotDrop {
+    0% {
+        transform: translate(-50%, -1rem);
+        opacity: 0;
+    }
+
+    80% {
+        transform: translate(-50%, .5rem);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+}
 
 @media only screen and (max-width: 1100px) {
     .nav-bg {
@@ -175,11 +242,6 @@ nav {
         background-color: rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(10px);
         transform: translateY(0);
-    }
-
-    .logo {
-        display: none;
-        z-index: 999;
     }
 
     .menu-icon {

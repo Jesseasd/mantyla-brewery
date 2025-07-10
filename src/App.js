@@ -5,7 +5,6 @@ import "./style/Home.css"
 import "./style/Footer.css"
 import { Routes, Route, Router } from "react-router-dom"
 import About from "./pages/About"
-import Beers from "./pages/Beers"
 import Cart from "./pages/Cart"
 import Contact from "./pages/Contact"
 import Home from "./pages/Home"
@@ -14,7 +13,7 @@ import Product from "./pages/Product"
 import Nav from "./components/Nav"
 import Footer from "./components/Footer"
 import { CartProvider } from './contexts/CartContext'
-
+import { ReactLenis, useLenis } from '@studio-freight/react-lenis'
 
 function App() {
   const [showNav, setShowNav] = useState(false)
@@ -38,19 +37,20 @@ function App() {
   }, [])
 
   return (
-    <CartProvider>
-      <Nav showNav={showNav} />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='about' element={<About />} />
-        <Route path='beers' element={<Beers />} />
-        <Route path='cart' element={<Cart />} />
-        <Route path='contact' element={<Contact />} />
-        <Route path='shop' element={<Shop />} />
-        <Route path='product/:id' element={<Product />} />
-      </Routes>
-      <Footer />
-    </CartProvider>
+    <ReactLenis root>
+      <CartProvider>
+        <Nav showNav={showNav} />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='about' element={<About />} />
+          <Route path='cart' element={<Cart />} />
+          <Route path='contact' element={<Contact />} />
+          <Route path='shop' element={<Shop />} />
+          <Route path='product/:id' element={<Product />} />
+        </Routes>
+        <Footer />
+      </CartProvider>
+    </ReactLenis>
   )
 }
 

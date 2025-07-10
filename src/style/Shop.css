@@ -14,16 +14,16 @@
 
 .title-container {
     display: flex;
-  position: relative;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  gap: 20rem;
-  /*background-color: #071111;*/
-  height: 100vh;
-  font-size: 4rem;
-  font-weight: 300;
-  color: #fff;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 20rem;
+    /*background-color: #071111;*/
+    height: 100vh;
+    font-size: 4rem;
+    font-weight: 300;
+    color: #fff;
 }
 
 .title-container h1 {
@@ -32,6 +32,14 @@
     font-weight: 400;
     color: #fff;
     z-index: 2;
+
+    position: relative;
+    background: linear-gradient(to bottom, #fff 0%, #fff 50%, #D1D28D 50%, #D1D28D 100%);
+    background-size: 100% 200%;
+    background-position: 0% 0%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .title-container p {
@@ -97,14 +105,25 @@
     opacity: 0;
 }
 
+/* Shared corner style */
 .product::after,
-.product::before {
+.product::before,
+.product .corner-span
+{
     content: "";
     position: absolute;
     background-color: #D1D28D;
     transition: width .3s ease, height .3s ease;
     opacity: 0;
     z-index: 51;
+}
+
+/* Bottom right */
+.product::before {
+    width: 3px;
+    height: 0;
+    bottom: 0;
+    right: 0;
 }
 
 .product::after {
@@ -114,19 +133,39 @@
     right: 0;
 }
 
-.product::before {
+/* Top left */
+.product .corner-top-left-v {
     width: 3px;
     height: 0;
-    bottom: 0;
-    right: 0;
+    top: 0;
+    left: 0;
 }
 
-.product:hover::after {
-    width: 30%;
+.product .corner-top-left-h {
+    height: 3px;
+    width: 0;
+    top: 0;
+    left: 0;
 }
 
 .product:hover::before {
     height: 30%;
+    opacity: 1;
+}
+
+.product:hover::after {
+    width: 30%;
+    opacity: 1;
+}
+
+.product:hover .corner-top-left-v {
+    height: 30%;
+    opacity: 1;
+}
+
+.product:hover .corner-top-left-h {
+    width: 30%;
+    opacity: 1;
 }
 
 .product:hover::after,

@@ -5,8 +5,11 @@ import { NavLink } from "react-router-dom"
 import { ReactComponent as Menu } from "../images/menu.svg"
 import { ReactComponent as Close } from "../images/close.svg"
 import "../style/Nav.css"
+import { useCart } from "../contexts/CartContext"
 
 export default function Nav({ showNav }) {
+    const { cartItems } = useCart()
+    const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0)
     const [isOpen, setIsOpen] = useState(false)
 
     const toggleMenu = () => {
@@ -40,21 +43,40 @@ export default function Nav({ showNav }) {
                     <ul className={`nav-links ${isOpen ? "nav-active" : ""}`}>
                         
                         <li>
-                            <NavLink to="about" className='nav-item' onClick={() => setIsOpen(false)}>Meistä</NavLink>
+                            <NavLink 
+                                to="about" 
+                                className="nav-item"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                Meistä
+                            </NavLink>
                         </li>
                         <li>
-                            <NavLink to="beers" className='nav-item' onClick={() => setIsOpen(false)}>Oluet</NavLink>
+                            <NavLink 
+                                to="shop" 
+                                className="nav-item"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                Kauppa
+                            </NavLink>
                         </li>
                         <li>
-                            <NavLink to="shop" className='nav-item' onClick={() => setIsOpen(false)}>Kauppa</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to="contact" className='nav-item' onClick={() => setIsOpen(false)}>Ota Yhteyttä</NavLink>
+                            <NavLink 
+                                to="contact" 
+                                className="nav-item"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                Ota Yhteyttä
+                            </NavLink>
                         </li>
 
                         {isOpen && (
                             <li>
-                                <NavLink to="/" className='nav-item' onClick={() => setIsOpen(false)}>
+                                <NavLink 
+                                    to="/" 
+                                    className="nav-item"
+                                    onClick={() => setIsOpen(false)}
+                                >
                                     <Cone className="cone-svg menu-cone" />
                                 </NavLink>
                             </li>
@@ -62,8 +84,13 @@ export default function Nav({ showNav }) {
 
                     </ul>
 
-                    <NavLink to="cart" className='cart nav-item' onClick={() => setIsOpen(false)}>
+                    <NavLink 
+                        to="cart" 
+                        className='cart nav-item' 
+                        onClick={() => setIsOpen(false)}
+                    >
                         <Cart className='cart-svg'/>
+                        {totalItems > 0 && <span className='cart-count'>{totalItems}</span>}
                     </NavLink>
 
                 </div>

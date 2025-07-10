@@ -35,7 +35,7 @@
     bottom: clamp(-55%, -13vw, -10%)
 }
 
-.footer a {
+/* .footer a {
     width: 100%;
 }
 
@@ -85,4 +85,4 @@
 
 .tw:hover {
     transform: scale(1.1);
-}
+} */

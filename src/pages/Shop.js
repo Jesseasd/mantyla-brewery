@@ -13,17 +13,45 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 export default function Shop() {
 
   const gridRef = useRef(null)
+  const component = useRef(null)
 
   useEffect(() => {
-    ScrollTrigger.batch(".product", {
-      batchMax: 3,
-      onEnter: batch => gsap.to(batch, {opacity: 1, y:-50, stagger: .3}),
+    requestAnimationFrame(() => {
+      ScrollTrigger.batch(".product", {
+        batchMax: 3,
+        onEnter: batch => gsap.to(batch, { opacity: 1, y: -50, stagger: .3 }),
+      })
     })
-    
-    
+
+    let ctx = gsap.context(() => {
+      ScrollTrigger.create({
+        trigger: ".title-container",
+        start: "top",
+        end: "bottom",
+        pin: ".title-container",
+        markers: false,
+      })
+
+      gsap.to(".title-container h1", {
+        backgroundPosition: "0% 100%", // Move gradient down fully
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".title-container",
+          start: "top-=100",
+          end: "center+=500",
+          scrub: true,
+          markers: false,
+        }
+      })
+
+    }, component)
+
+    return () => ctx.revert()
+
   }, [])
+
   return (
-    <div className='shop-container'>
+    <div className='shop-container' ref={component}>
       <div className='title-container'>
         <div className='mask'></div>
         <video className='beers-video' autoPlay loop muted>
@@ -38,13 +66,17 @@ export default function Shop() {
         {products.map((product) => (
           <div className='product' key={product.id}>
             <Link className='product-image-wrapper' to={`/product/${product.id}`}>
+              {/* Corner spans */}
+              <span className='corner-span corner-top-left-v'></span>
+              <span className='corner-span corner-top-left-h'></span>
+              
               <div className='product-image-mask'></div>
               <img className='product-image' src={product.image} />
               {/* <img className='product-image2' src={product.image2} /> */}
               <div className='product-info'>
                 <h3>{product.name}</h3>
                 <div className='e-l'>
-                  <p>{product.price}e</p>
+                  <p>{product.price.toFixed(2)}e</p>
                   <p>{product.volume}l</p>
                 </div>
               </div>

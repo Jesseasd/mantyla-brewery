@@ -3,7 +3,7 @@ html {
 }
 
 .about-container {
-  margin-bottom: clamp(20rem, 35vw, 50rem);
+  margin-bottom: clamp(5rem, 15vw, 50rem);
 }
 
 .about-hero {

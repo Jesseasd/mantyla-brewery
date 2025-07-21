@@ -9,7 +9,7 @@
     /* padding-left: 1rem;
     padding-right: 1rem;
     padding-bottom: 1rem; */
-    margin-bottom: clamp(20rem, 35vw, 50rem);
+    margin-bottom: clamp(5rem, 15vw, 50rem);
 }
 
 .title-container {

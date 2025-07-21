@@ -15,7 +15,7 @@
     background-repeat: no-repeat;
     background-size: contain;
     overflow-x: hidden;
-    margin-bottom: clamp(20rem, 35vw, 50rem);
+    margin-bottom: clamp(5rem, 15vw, 50rem);
 }
 
 .home-hero {
@@ -29,7 +29,7 @@
 
 .home-hero .cone-svg {
     /*margin-top: min(20vh, 11.5rem);*/
-    width: 32px;
+    width: clamp(24px, 5vw, 32px);
     position: absolute;
     bottom: 8vh;
     animation: bounce 2s infinite ease-in-out;
@@ -43,7 +43,7 @@
 .home-hero h1 {
     font-family: heap;
     /*font-size: 22rem;*/
-    font-size: clamp(9.6rem, 15vw, 30rem);
+    font-size: clamp(15rem, 12vw, 30rem);
     font-weight: normal;
     color: #D1D28D;
     cursor: default;
@@ -51,12 +51,12 @@
 
 .heading1 {
     /*margin-left: -40rem;*/
-    margin-left: clamp(-10rem, -10vw, -40rem);
+    margin-left: clamp(-5rem, -10vw, -40rem);
 }
 
 .heading2 {
     /*margin-left: 40rem;*/
-    margin-left: clamp(10rem, 10vw, 40rem);
+    margin-left: clamp(5rem, 10vw, 40rem);
 }
 
 .call-to-action {
@@ -350,13 +350,20 @@ button {
     }
 }
 
+@media only screen and (max-width: 700px) {
+    .home-hero h1 {
+        /* font-size: clamp(15rem, 12vw, 30rem); */
+        font-size: 10rem;
+    }
+}
+
 @media only screen and (max-width: 640px) {
     .call-to-action {
         padding: 0;
     }
 }
 
-@media only screen and (max-width: 500px) {
+/* @media only screen and (max-width: 500px) {
     .heading1 {
         margin: 0;
     }
@@ -364,4 +371,4 @@ button {
     .heading2 {
         margin: 0;
     }
-}
+} */

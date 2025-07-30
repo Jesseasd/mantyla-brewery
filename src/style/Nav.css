@@ -165,7 +165,7 @@ nav {
 }
 
 .menu-icon {
-    width: 5rem;
+    width: 3.2rem;
     margin-left: 4rem;
     display: none;
     cursor: pointer;
@@ -178,7 +178,7 @@ nav {
 
 .close-icon {
     position: absolute;
-    left: 5rem;
+    left: 3.2rem;
     top: 50%;
     transform: translateY(-50%);
     width: 2.4rem;

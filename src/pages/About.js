@@ -63,7 +63,7 @@ export default function About() {
           }
         })
 
-      // Pinning text
+      // Tarinamme text pinning
       gsap.to(".story-wrapper",
         {
           scrollTrigger: {
@@ -101,16 +101,30 @@ export default function About() {
         }
       )
 
+      // gsap.to(".text-item1",
+      //   {
+      //     opacity: 1,
+      //     scale: 1,
+      //     scrollTrigger: {
+      //       trigger: ".story",
+      //       start: "top+=2500 top",
+      //       end: "bottom-=650 bottom",
+      //       scrub: true,
+      //       markers: true,
+      //     },
+      //   }
+      // )
+
       gsap.to(".text-item1",
         {
           opacity: 1,
           scale: 1,
           scrollTrigger: {
             trigger: ".story",
-            start: "top+=2500 top",
-            end: "bottom-=650 bottom",
+            start: "top+=2500vh top",
+            end: "bottom+=200vh bottom",
             scrub: true,
-            markers: false,
+            markers: true,
           },
         }
       )
@@ -131,6 +145,7 @@ export default function About() {
         })
         .to(".text2", {})
 
+      // Horizontal scroll
       gsap.to(sections,
         {
           xPercent: -100 * (sections.length - 1),
@@ -153,43 +168,44 @@ export default function About() {
             pin: ".text3",
             markers: false,
           }
-        })
+        }
+      )
 
         // pin cone
-        gsap.to(".cone2",
-        {
-          scrollTrigger: {
-            trigger: ".cone2-wrapper",
-            start: "top top",
-            end: "bottom bottom",
-            pin: ".cone2",
-            markers: false,
-          }
-        })
+        // gsap.to(".cone2",
+        // {
+        //   scrollTrigger: {
+        //     trigger: ".cone2-wrapper",
+        //     start: "top top",
+        //     end: "bottom bottom",
+        //     pin: ".cone2",
+        //     markers: false,
+        //   }
+        // })
 
-        let tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: ".cone2-wrapper",
-            start: "top",
-            end: "bottom-=2000",
-            scrub: true,
-            markers: false,
-          }
-        })
+        // let tl = gsap.timeline({
+        //   scrollTrigger: {
+        //     trigger: ".cone2-wrapper",
+        //     start: "top",
+        //     end: "bottom-=2000",
+        //     scrub: true,
+        //     markers: false,
+        //   }
+        // })
 
-        tl.to(".cone2", 
-          {
-            opacity: 1,
-            duration: 5,
-          }
-        )
+        // tl.to(".cone2", 
+        //   {
+        //     opacity: 1,
+        //     duration: 5,
+        //   }
+        // )
 
-        tl.to(".cone2", 
-          {
-            scale: 10,
-            duration: 10,
-          }
-        )
+        // tl.to(".cone2", 
+        //   {
+        //     scale: 10,
+        //     duration: 10,
+        //   }
+        // )
 
     }, component)
 
@@ -259,13 +275,13 @@ export default function About() {
             </div>
           </div>
 
-          <div className='gradient1' />
+          {/* <div className='gradient1' />
 
           <div className='cone2-wrapper'>
             <Cone className='cone2' />
           </div>
 
-          <div className='gradient2' />
+          <div className='gradient2' /> */}
 
         </div>
 

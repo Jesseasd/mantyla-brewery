@@ -25,11 +25,11 @@ export default function About() {
       // Animate each word
       gsap.from(text.words, {
         scrollTrigger: {
-          trigger: element,
-          start: "top+=5100 top",
-          end: "+=5000",
+          trigger: ".text-section3",
+          start: "top+=5800vh top",
+          end: "bottom+=4000vh top",
           scrub: true,
-          markers: false,
+          markers: true,
         },
         opacity: 0.3,
         stagger: 0.5,
@@ -101,20 +101,7 @@ export default function About() {
         }
       )
 
-      // gsap.to(".text-item1",
-      //   {
-      //     opacity: 1,
-      //     scale: 1,
-      //     scrollTrigger: {
-      //       trigger: ".story",
-      //       start: "top+=2500 top",
-      //       end: "bottom-=650 bottom",
-      //       scrub: true,
-      //       markers: true,
-      //     },
-      //   }
-      // )
-
+      // Video text
       gsap.to(".text-item1",
         {
           opacity: 1,
@@ -122,28 +109,27 @@ export default function About() {
           scrollTrigger: {
             trigger: ".story",
             start: "top+=2500vh top",
-            end: "bottom+=200vh bottom",
+            end: "bottom-=300vh bottom",
             scrub: true,
-            markers: true,
+            markers: false,
           },
         }
       )
 
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: ".long",
-          start: "top+=6000",
-          end: "bottom+=3700",
-          scrub: true,
-          markers: false,
-        }
-      })
-        .to(".text2", {
+      // Long sections text
+      gsap.to(".text2",
+        {
           opacity: 1,
           scale: 1,
-          //duration: 0.3,
-        })
-        .to(".text2", {})
+          scrollTrigger: {
+            trigger: ".long",
+            start: "top+=6000",
+            end: "top+=6500",
+            scrub: true,
+            markers: false,
+          }
+        }
+      )
 
       // Horizontal scroll
       gsap.to(sections,
@@ -171,41 +157,6 @@ export default function About() {
         }
       )
 
-        // pin cone
-        // gsap.to(".cone2",
-        // {
-        //   scrollTrigger: {
-        //     trigger: ".cone2-wrapper",
-        //     start: "top top",
-        //     end: "bottom bottom",
-        //     pin: ".cone2",
-        //     markers: false,
-        //   }
-        // })
-
-        // let tl = gsap.timeline({
-        //   scrollTrigger: {
-        //     trigger: ".cone2-wrapper",
-        //     start: "top",
-        //     end: "bottom-=2000",
-        //     scrub: true,
-        //     markers: false,
-        //   }
-        // })
-
-        // tl.to(".cone2", 
-        //   {
-        //     opacity: 1,
-        //     duration: 5,
-        //   }
-        // )
-
-        // tl.to(".cone2", 
-        //   {
-        //     scale: 10,
-        //     duration: 10,
-        //   }
-        // )
 
     }, component)
 

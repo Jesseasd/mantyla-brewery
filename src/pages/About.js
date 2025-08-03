@@ -9,7 +9,7 @@ import SplitType from 'split-type'
 import { ReactLenis, useLenis } from '@studio-freight/react-lenis'
 import { ReactComponent as Cone } from "../images/pine-cone/cone.svg"
 
-gsap.registerPlugin(useGSAP, ScrollTrigger);
+gsap.registerPlugin(useGSAP, ScrollTrigger)
 
 export default function About() {
   const component = useRef(null)
@@ -17,24 +17,47 @@ export default function About() {
 
   useEffect(() => {
     const splitTypes = document.querySelectorAll(".reveal");
+    const triggerEl = document.querySelector(".text-section3");
 
-    splitTypes.forEach((element) => {
-      // Split the text into words
-      const text = new SplitType(element, { types: "words" });
+    function createAnimations() {
+      const distance = window.innerHeight * 9.6;
+      const endDistance = window.innerHeight * 8.25;
+
+      splitTypes.forEach((revealEl) => {
+        const text = new SplitType(revealEl, { types: "words" });
+
+        gsap.from(text.words, {
+          scrollTrigger: {
+            trigger: triggerEl,
+            start: `top+=${distance} top`,
+            end: `bottom+=${endDistance} top`,
+            scrub: true,
+            markers: true,
+          },
+          opacity: 0.3,
+          stagger: 0.5,
+        });
+      });
+    }
+
+    createAnimations();
+    window.addEventListener("resize", ScrollTrigger.refresh);
 
       // Animate each word
-      gsap.from(text.words, {
-        scrollTrigger: {
-          trigger: ".text-section3",
-          start: "top+=5800vh top",
-          end: "bottom+=4000vh top",
-          scrub: true,
-          markers: true,
-        },
-        opacity: 0.3,
-        stagger: 0.5,
-      });
-    });
+      // gsap.from(text.words, {
+      //   scrollTrigger: {
+      //     trigger: ".text-section3",
+      //     start: "top+=5800vh top",
+      //     end: "bottom+=4000vh top",
+      //     scrub: true,
+      //     markers: true,
+      //   },
+      //   opacity: 0.3,
+      //   stagger: 0.5,
+      // });
+
+      
+   
 
     let ctx = gsap.context(() => {
       const horizontal = horizontalRef.current

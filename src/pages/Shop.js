@@ -64,25 +64,20 @@ export default function Shop() {
       </div>
       <div className='shop-grid' ref={gridRef}>
         {products.map((product) => (
-          <div className='product' key={product.id}>
-            <Link className='product-image-wrapper' to={`/product/${product.id}`}>
-              {/* Corner spans */}
-              <span className='corner-span corner-top-left-v'></span>
-              <span className='corner-span corner-top-left-h'></span>
-              
-              <div className='product-image-mask'></div>
-              <img className='product-image' src={product.image} />
-              {/* <img className='product-image2' src={product.image2} /> */}
-              <div className='product-info'>
-                <h3>{product.name}</h3>
-                <div className='e-l'>
-                  <p>{product.price.toFixed(2)}e</p>
-                  <p>{product.volume}l</p>
-                </div>
+          // <div className='product' key={product.id}>
+            <Link className='product' key={product.id} to={`/product/${product.id}`}>
+              <div className='product-image-wrapper'>
+                <img className='product-bg-image' src={product.sbg} alt={product.name} />
+                <img className="product-bottle-image" src={product.bottle} alt={product.name} />
               </div>
-              <Cone className='cone-icon' />
+  
+              <h3>{product.name}</h3>
+              <p>{product.price.toFixed(2)}e</p>
+              <p>{product.volume}l</p>
+              
+              {/* <Cone className='cone-icon' /> */}
             </Link>
-          </div>
+          // </div>
         ))}
       </div>
     </div>

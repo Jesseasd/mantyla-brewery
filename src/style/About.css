@@ -142,7 +142,7 @@ video {
   background-image: url(../images/about-images/cheers-long.png);
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   background-position: 10% 80%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -173,8 +173,9 @@ video {
   align-items: center;
   text-align: center;
   /*height: 100vh;*/
-  padding-left: 10rem;
-  padding-right: 10rem;
+  /* padding-left: 10rem;
+  padding-right: 10rem; */
+  padding: 0 10vw;
 }
 
 .text-item p {
@@ -203,8 +204,10 @@ video {
 
 .text-item2 {
   /*background-color: #071111;*/
-  padding-left: 20rem;
-  padding-right: 20rem;
+  /* padding-left: 20rem;
+  padding-right: 20rem; */
+  margin-top: 50vh;
+  padding: 0 10vw;
   color: #000;
   /*position: absolute;
   bottom: 0;
@@ -214,14 +217,15 @@ video {
 .text2 {
   color: #000;
   opacity: 0;
-  scale: 0;
+  scale: 1;
 }
 
 .text-item3 {
   background-color: #071111;
   /*position: relative;*/
-  padding-left: 20rem;
-  padding-right: 20rem;
+  /* padding-left: 20rem;
+  padding-right: 20rem; */
+  padding: 0 10vw;
   padding-top: 50vh;
   height: 500vh;
   align-items: start;

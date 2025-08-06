@@ -19,7 +19,6 @@ export default function About() {
     const splitTypes = document.querySelectorAll(".reveal");
     const triggerEl = document.querySelector(".text-section3");
 
-<<<<<<< HEAD
     function createAnimations() {
       const distance = window.innerHeight * 9.6;
       const endDistance = window.innerHeight * 8.25;
@@ -60,8 +59,6 @@ export default function About() {
       
    
 
-=======
->>>>>>> fixing
     let ctx = gsap.context(() => {
       const horizontal = horizontalRef.current
       const sections = gsap.utils.toArray(".panel")

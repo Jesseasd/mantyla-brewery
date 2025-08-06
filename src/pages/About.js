@@ -19,6 +19,7 @@ export default function About() {
     const splitTypes = document.querySelectorAll(".reveal");
     const triggerEl = document.querySelector(".text-section3");
 
+<<<<<<< HEAD
     function createAnimations() {
       const distance = window.innerHeight * 9.6;
       const endDistance = window.innerHeight * 8.25;
@@ -59,6 +60,8 @@ export default function About() {
       
    
 
+=======
+>>>>>>> fixing
     let ctx = gsap.context(() => {
       const horizontal = horizontalRef.current
       const sections = gsap.utils.toArray(".panel")
@@ -139,21 +142,6 @@ export default function About() {
         }
       )
 
-      // Long sections text
-      gsap.to(".text2",
-        {
-          opacity: 1,
-          scale: 1,
-          scrollTrigger: {
-            trigger: ".long",
-            start: "top+=6000",
-            end: "top+=6500",
-            scrub: true,
-            markers: false,
-          }
-        }
-      )
-
       // Horizontal scroll
       gsap.to(sections,
         {
@@ -164,6 +152,33 @@ export default function About() {
             pin: true,
             scrub: true,
             end: "+=5500",
+          }
+        }
+      )
+
+      // Long sections text pin
+      gsap.to(".text2",
+        {
+          scrollTrigger: {
+            trigger: ".long",
+            start: "top top",
+            end: "center center",
+            pin: ".text2",
+          }
+        }
+      )
+
+      // Long sections text animation
+      gsap.to(".text2",
+        {
+          opacity: 1,
+          // scale: 1,
+          scrollTrigger: {
+            trigger: ".long",
+            start: "top top",
+            end: "center-=200 center",
+            scrub: true,
+            markers: true,
           }
         }
       )
@@ -179,6 +194,24 @@ export default function About() {
           }
         }
       )
+
+      splitTypes.forEach((element) => {
+      // Split the text into words
+      const text = new SplitType(element, { types: "words" });
+
+      // Animate each word
+      gsap.from(text.words, {
+      scrollTrigger: {
+        trigger: ".text-section3",
+        start: "top+=100vh top",
+        end: "bottom-=100vh bottom",
+        scrub: true,
+        markers: false,
+      },
+        opacity: 0.3,
+        stagger: 0.5,
+      })
+    })
 
 
     }, component)

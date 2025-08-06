@@ -26,9 +26,24 @@ import talviyo2 from "../images/beers/no-bg/talviyo.png"
 import tervaporter2 from "../images/beers/no-bg/terva.png"
 import yotaivas2 from "../images/beers/no-bg/yotaivas.png"
 
+// Shop background
+import bockSbg from "../images/beers/bg/bock-bg1024.png"
+import juniperSbg from "../images/beers/bg/juniper-bg1024.png"
+import kaskiSbg from "../images/beers/bg/kaski-bg1024.png"
+import kesailtaSbg from "../images/beers/bg/kesailta-bg1024.png"
+import kevatkylmaSbg from "../images/beers/bg/kevatkylma-bg1024.png"
+import kuusenkerkkaSbg from "../images/beers/bg/kuusenkerkka-bg1024.png"
+import luotolmapiSbg from "../images/beers/bg/luotolampi-bg1024.png"
+import metsamarjaSbg from "../images/beers/bg/metsamarja-bg1024.png"
+import pellavaSbg from "../images/beers/bg/pellava-bg1024.png"
+import savusahtiSbg from "../images/beers/bg/savusahti-bg1024.png"
+import talviyoSbg from "../images/beers/bg/talviyo-bg1024.png"
+import tervaSbg from "../images/beers/bg/terva-bg1024.png"
+import yotaivasSbg from "../images/beers/bg/yotaivas-bg1024.png"
+
 // Backgrounds
-import juniperBg from "../images/beers/bg/juniper2.png"
 import bockBg from "../images/beers/bg/bock-bg1.png"
+import juniperBg from "../images/beers/bg/juniper2.png"
 import kaskiBg from "../images/beers/bg/kaski-bg.png"
 import kesailtaBg from "../images/beers/bg/kesailta-bg.png"
 import kevatkylmaBg from "../images/beers/bg/kevatkylma-bg.png"
@@ -42,8 +57,8 @@ import tervaBg from "../images/beers/bg/terva-bg.png"
 import yotaivasBg from "../images/beers/bg/yotaivas-bg.png"
 
 // Bottles
-import juniperBottle from "../images/beers/no-bg/juniper1.png"
 import bockBottle from "../images/beers/no-bg/bock1.png"
+import juniperBottle from "../images/beers/no-bg/juniper1.png"
 import kaskiBottle from "../images/beers/no-bg/kaski1.png"
 import kesailtaBottle from "../images/beers/no-bg/kesailta1.png"
 import kevatkylmaBottle from "../images/beers/no-bg/kevatkylma1.png"
@@ -62,6 +77,7 @@ export const products = [
         name: "Mänty Bock",
         image: bock,
         image2: bock2,
+        sbg: bockSbg,
         bg: bockBg,
         bottle: bockBottle,
         price: 4.90,
@@ -83,6 +99,7 @@ export const products = [
         name: "Juniper Pale Ale",
         image: juniper,
         image2: juniper2,
+        sbg: juniperSbg,
         bg: juniperBg,
         bottle: juniperBottle,
         price: 4.70,
@@ -104,6 +121,7 @@ export const products = [
         name: "Kaski Red Ale",
         image: kaski,
         image2: kaski2,
+        sbg: kaskiSbg,
         bg: kaskiBg,
         bottle: kaskiBottle,
         price: 4.80,
@@ -125,6 +143,7 @@ export const products = [
         name: "Kesäilta Session Ipa",
         image: kesailta,
         image2: kesailta2, 
+        sbg: kesailtaSbg,
         bg: kesailtaBg,
         bottle: kesailtaBottle,
         price: 4.50,
@@ -146,6 +165,7 @@ export const products = [
         name: "Kevätkylmä Lager",
         image: kevatkylma,
         image2: kevatkylma2,
+        sbg: kevatkylmaSbg,
         bg: kevatkylmaBg,
         bottle: kevatkylmaBottle,
         price: 4.50,
@@ -166,6 +186,7 @@ export const products = [
         name: "Kuusenkerkkä Ipa",
         image: kuusenkerkka,
         image2: kuusenkerkka2,
+        sbg: kuusenkerkkaSbg,
         bg: kuusenkerkkaBg,
         bottle: kuusenkerkkaBottle,
         price: 5.20,
@@ -187,6 +208,7 @@ export const products = [
         name: "Luotolampi Wheat Ale",
         image: luotolampi,
         image2: luotolampi2,
+        sbg: luotolmapiSbg,
         bg: luotolampiBg,
         bottle: luotolampiBottle,
         price: 4.80,
@@ -207,6 +229,7 @@ export const products = [
         name: "Metsämarja Stout",
         image: metsamarja,
         image2: metsamarja2,
+        sbg: metsamarjaSbg,
         bg: metsamarjaBg,
         bottle: metsamarjaBottle,
         price: 5.40,
@@ -227,6 +250,7 @@ export const products = [
         name: "Pellava Blonde Ale",
         image: pellava,
         image2: pellava2,
+        sbg: pellavaSbg,
         bg: pellavaBg,
         bottle: pellavaBottle,
         price: 4.80,
@@ -247,6 +271,7 @@ export const products = [
         name: "Savusahti Farmhouse Ale",
         image: savusahti,
         image2: savusahti2,
+        sbg: savusahtiSbg,
         bg: savusahtiBg,
         bottle: savusahtiBottle,
         price: 5.60,
@@ -268,6 +293,7 @@ export const products = [
         name: "Talviyö Winter Ale",
         image: talviyo,
         image2: talviyo2,
+        sbg: talviyoSbg,
         bg: talviyoBg,
         bottle: talviyoBottle,
         price: 5.60,
@@ -289,6 +315,7 @@ export const products = [
         name: "Tervaporter",
         image: tervaporter,
         image2: tervaporter2,
+        sbg: tervaSbg,
         bg: tervaBg,
         bottle: tervaBottle,
         price: 5.60,
@@ -310,6 +337,7 @@ export const products = [
         name: "Yötaivas Imperial Stout",
         image: yotaivas,
         image2: yotaivas2,
+        sbg: yotaivasSbg,
         bg: yotaivasBg,
         bottle: yotaivasBottle,
         price: 6.20,

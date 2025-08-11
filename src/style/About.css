@@ -19,7 +19,9 @@ html {
 }
 
 .video-container2 {
+  /* width: 45vw; */
   width: 25rem;
+  /* height: 45vh; */
   height: 40rem;
   position: absolute;
   transform-origin: center center;
@@ -29,6 +31,18 @@ html {
   justify-content: center;
   align-items: center;
   text-align: center;
+
+  /* width: 40vw;
+  height: 60vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  position: absolute;
+  transform-origin: center center;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; */
 }
 
 video {
@@ -223,8 +237,8 @@ video {
 .text-item3 {
   background-color: #071111;
   /*position: relative;*/
-  padding-left: 20rem;
-  padding-right: 20rem;
+  /* padding-left: 20rem;
+  padding-right: 20rem; */
   padding-top: 50vh;
   height: 500vh;
   align-items: start;

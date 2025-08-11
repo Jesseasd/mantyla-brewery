@@ -17,47 +17,6 @@ export default function About() {
 
   useEffect(() => {
     const splitTypes = document.querySelectorAll(".reveal");
-    const triggerEl = document.querySelector(".text-section3");
-
-    function createAnimations() {
-      const distance = window.innerHeight * 9.6;
-      const endDistance = window.innerHeight * 8.25;
-
-      splitTypes.forEach((revealEl) => {
-        const text = new SplitType(revealEl, { types: "words" });
-
-        gsap.from(text.words, {
-          scrollTrigger: {
-            trigger: triggerEl,
-            start: `top+=${distance} top`,
-            end: `bottom+=${endDistance} top`,
-            scrub: true,
-            markers: true,
-          },
-          opacity: 0.3,
-          stagger: 0.5,
-        });
-      });
-    }
-
-    createAnimations();
-    window.addEventListener("resize", ScrollTrigger.refresh);
-
-      // Animate each word
-      // gsap.from(text.words, {
-      //   scrollTrigger: {
-      //     trigger: ".text-section3",
-      //     start: "top+=5800vh top",
-      //     end: "bottom+=4000vh top",
-      //     scrub: true,
-      //     markers: true,
-      //   },
-      //   opacity: 0.3,
-      //   stagger: 0.5,
-      // });
-
-      
-   
 
     let ctx = gsap.context(() => {
       const horizontal = horizontalRef.current
@@ -84,9 +43,10 @@ export default function About() {
             end: "bottom bottom",
             pin: ".video-container",
           }
-        })
+        }
+      )
 
-      // Tarinamme text pinning
+      // Our story text pinning
       gsap.to(".story-wrapper",
         {
           scrollTrigger: {
@@ -119,7 +79,7 @@ export default function About() {
             start: "top+=1000 top",
             end: "top+=2500 top",
             scrub: true,
-            markers: false,
+            markers: true,
           },
         }
       )
@@ -134,7 +94,7 @@ export default function About() {
             start: "top+=2500vh top",
             end: "bottom-=300vh bottom",
             scrub: true,
-            markers: false,
+            markers: true,
           },
         }
       )
@@ -175,7 +135,7 @@ export default function About() {
             start: "top top",
             end: "center-=200 center",
             scrub: true,
-            markers: true,
+            markers: false,
           }
         }
       )
@@ -193,22 +153,22 @@ export default function About() {
       )
 
       splitTypes.forEach((element) => {
-      // Split the text into words
-      const text = new SplitType(element, { types: "words" });
+        // Split the text into words
+        const text = new SplitType(element, { types: "words" });
 
-      // Animate each word
-      gsap.from(text.words, {
-      scrollTrigger: {
-        trigger: ".text-section3",
-        start: "top+=100vh top",
-        end: "bottom-=100vh bottom",
-        scrub: true,
-        markers: false,
-      },
-        opacity: 0.3,
-        stagger: 0.5,
+        // Animate each word
+        gsap.from(text.words, {
+          scrollTrigger: {
+            trigger: ".text-section3",
+            start: "top+=100vh top",
+            end: "bottom-=100vh bottom",
+            scrub: true,
+            markers: false,
+          },
+          opacity: 0.3,
+          stagger: 0.5,
+        })
       })
-    })
 
 
     }, component)

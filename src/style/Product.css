@@ -7,9 +7,10 @@
 }
 
 .product-page {
-  background-color: #071111;
+  /* background-color: #071111; */
   /* margin-bottom: clamp(20rem, 35vw, 50rem); */
   /* margin-bottom: 35rem; */
+  margin-bottom: clamp(5rem, 15vw, 50rem);
 }
 
 .product-page-container {
@@ -19,6 +20,7 @@
   justify-content: center;
   height: 100vh;
   /* padding: 0 12vw; */
+  
 }
 
 .product-page-info {
@@ -27,9 +29,10 @@
   left: 15rem;
   /* left: 12vw; */
   bottom: 20rem;
-  max-width: 30vw;
+  width: 100%;
+  /* width: 70rem; */
   /* max-width: 70rem; */
-  z-index: 2;
+  z-index: 10;
 }
 
 .alcohol {
@@ -62,14 +65,15 @@
 .product-page-info h1 {
   font-family: heap;
   /* font-size: 5vw; */
-  font-size: 10rem;
+  font-size: clamp(5rem, 6vw, 10rem);
+  /* font-size: 10rem; */
   color: #D1D28D;
   font-weight: 400;
 }
 
 .product-page-info p {
   font-family: "Montserrat", sans-serif;
-  font-size: 3rem;
+  font-size: clamp(2rem, 2vw, 3rem);
   color: #D1D28D;
   font-weight: 400;
 }
@@ -81,6 +85,7 @@
   right: 15rem;
   /* right: 12vw; */
   bottom: 20rem;
+  z-index: 999;
 }
 
 .amount-wrapper {
@@ -234,6 +239,10 @@ input[type=number] {
   color: #fff;
 }
 
+.amount-button {
+  display: none;
+}
+
 .add-to-cart-button {
   color: #D1D28D;
   font-family: heap;
@@ -297,18 +306,24 @@ input[type=number] {
 .product-page-details p {
   /* grid-column: 2; */
   color: #fff;
-  font-size: 3rem;
+  /* font-size: 3rem; */
+  font-size: clamp(1.8rem, 1.5vw, 3rem);
   font-family: "Montserrat", sans-serif;
   font-weight: 200;
 
   /* padding-right: 5rem; */
 }
 
+.product-page-details-info-wrapper {
+  display: none;
+}
+
 .info-wrapper {
   /* grid-column: 2; */
-  margin-top: 20rem;
+  margin-top: 25rem;
   padding-right: 5rem;
-  padding-left: 30rem;
+  /* padding-left: 30rem; */
+  padding-left: 10vw;
 }
 
 /* .fits {
@@ -476,3 +491,185 @@ input[type=number] {
 .product-page-details-image-wrapper img {
   width: 70%;
 }
+
+
+
+@media only screen and (max-width: 1530px) {
+  .product-page-info {
+    left: 5rem;
+  }
+
+  .product-page-info h1 {
+    /* font-size: 8vw; */
+    /* line-height: 9vw; */
+    margin-bottom: 2rem;
+  }
+
+  /* .product-page-info p {
+    font-size: clamp(2rem, 2vw, 3rem);
+  } */
+
+  .add-to-cart-section {
+    right: 5rem;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .add-to-cart-section {
+    right: 0;
+  }
+
+  .amount-section {
+    width: 30rem;
+  }
+
+  .add-to-cart-button {
+    font-size: 5rem;
+    width: 30rem;
+  }
+  
+  .plus-container {
+    width: 30rem;
+  }
+}
+
+/* @media only screen and (max-width: 1000px) {
+  .add-to-cart-section {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .amount-section {
+    width: 35rem;
+  }
+
+  .add-to-cart-button {
+    font-size: 6rem;
+    width: 35rem;
+  }
+
+  .plus-container {
+    width: 35rem;
+  }
+} */
+
+@media (max-width: 1000px) {
+  /* bottom bar: Montako? + Maistuuko? side-by-side */
+  .add-to-cart-section {
+    position: fixed;
+    /* left: 50%; */
+    bottom: 0;
+    /* transform: translateX(-50%); */
+    display: flex;
+    flex-direction: row;
+    /* gap: 2rem; */
+    justify-content: center;
+    width: 100%;
+    /* padding: 8px 12px; */
+    background: #071111;
+    z-index: 1000;
+  }
+
+  .plus-container { display: none; }
+
+  /* real Montako button */
+  .amount-button,
+  .add-to-cart-button {
+    display: block;
+    width: 100%;
+    height: 5rem;
+    margin: 2rem 1rem;
+    font-family: heap, sans-serif;
+    font-size: 2.4rem;
+    color: #D1D28D;
+    background: none;
+    border: 3px solid #D1D28D;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .amount-button:hover {
+    background-color: #D1D28D;
+    color: #071111;
+  }
+
+  /* hide the picker while collapsed */
+  .amount-wrapper { width: auto; }
+  .amount-section { display: none; }
+
+  /* show the picker as a centered modal when open */
+  .amount-section.expanded {
+    display: flex;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+
+    width: min(520px, 90vw);
+    max-height: 70vh;
+    padding: 12px;
+    background: #071111;
+    border: 2px solid #D1D28D;
+    border-radius: 16px;
+
+    flex-wrap: wrap;
+    gap: 8px;
+    overflow-y: auto;
+  }
+
+  /* backdrop */
+  .amount-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.35);
+    backdrop-filter: blur(2px);
+    z-index: 1000;
+  }
+
+  .info-wrapper {
+    padding: 0 5rem;
+  }
+
+  .product-page-details {
+    display: flex;
+    flex-direction: column;
+    /* grid-template-columns: repeat(2, 1fr); */
+    /* flex-direction: column; */
+    text-align: start;
+    /* align-content: center; */
+    align-items: center;
+    /* height: 120vh;
+    background-color: #071111;  */
+  }
+
+  /* .product-page-details-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .product-page-details-info-wrapper h1 {
+    font-family: heap;
+    font-size: 5vw;
+    font-size: clamp(5rem, 6vw, 10rem);
+    font-size: 10rem;
+    color: #D1D28D;
+    font-weight: 400;
+    margin-bottom: 2rem;
+  }
+
+  .product-page-details-info-wrapper p {
+    font-family: "Montserrat", sans-serif;
+    font-size: clamp(2rem, 2vw, 3rem);
+    color: #D1D28D;
+    font-weight: 400;
+  } */
+
+  .product-page-details-image-wrapper {
+    display: none;
+  }
+}
+
+

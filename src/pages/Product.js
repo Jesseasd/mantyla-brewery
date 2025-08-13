@@ -57,11 +57,11 @@ export default function Product() {
                     className='icon-wrapper'
                     key={i}
                     onClick={(e) => e.currentTarget.classList.toggle("active")}
-                    >
+                >
                     <div className='icon-slide-container'>
                         <div className='icon-slide icon-part'>{entry.icon}</div>
                         <div className='icon-slide text-part'>
-                        <p className='icon-keyword'>{entry.keywords[0]}</p>
+                            <p className='icon-keyword'>{entry.keywords[0]}</p>
                         </div>
                     </div>
                 </div>
@@ -93,7 +93,7 @@ export default function Product() {
         if (lenis) {
             lenis.scrollTo(0, { immediate: true })
         }
-       
+
         let ctx = gsap.context(() => {
             gsap.from(bottleRef.current, {
                 y: 200,
@@ -110,12 +110,12 @@ export default function Product() {
                 onComplete: () => {
                     // Creates scrolltrigger after animation completes
                     ScrollTrigger.create({
-                        trigger: ".product-page",
+                        trigger: ".product-page-container",
                         start: "top+=100",
-                        end: "center center",
+                        end: "bottom center",
                         pin: infoRef.current,
-                        markers: false,
-            })
+                        markers: true,
+                    })
                 }
             })
             gsap.from(amountRef.current, {
@@ -153,66 +153,70 @@ export default function Product() {
                 </div>
                 <div className="add-to-cart-section" ref={amountRef}>
                     <div className="amount-wrapper">
-                        <p className="amount-label">Montako laitetaan?</p>
-                        <div className={`amount-section ${showInput ? "expanded" : ""}`}>
-                            <p 
-                                className={`amount-option ${selectedAmount === 1 ? 'selected' : ''}`} 
+                        <div
+                            className={`amount-section ${showInput ? "expanded" : ""}`}
+                            onClick={() => {
+                                if (window.innerWidth <= 1000 && !showInput) setShowInput(true);
+                            }}
+                        >
+                            <p
+                                className={`amount-option ${selectedAmount === 1 ? 'selected' : ''}`}
                                 onClick={() => {
                                     handleAmountClick(1)
                                 }}
                             >
                                 1
                             </p>
-                            <p 
-                                className={`amount-option ${selectedAmount === 2 ? 'selected' : ''}`} 
+                            <p
+                                className={`amount-option ${selectedAmount === 2 ? 'selected' : ''}`}
                                 onClick={() => {
                                     handleAmountClick(2)
                                 }}
                             >
                                 2
                             </p>
-                            <p 
-                                className={`amount-option ${selectedAmount === 4 ? 'selected' : ''}`} 
+                            <p
+                                className={`amount-option ${selectedAmount === 4 ? 'selected' : ''}`}
                                 onClick={() => {
                                     handleAmountClick(4)
                                 }}
                             >
                                 4
                             </p>
-                            <p 
-                                className={`amount-option ${selectedAmount === 6 ? 'selected' : ''}`} 
+                            <p
+                                className={`amount-option ${selectedAmount === 6 ? 'selected' : ''}`}
                                 onClick={() => {
                                     handleAmountClick(6)
                                 }}
                             >
                                 6
                             </p>
-                            <p 
-                                className={`amount-option ${selectedAmount === 8 ? 'selected' : ''}`} 
+                            <p
+                                className={`amount-option ${selectedAmount === 8 ? 'selected' : ''}`}
                                 onClick={() => {
                                     handleAmountClick(8)
                                 }}
                             >
                                 8
                             </p>
-                            <p 
-                                className={`amount-option ${selectedAmount === 12 ? 'selected' : ''}`} 
+                            <p
+                                className={`amount-option ${selectedAmount === 12 ? 'selected' : ''}`}
                                 onClick={() => {
                                     handleAmountClick(12)
                                 }}
                             >
                                 12
                             </p>
-                            <p 
-                                className={`amount-option ${selectedAmount === 18 ? 'selected' : ''}`} 
+                            <p
+                                className={`amount-option ${selectedAmount === 18 ? 'selected' : ''}`}
                                 onClick={() => {
                                     handleAmountClick(18)
                                 }}
                             >
                                 18
                             </p>
-                            <p 
-                                className={`amount-option ${selectedAmount === 24 ? 'selected' : ''}`} 
+                            <p
+                                className={`amount-option ${selectedAmount === 24 ? 'selected' : ''}`}
                                 onClick={() => {
                                     handleAmountClick(24)
                                 }}
@@ -221,10 +225,10 @@ export default function Product() {
                             </p>
 
                             <div className="input-container">
-                                <p className="input-label">Valitte itte!</p>
+                                {/* <p className="input-label">Valitte itte!</p> */}
                                 <div className="custom-input-wrapper">
-                                    <button 
-                                        className="arrow-button" 
+                                    <button
+                                        className="arrow-button"
                                         onClick={() => {
                                             const value = Math.max(1, Number(customAmount || 0) - 1)
                                             setCustomAmount(value)
@@ -242,8 +246,8 @@ export default function Product() {
                                             setCustomAmount(e.target.value)
                                         }}
                                     />
-                                    <button 
-                                        className="arrow-button" 
+                                    <button
+                                        className="arrow-button"
                                         onClick={() => {
                                             const value = Math.max(1, Number(customAmount || 0) + 1)
                                             setCustomAmount(value)
@@ -257,8 +261,8 @@ export default function Product() {
                         </div>
                     </div>
                     <div className="plus-container">
-                        <p 
-                            className="plus" 
+                        <p
+                            className="plus"
                             onClick={() => {
                                 if (!showInput && selectedAmount) {
                                     setCustomAmount(selectedAmount)
@@ -269,13 +273,19 @@ export default function Product() {
                             {showInput ? "-" : "+"}
                         </p>
                     </div>
-                    <button 
-                        className="add-to-cart-button" 
+                    <button
+                        className="amount-button"
+                        onClick={() => setShowInput(true)}   // <-- open picker
+                    >
+                        Montako?
+                    </button>
+                    <button
+                        className="add-to-cart-button"
                         onClick={() => {
                             const quantity = showInput && customAmount
                                 ? parseInt(customAmount)
                                 : selectedAmount
-                            
+
                             if (!quantity || quantity < 1) return
 
                             addToCart(product, quantity)
@@ -291,8 +301,20 @@ export default function Product() {
                         </div>
                     </button>
                 </div>
+                {showInput && (
+                    <div
+                        className="amount-overlay"
+                        onClick={() => setShowInput(false)}
+                        aria-hidden="true"
+                    />
+                )}
             </div>
             <div className="product-page-details">
+                {/* <div className="product-page-details-info-wrapper">
+                    <h1>{product.name}</h1>
+                    <p>{product.price.toFixed(2)}€ / {product.volume}L</p>
+                    <p className="alcohol">{product.alcohol}%</p>
+                </div> */}
                 <div className="info-wrapper">
                     <p>{product.story}</p>
                     <div className='fits'>

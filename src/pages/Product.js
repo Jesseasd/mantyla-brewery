@@ -25,13 +25,16 @@ export default function Product() {
     const bottleRef = useRef(null)
     const infoRef = useRef(null)
     const amountRef = useRef(null)
+    const inputRef = useRef(null)
+    
     const { addToCart } = useCart()
 
     const { id } = useParams()
     const product = products.find(p => p.id === parseInt(id))
     const [showInput, setShowInput] = useState(false)
-    const [customAmount, setCustomAmount] = useState("")
-    const [selectedAmount, setSelectedAmount] = useState(null)
+    const [customAmount, setCustomAmount] = useState(1)
+    const [selectedAmount, setSelectedAmount] = useState(1)
+    const OPTIONS = [1, 2, 4, 6, 8, 12, 18, 24]
 
     const getIconsForFits = (fits) => {
 
@@ -58,12 +61,14 @@ export default function Product() {
                     key={i}
                     onClick={(e) => e.currentTarget.classList.toggle("active")}
                 >
-                    <div className='icon-slide-container'>
+                    {/* <div className='icon-slide-container'>
                         <div className='icon-slide icon-part'>{entry.icon}</div>
                         <div className='icon-slide text-part'>
                             <p className='icon-keyword'>{entry.keywords[0]}</p>
                         </div>
-                    </div>
+                    </div> */}
+                    <span className="icon-label">{entry.keywords[0]}</span>
+                    {entry.icon}
                 </div>
             ))
     }
@@ -111,10 +116,10 @@ export default function Product() {
                     // Creates scrolltrigger after animation completes
                     ScrollTrigger.create({
                         trigger: ".product-page-container",
-                        start: "top+=100",
-                        end: "bottom center",
+                        start: "top+=100 top",
+                        end: () => (window.innerHeight < 700 ? "bottom+=150 center" : "bottom+=100 center"),
                         pin: infoRef.current,
-                        markers: true,
+                        markers: false,
                     })
                 }
             })
@@ -125,12 +130,20 @@ export default function Product() {
                 delay: 0.6,
                 ease: "power2.out"
             })
-
+            gsap.matchMedia().add ("(max-width: 1000px)", () => {
+                ScrollTrigger.create({
+                    trigger:".product-page",
+                    start: "top top",
+                    end: "bottom bottom",
+                    pin: ".add-to-cart-section",
+                    pinType: "fixed",
+                    markers: false,
+                })
+            }) 
         }, component)
 
         return () => ctx.revert()
     }, [lenis])
-
 
     if (!product) {
         return <div>Tuotetta ei löytynyt.</div>
@@ -140,11 +153,27 @@ export default function Product() {
         <div className="product-page" ref={component}>
             <div className="product-page-container">
                 <div className="product-page-info" ref={infoRef}>
-                    <div className="product-page-info-wrapper">
-                        <h1>{product.name}</h1>
-                        <p>{product.price.toFixed(2)}€ / {product.volume}L</p>
-                        <p className="alcohol">{product.alcohol}%</p>
-                    </div>
+                    {/* <div className="product-page-info-wrapper"> */}
+                        <h1>
+                            {(() => {
+                                const words = product.name.split(" ")
+                                if(words.length > 2) {
+                                    return (
+                                        <>
+                                            {words[0]}
+                                            <br />
+                                            {words.slice(1).join(" ")}
+                                        </>
+                                    )
+                                }
+                                return product.name
+                            })()}
+                        </h1>
+                        <div className="vol-alc">
+                            <p>{product.price.toFixed(2)}€ / {product.volume}L</p>
+                            <p className="alcohol">{product.alcohol}%</p>
+                        </div>
+                    {/* </div> */}
                 </div>
                 <div className="product-page-image-wrapper">
                     {/* <img className="product-page-image" src={product.image2} alt={product.name} /> */}
@@ -226,14 +255,19 @@ export default function Product() {
 
                             <div className="input-container">
                                 {/* <p className="input-label">Valitte itte!</p> */}
-                                <div className="custom-input-wrapper">
+                                <div 
+                                    className="custom-input-wrapper"
+                                    // onClick={() => inputRef.current?.focus()}    
+                                >
                                     <button
                                         className="arrow-button"
                                         onClick={() => {
                                             const value = Math.max(1, Number(customAmount || 0) - 1)
                                             setCustomAmount(value)
                                             setSelectedAmount(value)
+                                            // inputRef.current?.focus()
                                         }}
+                                        aria-label="decrease"
                                     >
                                         <p className="amount-minus">-</p>
                                     </button>
@@ -243,7 +277,8 @@ export default function Product() {
                                         min="1"
                                         value={customAmount}
                                         onChange={(e) => {
-                                            setCustomAmount(e.target.value)
+                                            setCustomAmount(e.target.valueAsNumber)
+                                            setSelectedAmount(e.target.valueAsNumber)
                                         }}
                                     />
                                     <button
@@ -252,7 +287,9 @@ export default function Product() {
                                             const value = Math.max(1, Number(customAmount || 0) + 1)
                                             setCustomAmount(value)
                                             setSelectedAmount(value)
+                                            // inputRef.current?.focus()
                                         }}
+                                        aria-label="increase"
                                     >
                                         <p className="amount-plus">+</p>
                                     </button>
@@ -273,12 +310,12 @@ export default function Product() {
                             {showInput ? "-" : "+"}
                         </p>
                     </div>
-                    <button
+                    {/* <button
                         className="amount-button"
                         onClick={() => setShowInput(true)}   // <-- open picker
                     >
                         Montako?
-                    </button>
+                    </button> */}
                     <button
                         className="add-to-cart-button"
                         onClick={() => {
@@ -301,20 +338,22 @@ export default function Product() {
                         </div>
                     </button>
                 </div>
-                {showInput && (
+                {/* {showInput && (
                     <div
                         className="amount-overlay"
                         onClick={() => setShowInput(false)}
                         aria-hidden="true"
                     />
-                )}
+                )} */}
             </div>
             <div className="product-page-details">
-                {/* <div className="product-page-details-info-wrapper">
+                <div className="product-page-details-info-wrapper">
                     <h1>{product.name}</h1>
-                    <p>{product.price.toFixed(2)}€ / {product.volume}L</p>
-                    <p className="alcohol">{product.alcohol}%</p>
-                </div> */}
+                    <div className="vol-alc">
+                        <p>{product.price.toFixed(2)}€ / {product.volume}L</p>
+                        <p className="alcohol">{product.alcohol}%</p>
+                    </div>
+                </div>
                 <div className="info-wrapper">
                     <p>{product.story}</p>
                     <div className='fits'>

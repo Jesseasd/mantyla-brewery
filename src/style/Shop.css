@@ -19,7 +19,8 @@
     justify-content: center;
     text-align: center;
    
-    gap: 10rem;
+    gap: 5vh;
+    /* gap: 10rem; */
     /*background-color: #071111;*/
     height: 100vh;
     font-size: 4rem;
@@ -29,7 +30,7 @@
 
 .title-container h1 {
     font-family: heap;
-    font-size: clamp(14rem, 15vw, 30rem);
+    font-size: clamp(12rem, 15vw, 30rem);
     /* font-size: clamp(9.6rem, 15vw, 30rem); */
     font-weight: 400;
     color: #fff;
@@ -46,8 +47,8 @@
 }
 
 .title-container p {
-  align-self: center;
-  font-size: clamp(1.6rem, 1.5vw, 3rem);
+  /* align-self: center; */
+  font-size: clamp(1.2rem, 1.5vw, 3rem);
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
   max-width: 200rem;

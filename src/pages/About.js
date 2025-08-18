@@ -79,7 +79,7 @@ export default function About() {
             start: "top+=1000 top",
             end: "top+=2500 top",
             scrub: true,
-            markers: true,
+            markers: false,
           },
         }
       )
@@ -91,10 +91,10 @@ export default function About() {
           scale: 1,
           scrollTrigger: {
             trigger: ".story",
-            start: "top+=2500vh top",
-            end: "bottom-=300vh bottom",
+            start: "top+=2500 top",
+            end: "bottom-=300 bottom",
             scrub: true,
-            markers: true,
+            markers: false,
           },
         }
       )
@@ -113,7 +113,7 @@ export default function About() {
         }
       )
 
-      // Long sections text pin
+      // Long section text pin
       gsap.to(".text2",
         {
           scrollTrigger: {
@@ -125,7 +125,7 @@ export default function About() {
         }
       )
 
-      // Long sections text animation
+      // Long section text animation
       gsap.to(".text2",
         {
           opacity: 1,
@@ -169,8 +169,6 @@ export default function About() {
           stagger: 0.5,
         })
       })
-
-
     }, component)
 
     return () => ctx.revert()
@@ -185,7 +183,16 @@ export default function About() {
 
           <div className='video-container'>
 
-            <video className='video' autoPlay loop muted>
+            <video 
+              className='video' 
+              autoPlay 
+              loop 
+              muted 
+              playsInline 
+              webkit-playsinline="true" 
+              controls={false} 
+              preload='auto'
+            >
               <source src={bg} type='video/mp4' />
             </video>
 
@@ -204,7 +211,16 @@ export default function About() {
 
             <div className='video-container2'>
 
-              <video className='video' autoPlay loop muted>
+              <video 
+                className='video' 
+                autoPlay 
+                loop 
+                muted 
+                playsInline 
+                webkit-playsinline="true" 
+                controls={false} 
+                preload='auto'
+              >
                 <source src={video1} type='video/mp4' />
               </video>
 

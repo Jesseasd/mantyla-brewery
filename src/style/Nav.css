@@ -29,7 +29,7 @@ nav {
 .nav-right {
     display: flex;
     align-items: center;
-    z-index: 999;
+    z-index: 990;
 }
 
 .nav-bg {
@@ -59,8 +59,22 @@ nav {
     transform: translateY(-100%);
 }
 
+.cone-svg {
+    height: auto;
+    width: 24px;
+    margin-left: 4rem;
+}
+
 .cone-svg:hover path {
     stroke: #D1D28D;
+}
+
+.nav-overlay {
+    position: fixed;
+    background: rgba(0, 0, 0, .5);
+    backdrop-filter: blur(5px);
+    inset: 0;
+    z-index: 990;
 }
 
 .nav-links {
@@ -69,28 +83,31 @@ nav {
     align-items: center;
     gap: 6rem;
     list-style: none;
-    z-index: -1;
+    /* z-index: -1; */
+    
 }
 
 .nav-links.nav-active {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    position: absolute;
+    align-items: start;
+    position: fixed;
     top: 0;
     left: 0;
     /*background-color: #1e1e1e;*/
     background-color: #071111;
-    width: 100%;
+    width: clamp(20rem, 70%, 35rem);
+    /* width: 35rem; */
     height: 100vh;
-
-    gap: 2rem;
-    z-index: -1;
-    text-align: center;
+    padding-left: 5rem;
+    gap: 5rem;
+    z-index: 995;
+    /* text-align: start; */
 }
 
 .nav-links.nav-active a {
-    font-size: 8rem;
+    font-size: 5rem;
     font-family: heap;
 }
 
@@ -98,21 +115,24 @@ nav {
     color: #fff;
     text-decoration: none;
     font-size: 2rem;
-    position: relative;
+    /* position: relative; */
     transition: color .3s ease;
 }
 
 .nav-item.active {
     color: #D1D28D;
-    position: relative;
+    /* position: relative; */
 }
 
-.nav-item.active {
+.menu-cone-link { position: static; }
+
+/* .nav-item.active {
     color: #D1D28D;
     position: relative;
-}
+} */
 
-.nav-item.active::after {
+/* Dot under active NAV item */
+/* .nav-item.active::after {
     content: "";
     position: absolute;
     bottom: -1.5rem;
@@ -124,24 +144,24 @@ nav {
     background-color: #D1D28D;
     border-radius: 50%;
     animation: dotDrop .3s ease forwards;
-}
+} */
 
 .nav-item.active .cone-svg path {
     stroke: #D1D28D;
 }
 
-.nav-item.active .cart-svg path {
+/* .nav-item.active .cart-svg path {
     stroke: #D1D28D;
-}
+} */
 
 .nav-item:hover {
     color: #D1D28D;
 }
 
-.logo {
+.logo.nav-active {
     margin-left: 5rem;
     width: 24px;
-    position: relative;
+    /* position: relative; */
 }
 
 .cart {
@@ -150,7 +170,7 @@ nav {
     width: 5rem;
     display: flex;
     justify-content: center;
-    position: relative;
+    /* position: relative; */
 }
 
 .cart:hover .cart-svg path {
@@ -183,6 +203,7 @@ nav {
     transform: translateY(-50%);
     width: 2.4rem;
     cursor: pointer;
+    z-index: 999;
 }
 
 .close-icon:hover path {
@@ -190,9 +211,13 @@ nav {
 }
 
 .menu-cone {
-    width: 10rem;
-    height: 8rem;
-    margin-top: 5rem;
+    position: absolute;
+    right: 5rem;
+    bottom: 5rem;
+    z-index: 999;
+    width: 24px;
+    height: auto;
+    /* margin-top: 5rem; */
 }
 
 .menu-cone:hover path {
@@ -216,7 +241,7 @@ nav {
     z-index: 999;
 }
 
-@keyframes dotDrop {
+/* @keyframes dotDrop {
     0% {
         transform: translate(-50%, -1rem);
         opacity: 0;
@@ -231,9 +256,9 @@ nav {
         transform: translate(-50%, 0);
         opacity: 1;
     }
-}
+} */
 
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 1000px) {
     .nav-bg {
         transition: none;
         background: none;
@@ -255,7 +280,39 @@ nav {
     }
 
     .nav-links {
-        display: none;
+        /* Make it a side panel, not part of the top bar */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: clamp(20rem, 70%, 35rem);
+        height: 100dvh;
+        display: flex;                 /* keep it rendered */
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 5rem;
+        padding-left: 5rem;
+        background: #071111;
+        z-index: 995;
+
+        /* Hidden state (off canvas) */
+        transform: translateX(-110%);
+        opacity: 0;
+        visibility: hidden;            /* prevents showing in top bar */
+        pointer-events: none;
+
+        /* Animate from the base rule */
+        transition: transform .35s ease, opacity .35s ease, visibility 0s linear .35s;
+        will-change: transform;
+    }
+
+    /* Open state */
+    .nav-links.nav-active {
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;           /* show immediately */
+        pointer-events: auto;
+        transition: transform .35s ease, opacity .35s ease;
     }
 
     .hamburger {

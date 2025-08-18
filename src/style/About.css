@@ -2,6 +2,10 @@ html {
   overflow-x: hidden;
 }
 
+/* body {
+  overflow-x: hidden;
+} */
+
 .about-container {
   margin-bottom: clamp(5rem, 15vw, 50rem);
 }
@@ -103,6 +107,7 @@ video {
   display: flex;
   align-items: center;
   height: 100vh;
+  overflow: hidden;
   /*padding: 0 10rem;
   /*background-color: #071111;*/
 }
@@ -143,8 +148,8 @@ video {
 }
 
 .wrapper {
-  height: auto;
-  width: 100vw;
+  /* height: auto; */
+  min-width: 100vw;
 }
 
 .long {
@@ -293,4 +298,16 @@ video {
     #071111 0%, 
     #000 100%
   );
+}
+
+@media only screen and (max-width: 800px) {
+  .long {
+    background-position: 50%;
+  }
+}
+
+@media only screen and (max-height: 650px) {
+  .story {
+    height: 750vh;
+  }
 }

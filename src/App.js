@@ -16,25 +16,35 @@ import { CartProvider } from './contexts/CartContext'
 import { ReactLenis, useLenis } from '@studio-freight/react-lenis'
 
 function App() {
-  const [showNav, setShowNav] = useState(false)
+  // const [showNav, setShowNav] = useState(false)
+
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     // Showing nav when scrolled
+  //     if (window.scrollY > 50) {
+  //       setShowNav(true)
+  //     } else {
+  //       setShowNav(false)
+  //     }
+  //   }
+
+  //   window.addEventListener("scroll", handleScroll)
+
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll)
+  //   }
+
+  // }, [])
+
+  const [showNav, setShowNav] = useState(false);
+  const lenis = useLenis();
 
   useEffect(() => {
-    const handleScroll = () => {
-      // Showing nav when scrolled
-      if (window.scrollY > 50) {
-        setShowNav(true)
-      } else {
-        setShowNav(false)
-      }
-    }
-
-    window.addEventListener("scroll", handleScroll)
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
-
-  }, [])
+    if (!lenis) return;
+    const onScroll = ({ scroll }) => setShowNav(scroll > 50);
+    lenis.on('scroll', onScroll);
+    return () => lenis.off('scroll', onScroll);
+  }, [lenis]);
 
   return (
     <ReactLenis root>

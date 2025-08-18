@@ -21,6 +21,13 @@ export default function Nav({ showNav }) {
         <nav className={showNav ? "nav-visible" : "nav-hidden"}>
             <div className='nav-content'>
 
+                {isOpen && (
+                    <div 
+                        className='nav-overlay'
+                        onClick={() => setIsOpen(false)}    // Tap outside nav to close
+                    />
+                )}
+
                 <NavLink to="/" className='logo nav-item'>
                     <Cone className="cone-svg" />
                 </NavLink>
@@ -74,7 +81,7 @@ export default function Nav({ showNav }) {
                             <li>
                                 <NavLink 
                                     to="/" 
-                                    className="nav-item"
+                                    className="nav-item menu-cone-link"
                                     onClick={() => setIsOpen(false)}
                                 >
                                     <Cone className="cone-svg menu-cone" />

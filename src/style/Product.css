@@ -273,13 +273,19 @@ input[type=number] {
   cursor: pointer;
 }
 
-.add-to-cart-button:hover {
+.add-to-cart-button:not(:disabled):hover {
   background-color: #D1D28D;
   color: #071111;
 }
 
-.add-to-cart-button:hover .slide-container {
+.add-to-cart-button:not(:disabled):hover .slide-container {
   transform: translateY(-50%);
+}
+
+.add-to-cart-button:disabled {
+  color: #222222;
+  border-color: #222222;
+  cursor: default;
 }
 
 .add-to-cart span {

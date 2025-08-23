@@ -318,6 +318,7 @@ export default function Product() {
                     </button> */}
                     <button
                         className="add-to-cart-button"
+                        disabled={customAmount < 1}
                         onClick={() => {
                             const quantity = showInput && customAmount
                                 ? parseInt(customAmount)
@@ -327,9 +328,9 @@ export default function Product() {
 
                             addToCart(product, quantity)
 
-                            setCustomAmount("")
-                            setSelectedAmount(null)
-                            setShowInput(false)
+                            // setCustomAmount("")
+                            // setSelectedAmount(null)
+                            // setShowInput(false)
                         }}
                     >
                         <div className="slide-container">

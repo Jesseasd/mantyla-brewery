@@ -29,7 +29,7 @@ export default function Nav({ showNav }) {
                 )}
 
                 <NavLink to="/" className='logo nav-item'>
-                    <Cone className="cone-svg" />
+                    <Cone className="nav-cone" />
                 </NavLink>
 
                 {isOpen && (
@@ -48,7 +48,17 @@ export default function Nav({ showNav }) {
                     
 
                     <ul className={`nav-links ${isOpen ? "nav-active" : ""}`}>
-                        
+                        {isOpen && (
+                            <li>
+                                <NavLink 
+                                    to="/" 
+                                    className="nav-item menu-cone-link"
+                                    onClick={() => setIsOpen(false)}
+                                >
+                                    <Cone className="nav-cone menu-cone" />
+                                </NavLink>
+                            </li>
+                        )}
                         <li>
                             <NavLink 
                                 to="about" 
@@ -77,17 +87,7 @@ export default function Nav({ showNav }) {
                             </NavLink>
                         </li>
 
-                        {isOpen && (
-                            <li>
-                                <NavLink 
-                                    to="/" 
-                                    className="nav-item menu-cone-link"
-                                    onClick={() => setIsOpen(false)}
-                                >
-                                    <Cone className="cone-svg menu-cone" />
-                                </NavLink>
-                            </li>
-                        )}
+                        
 
                     </ul>
 

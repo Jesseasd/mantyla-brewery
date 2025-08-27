@@ -260,7 +260,7 @@
   transition: --wipe .7s ease;
 }
 
-button {
+.btn {
     /* position: relative; */
     /* Grid: [ghost] [text] [arrow] */
     display: grid;
@@ -297,7 +297,7 @@ button {
     width: 2rem;
 } */
 
-button::after {
+.btn::after {
     content: "";
     grid-column: 1;
     width: var(--arrow);
@@ -305,7 +305,7 @@ button::after {
     /* height: calc(var(--arrow) - 1rem); */
 }
 
-span {
+.btn span {
     grid-column: 2;
     color: #fff;
     font-weight: 400;
@@ -330,7 +330,7 @@ span {
         transform .4s ease; 
 }
 
-button:hover span {
+.btn:hover span {
     color: #D1D28D;
     font-weight: 600;
     transition: 
@@ -338,7 +338,7 @@ button:hover span {
         font-weight .2s ease .5s;
 }
 
-button:hover .button-arrow {
+.btn:hover .button-arrow {
     /* display: block; */
     opacity: 1;
     transform: translateX(0);
@@ -367,7 +367,7 @@ button:hover .button-arrow {
 .highlights .container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 3rem;
+    grid-gap: 1rem;
 }
 
 .highlights h2 {
@@ -388,7 +388,7 @@ button:hover .button-arrow {
 }
 
 .grid-item p {
-    font-size: clamp(3rem, 4vw, 8rem);
+    font-size: clamp(1.6rem, 4vw, 8rem);
     font-family: heap;
     font-weight: normal;
     color: #D1D28D;
@@ -595,7 +595,7 @@ button:hover .button-arrow {
 } */
 
 @media screen and (max-width: 1000px) {
-    button {
+    .btn {
         padding: 1rem 1rem;
         --arrow: 1.5rem;
     }

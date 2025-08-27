@@ -54,7 +54,16 @@ export default function Shop() {
     <div className='shop-container' ref={component}>
       <div className='title-container'>
         <div className='mask'></div>
-        <video className='beers-video' autoPlay loop muted>
+        <video 
+          className='beers-video' 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          webkit-playsinline="true" 
+          controls={false} 
+          preload='auto'
+        >
           <source src={beersVideo} type='video/mp4' />
         </video>
         <h1>Kauppa</h1>

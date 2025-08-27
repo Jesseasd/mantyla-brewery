@@ -14,6 +14,7 @@ gsap.registerPlugin(useGSAP, ScrollTrigger)
 export default function About() {
   const component = useRef(null)
   const horizontalRef = useRef(null)
+  let mm = gsap.matchMedia()
 
   useEffect(() => {
     const splitTypes = document.querySelectorAll(".reveal");
@@ -100,18 +101,35 @@ export default function About() {
       )
 
       // Horizontal scroll
-      gsap.to(sections,
-        {
-          xPercent: -100 * (sections.length - 1),
-          ease: "none",
-          scrollTrigger: {
-            trigger: horizontal,
-            pin: true,
-            scrub: true,
-            end: "+=5500",
+      mm.add("(min-width: 800px)", () => {
+        gsap.to(sections,
+          {
+            xPercent: -100 * (sections.length - 1),
+            ease: "none",
+            scrollTrigger: {
+              trigger: horizontal,
+              pin: true,
+              scrub: true,
+              end: "+=5500",
+            }
           }
-        }
-      )
+        )
+      })
+
+      // mm.add("(max-width: 799px)", () => {
+      //   gsap.to(sections,
+      //     {
+      //       yPercent: -100 * (sections.length - 1),
+      //       ease: "none",
+      //       scrollTrigger: {
+      //         trigger: horizontal,
+      //         pin: true,
+      //         scrub: true,
+      //         end: "+=5500",
+      //       }
+      //     }
+      //   )
+      // })
 
       // Long section text pin
       gsap.to(".text2",

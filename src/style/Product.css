@@ -112,8 +112,8 @@
 }
 
 /* Hide number input arrows in Chrome, Safari, Edge */
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+.custom-input-wrapper input[type=number]::-webkit-inner-spin-button,
+.custom-input-wrapper input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }

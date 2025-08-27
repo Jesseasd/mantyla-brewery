@@ -62,8 +62,12 @@ nav {
 .nav-cone {
     height: auto;
     width: 24px;
-    margin-top: 5rem;
-    /* margin-left: 4rem; */
+    /* margin-top: 5rem; */
+    margin-left: 4rem;
+}
+
+.nav-cone path {
+    stroke: #fff;
 }
 
 .nav-cone:hover path {
@@ -117,7 +121,7 @@ nav {
 } */
 
 .nav-links.nav-active a {
-    font-size: 4rem;
+    font-size: 2rem;
     font-weight: 300;
     /* padding-right: 4rem; */
     
@@ -168,9 +172,9 @@ nav {
     stroke: #D1D28D;
 }
 
-/* .nav-item.active .cart-svg path {
+.nav-item.active .cart-svg path {
     stroke: #D1D28D;
-} */
+}
 
 .nav-item:hover {
     color: #D1D28D;
@@ -188,7 +192,7 @@ nav {
     /* width: 5rem; */
     display: flex;
     justify-content: center;
-    z-index: 996;
+    z-index: 999;
     /* position: relative; */
 }
 
@@ -294,6 +298,13 @@ nav {
         display: none;
     }
 
+    .nav-cone {
+        /* height: auto;
+        width: 24px; */
+        margin-top: 5rem;
+        margin-left: 0;
+    }
+
     .menu-icon {
         display: block;
         z-index: 999;
@@ -352,15 +363,19 @@ nav {
 
 @media only screen and (max-width: 500px) {
     .cart {
-        margin-right: 1rem;
+        margin-right: 1.5rem;
     }
 
     .close-icon {
-        left: 1rem;
+        left: 1.5rem;
     }
 
     .menu-icon {
-        margin-left: 1rem;
+        margin-left: 1.5rem;
+    }
+
+    .nav-links.nav-active a {
+        font-size: 2rem;
     }
 
     /* .nav-links.nav-active a {

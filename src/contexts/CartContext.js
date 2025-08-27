@@ -39,9 +39,17 @@ export function CartProvider({ children }) {
     // Clears everything
     const clearCart = () => setCartItems([])
 
+    // Set quantity directly
+    const updateQuantity = (id, qty) => {
+        const next = Number.isFinite(qty) ? Math.max(1, Math.floor(qty)) : 1
+        setCartItems(prev =>
+            prev.map(item => (item.id === id ? { ...item, quantity: next } : item))
+        )
+    }
+
     // Makes cart data and functions available to all components inside {children}
     return (
-        <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart}}>
+        <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart, updateQuantity}}>
             {children}
         </CartContext.Provider>
     )

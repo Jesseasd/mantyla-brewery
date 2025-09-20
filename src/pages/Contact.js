@@ -57,19 +57,45 @@ export default function Contact() {
         <form className='contact-info' ref={form} onSubmit={sendEmail}>
           <h2>Ota yhteyttä</h2>
 
-          <label>
+          <label htmlFor='name'>
             Nimi
-            <input name="name" placeholder=" " required disabled={isDisabled} />
+            
+            <input 
+              id='name' 
+              name="name" 
+              placeholder=" " 
+              required disabled={isDisabled} 
+              autoComplete='name' 
+            />
           </label>
 
-          <label>
+          <label htmlFor='email'>
             Sähköposti
-            <input name="email" type='email' placeholder=" " required disabled={isDisabled} />
+
+            <input 
+              id='email' 
+              name="email" 
+              type='email' 
+              placeholder=" " 
+              required 
+              disabled={isDisabled} 
+              autoComplete='email' 
+            />
           </label>
 
-          <label>
+          <label htmlFor='message'>
             Kerro asiasi
-            <textarea name="message" className='message' rows={8} placeholder=" " required disabled={isDisabled} />
+
+            <textarea 
+              id='message' 
+              name="message" 
+              className='message' 
+              rows={8} 
+              placeholder=" " 
+              required 
+              disabled={isDisabled} 
+              autoComplete='message' 
+            />
           </label>
 
           <div className="contact-actions">

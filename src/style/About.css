@@ -2,10 +2,6 @@ html {
   overflow-x: hidden;
 }
 
-/* body {
-  overflow-x: hidden;
-} */
-
 .about-container {
   margin-bottom: clamp(5rem, 15vw, 50rem);
 }
@@ -23,9 +19,7 @@ html {
 }
 
 .video-container2 {
-  /* width: 45vw; */
   width: 25rem;
-  /* height: 45vh; */
   height: 40rem;
   position: absolute;
   transform-origin: center center;
@@ -35,18 +29,6 @@ html {
   justify-content: center;
   align-items: center;
   text-align: center;
-
-  /* width: 40vw;
-  height: 60vh;
-  max-width: 100vw;
-  max-height: 100vh;
-  position: absolute;
-  transform-origin: center center;
-  opacity: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center; */
 }
 
 video {
@@ -61,7 +43,6 @@ video {
   position: absolute;
   width: 100%;
   height: 100.1%;
-  /*box-shadow: inset 0 -50px 100px -30px black;*/
   background: linear-gradient(0, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) 50%);
   top: 0;
   left: 0;
@@ -93,14 +74,12 @@ video {
   height: 100vh;
 }
 
-.text {
-  font-size: clamp(9.6rem, 15vw, 30rem);
+.story-wrapper .text {
+  font-size: var(--font-size-heading-large);
   font-family: heap;
   font-weight: normal;
-  color: #D1D28D;
+  color: var(--color-text-secondary);
   position: relative;
-  
-  /*margin-bottom: 15rem;*/
 }
 
 .horizontal {
@@ -108,25 +87,19 @@ video {
   align-items: center;
   height: 100vh;
   overflow: hidden;
-  /*padding: 0 10rem;
-  /*background-color: #071111;*/
 }
-
 
 .horizontal-image {
   flex-shrink: 0;
   height: 100%;
   width: 100%;
-  background-color: #071111;
+  background-color: var(--color-bg-primary);
   background-repeat: no-repeat;
   background-size: cover;
-  /*margin: 0 5rem;
-  /*margin-left: 10rem;*/
-  /*background-position: 50%;*/
 }
 
 .horizontal-image1 {
-  background-image: url(../images/about-images/garage2.png);
+  background-image: url(../images/about-images/garage.png);
   background-position: 25% 60%;
 }
 
@@ -136,7 +109,7 @@ video {
 
 .horizontal-image3 {
   
-  background-image: url(../images/about-images/pexels-lebele-14346111.jpg);
+  background-image: url(../images/about-images/barrels.jpg);
 }
 
 .horizontal-image4 {
@@ -148,60 +121,36 @@ video {
 }
 
 .wrapper {
-  /* height: auto; */
   min-width: 100vw;
 }
 
 .long {
-  /* background-color: red; */
   width: 100vw;
   height: 300vh;
-  /*position: sticky;*/
   top: 0;
-  background-image: url(../images/about-images/cheers-long.png);
+  background-image: url(../images/about-images/cheers.png);
   display: flex;
   justify-content: center;
-  /* align-items: center; */
   background-position: 10% 80%;
   background-repeat: no-repeat;
   background-size: cover;
-  
 }
 
 .text-section3 {
-  /*position: relative;
-  height: 300vh;*/
   width: 100vw;
-  background-color: #D1D28D;
+  background-color: var(--color-bg-secondary);
 }
-/*
-.text-section2 {
-  opacity: 0;
-  scale: 0;
-}
-*/
-/*
-.text-section {
-  /*height: 730vh;*/
-  /*position: relative;*/
-  /*overflow-x: hidden;
-}*/
 
 .text-item {
   display: flex;
   align-items: center;
   text-align: center;
-  /*height: 100vh;*/
-  /* padding-left: 10rem;
-  padding-right: 10rem; */
-  /* padding: 0 10vw; */
 }
 
 .text-item p {
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
-  font-size: clamp(1.4rem, 1.5vw, 3rem);
-  /*color: #000;*/
+  font-size: var(--font-size-paragraph-small);
   word-break: keep-all;
   overflow-wrap: normal;
   white-space: normal;
@@ -212,25 +161,17 @@ video {
   position: absolute;
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
-  color: #fff;
-  font-size: clamp(1.6rem, 1.5vw, 3rem);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-paragraph-small);
   opacity: 0;
   padding: 0 10vw;
-  /* padding-left: 20rem;
-  padding-right: 20rem; */
   transform: scale(.5);
 }
 
 .text-item2 {
-  /*background-color: #071111;*/
-  /* padding-left: 20rem;
-  padding-right: 20rem; */
   margin-top: 50vh;
   padding: 0 10vw;
   color: #000;
-  /*position: absolute;
-  bottom: 0;
-  left: 0;*/
 }
 
 .text2 {
@@ -240,83 +181,30 @@ video {
 }
 
 .text-item3 {
-  background-color: #071111;
-  /*position: relative;*/
-  /* padding-left: 20rem;
-  padding-right: 20rem; */
+  background-color: var(--color-bg-primary);
   padding-top: 50vh;
   height: 500vh;
   align-items: start;
 }
 
 .text3 {
-  color:#fff;
+  color:var(--color-text-primary);
   padding: 0 10vw;
-  /*height: 100vh;*/
 }
 
-.cone2-wrapper {
-  height: 600vh;
-  width: 100vw;
-  background-color: #000;
-  /*
-  background: linear-gradient(
-    to bottom,
-    #071111 0%, 
-    #000 40%,
-    #000 60%,
-    #071111 100%
-  );
-  */
-}
-
-.cone2 {
-  /*transform: scale(5);*/
-  width: 32px;
-  opacity: 0;
-  margin-top: 50vh;
-}
-
-.cone2 path {
-  stroke: #fff;
-}
-
-.gradient1 {
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(
-    to bottom,
-    #071111 0%, 
-    #000 100%
-  );
-}
-
-.gradient2 {
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(
-    to top,
-    #071111 0%, 
-    #000 100%
-  );
-}
-
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1024px) {
   .horizontal {
-    display: block;         /* simpler than flex for stacking */
-    height: auto;           /* let content define height */
-    overflow: visible;      /* allow normal page scroll */
+    display: block;
+    height: auto;
+    overflow: visible;
     padding: 0;
-    /* flex-direction: column; */
-    /* height: auto;
-    overflow: auto; */
   }
 
   .horizontal-image {
     width: 100vw;
-    height: 80vh;           /* tweak to taste: 50–80vh works well */
+    height: 80vh;
     background-size: cover;
-    background-position: center; /* or per-image overrides below */
+    background-position: center;
   }
   
   .long {
@@ -328,8 +216,4 @@ video {
   .story {
     height: 750vh;
   }
-}
-
-@media (hover: none) and (pointer: coarse) {
-
 }

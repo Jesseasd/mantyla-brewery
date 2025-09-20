@@ -1,36 +1,43 @@
-// import "../fonts/heavyHeap.ttf"
 import { useEffect } from 'react'
 import { ReactComponent as Cone } from "../images/pine-cone/cone.svg"
-import { ReactComponent as Arrow } from "../images/arrow.svg"
-import { ReactComponent as ButtonArrow } from "../images/button-arrow.svg"
+import { ReactComponent as ButtonArrow } from "../images/icons/button-arrow.svg"
 import "../style/Home.css"
+import { useNavigate } from 'react-router-dom'
 
 export default function Home() {
+  const navigate = useNavigate()
+
   useEffect(() => {
     // Only run this on touch devices (no hover)
-    const mm = window.matchMedia('(hover: none) and (pointer: coarse)');
-    if (!mm.matches) return;
+    const mm = window.matchMedia('(hover: none) and (pointer: coarse)')
+    if (!mm.matches) return   // If it's a desktop device -> exit early
 
-    const sections = document.querySelectorAll('.call-to-action .section');
+    const sections = document.querySelectorAll('.call-to-action .section')
 
-    // Consider a section "active" when ≥60% is visible
+    // IntesectionObserver watches when elements enter / leave viewport
+    // A section becomes "active" when at least 60% of it is visible
     const io = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
-          const isActive = entry.isIntersecting && entry.intersectionRatio >= 0.6;
-          entry.target.classList.toggle('is-inview', isActive);
-        });
+          // True if element is intersecting and at least 60% visible
+          const isActive = entry.isIntersecting && entry.intersectionRatio >= .6
+
+          // Toggle "is-inview" class on the section
+          entry.target.classList.toggle('is-inview', isActive)
+        })
       },
       {
-        threshold: [0, 0.6, 1],
-        rootMargin: '0px 0px -10% 0px', // tighten a bit so it flips closer to center
+        threshold: [0, .6, 1],
+        rootMargin: '0px 0px -10% 0px', 
       }
-    );
+    )
 
-    sections.forEach(s => io.observe(s));
-    return () => io.disconnect();
-  }, []);
+    // Start observing each section
+    sections.forEach(s => io.observe(s))
 
+    // Cleanup -> stop observing when component unmounts
+    return () => io.disconnect()
+  }, [])
 
   return (
     <div className='home-container'>
@@ -57,33 +64,44 @@ export default function Home() {
 
         <div className='section'>
           <div className='image'>
-            <img src={require('../images/beers-wide3.png')} />
+            <img src={require('../images/beers-wide.png')} />
 
             <div className='home-wrapper'>
               <h3>Tutustu oluisiimme</h3>
               <p>Sukella Mäntylän Panimon maailmaan ja tutustu ainutlaatuisiin oluihimme. Jokainen olut on huolella valmistettu, käsityöläisperinteitä kunnioittaen ja suomalaisen luonnon inspiroimana. Löydä suosikkisi klassikoistamme tai anna makunystyröillesi uusia elämyksiä kausioluillamme.</p>
-              <button className="btn border-wipe">
-                <span>Oluet</span>
-                <ButtonArrow className="button-arrow" />
-              </button>
+              <div className='btn-wrapper'>
+                <button 
+                  className="btn"
+                  onClick={() => navigate("/Shop")}
+                >
+                  <p className='text'>
+                    Oluet
+                  </p>
+                  <ButtonArrow className='button-arrow' />
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
         <div className='section'>
           <div className='image'>
-            <img src={require('../images/garage2.png')} className='image2' />
-            {/* <img src={require('../images/garage.png')} className='image2'/> */}
-            {/* <img src={require('../images/forest-wide.png')} className='image2'/> */}
+            <img src={require('../images/garage.png')} className='image2' />
 
             <div className='home-wrapper'>
               <h3>Panimon juuret</h3>
-              {/* <p>Mäntylän Panimo syntyi ystävyydestä, intohimosta ja suomalaisesta luonnosta. Lue, miten autotallista kasvoi käsityöläispanimo.</p> */}
               <p>Kun avaat pullon, maistat muutakin kuin olutta. Maistat intohimoa, tarinoita ja hetkiä, jotka on valmistettu jakamista varten. Astu sisään Mäntylän Panimon maailmaan ja löydä, mistä kaikki alkoi.</p>
-              <button className="btn border-wipe">
-                <span>Tarinamme</span>
-                <ButtonArrow className="button-arrow" />
-              </button>
+              <div className='btn-wrapper'>
+                <button 
+                  className="btn"
+                  onClick={() => navigate("/About")}
+                >
+                  <p className='text'>
+                    Tarinamme
+                  </p>
+                  <ButtonArrow className='button-arrow' />
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -94,13 +112,18 @@ export default function Home() {
 
             <div className='home-wrapper'>
               <h3>Kerro asiasi</h3>
-              {/* <p>Mäntylän Panimo syntyi ystävyydestä, intohimosta ja suomalaisesta luonnosta. Lue, miten autotallista kasvoi käsityöläispanimo.</p> */}
               <p>Meille olut on enemmän kuin juoma. Se on yhteys ihmisten välillä. Kerro meille ajatuksesi, kysy rohkeasti tai ehdota yhteistyötä. Olemme aina valmiita kuuntelemaan.</p>
-              {/* <p>Me ei olla mikään iso tehdaspanimo. Täällä vastaa ihan oikea tyyppi. Kerro asiasi suoraan.</p> */}
-              <button className="btn border-wipe">
-                <span>Ota yhteyttä</span>
-                <ButtonArrow className="button-arrow" />
-              </button>
+              <div className='btn-wrapper'>
+                <button 
+                  className="btn"
+                  onClick={() => navigate("/Contact")}
+                >
+                  <p className='text'>
+                    Ota yhteyttä
+                  </p>
+                  <ButtonArrow className='button-arrow' />
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -111,25 +134,36 @@ export default function Home() {
 
         <h2>Metsän makuja lasissasi</h2>
         <div className='container'>
-          <div className='grid-item metsamarja'>
+          <div 
+            className='grid-item metsamarja'
+            onClick={() => navigate("/product/8")}
+          >
             <p>Metsämarja Stout</p>
             <img src={require("../images/metsamarja.png")} alt='metsämarja stout' />
-            <Arrow className='arrow' />
           </div>
-          <div className='grid-item juniper'>
+
+          <div 
+            className='grid-item juniper'
+            onClick={() => navigate("/product/2")}
+          >
             <p>Juniper Pale Ale</p>
             <img src={require("../images/juniper.png")} alt='metsämarja stout' />
-            <Arrow className='arrow' />
           </div>
-          <div className='grid-item pellava'>
+
+          <div 
+            className='grid-item pellava'
+            onClick={() => navigate("/product/9")}
+          >
             <p>Pellava Blonde Ale</p>
             <img src={require("../images/pellava.png")} alt='metsämarja stout' />
-            <Arrow className='arrow' />
           </div>
-          <div className='grid-item kuusenkerkka'>
+
+          <div 
+            className='grid-item kuusenkerkka'
+            onClick={() => navigate("/product/6")}
+          >
             <p>kuusenkerkkä IPA</p>
             <img src={require("../images/kuusenkerkka.png")} alt='metsämarja stout' />
-            <Arrow className='arrow' />
           </div>
         </div>
 

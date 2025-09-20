@@ -1,31 +1,3 @@
-import bock from "../images/beers/bock.png"
-import juniper from "../images/beers/juniper.png"
-import kaski from "../images/beers/kaski.png"
-import kesailta from "../images/beers/kesailta.png"
-import kevatkylma from "../images/beers/kevatkylma.png"
-import kuusenkerkka from "../images/beers/kuusenkerkka.png"
-import luotolampi from "../images/beers/luotolampi.png"
-import metsamarja from "../images/beers/metsamarja.png"
-import pellava from "../images/beers/pellava.png"
-import savusahti from "../images/beers/savusahti.png"
-import talviyo from "../images/beers/talviyo.png"
-import tervaporter from "../images/beers/terva.png"
-import yotaivas from "../images/beers/yotaivas.png"
-
-import bock2 from "../images/beers/no-bg/bock.png"
-import juniper2 from "../images/beers/no-bg/juniper.png"
-import kaski2 from "../images/beers/no-bg/kaski.png"
-import kesailta2 from "../images/beers/no-bg/kesailta.png"
-import kevatkylma2 from "../images/beers/no-bg/kevatkylma.png"
-import kuusenkerkka2 from "../images/beers/no-bg/kuusenkerkka.png"
-import luotolampi2 from "../images/beers/no-bg/luotolampi.png"
-import metsamarja2 from "../images/beers/no-bg/metsamarja.png"
-import pellava2 from "../images/beers/no-bg/pellava.png"
-import savusahti2 from "../images/beers/no-bg/savusahti.png"
-import talviyo2 from "../images/beers/no-bg/talviyo.png"
-import tervaporter2 from "../images/beers/no-bg/terva.png"
-import yotaivas2 from "../images/beers/no-bg/yotaivas.png"
-
 // Shop background
 import bockSbg from "../images/beers/bg/bock-bg1024.png"
 import juniperSbg from "../images/beers/bg/juniper-bg1024.png"
@@ -42,8 +14,8 @@ import tervaSbg from "../images/beers/bg/terva-bg1024.png"
 import yotaivasSbg from "../images/beers/bg/yotaivas-bg1024.png"
 
 // Backgrounds
-import bockBg from "../images/beers/bg/bock-bg1.png"
-import juniperBg from "../images/beers/bg/juniper2.png"
+import bockBg from "../images/beers/bg/bock-bg.png"
+import juniperBg from "../images/beers/bg/juniper-bg.png"
 import kaskiBg from "../images/beers/bg/kaski-bg.png"
 import kesailtaBg from "../images/beers/bg/kesailta-bg.png"
 import kevatkylmaBg from "../images/beers/bg/kevatkylma-bg.png"
@@ -57,26 +29,24 @@ import tervaBg from "../images/beers/bg/terva-bg.png"
 import yotaivasBg from "../images/beers/bg/yotaivas-bg.png"
 
 // Bottles
-import bockBottle from "../images/beers/no-bg/bock1.png"
-import juniperBottle from "../images/beers/no-bg/juniper1.png"
-import kaskiBottle from "../images/beers/no-bg/kaski1.png"
-import kesailtaBottle from "../images/beers/no-bg/kesailta1.png"
-import kevatkylmaBottle from "../images/beers/no-bg/kevatkylma1.png"
-import kuusenkerkkaBottle from "../images/beers/no-bg/kuusenkerkka1.png"
-import luotolampiBottle from "../images/beers/no-bg/luotolampi1.png"
-import metsamarjaBottle from "../images/beers/no-bg/metsamarja1.png"
-import pellavaBottle from "../images/beers/no-bg/pellava1.png"
-import savusahtiBottle from "../images/beers/no-bg/savusahti1.png"
-import talviyoBottle from "../images/beers/no-bg/talviyo1.png"
-import tervaBottle from "../images/beers/no-bg/terva1.png"
-import yotaivasBottle from "../images/beers/no-bg/yotaivas1.png"
+import bockBottle from "../images/beers/no-bg/bock.png"
+import juniperBottle from "../images/beers/no-bg/juniper.png"
+import kaskiBottle from "../images/beers/no-bg/kaski.png"
+import kesailtaBottle from "../images/beers/no-bg/kesailta.png"
+import kevatkylmaBottle from "../images/beers/no-bg/kevatkylma.png"
+import kuusenkerkkaBottle from "../images/beers/no-bg/kuusenkerkka.png"
+import luotolampiBottle from "../images/beers/no-bg/luotolampi.png"
+import metsamarjaBottle from "../images/beers/no-bg/metsamarja.png"
+import pellavaBottle from "../images/beers/no-bg/pellava.png"
+import savusahtiBottle from "../images/beers/no-bg/savusahti.png"
+import talviyoBottle from "../images/beers/no-bg/talviyo.png"
+import tervaBottle from "../images/beers/no-bg/terva.png"
+import yotaivasBottle from "../images/beers/no-bg/yotaivas.png"
 
 export const products = [
     {
         id: 1,
         name: "Mänty Bock",
-        image: bock,
-        image2: bock2,
         sbg: bockSbg,
         bg: bockBg,
         bottle: bockBottle,
@@ -86,7 +56,7 @@ export const products = [
         style: "Tumma bock",
         fits: [
             'Nuotion äärelle', 
-            'Ruokapöydän paras kaveri'
+            'Ruokapöytään'
         ],
         story: [
             "Mänty Bock on kunnianosoitus suomalaisen metsän jylhälle rauhalle ja vanhoille juurille. Tämä tumma ja täyteläinen bock-olut syntyi halusta tuoda jotakin perinteikästä, mutta silti omaleimaista Mäntylän Panimon valikoimaan. ",
@@ -97,8 +67,6 @@ export const products = [
     {
         id: 2,
         name: "Juniper Pale Ale",
-        image: juniper,
-        image2: juniper2,
         sbg: juniperSbg,
         bg: juniperBg,
         bottle: juniperBottle,
@@ -108,7 +76,7 @@ export const products = [
         style: "Pale Ale katajanmarjalla",
         fits: [
             'Kesäpäivän pelastaja', 
-            'Mielen kohottaja'
+            'Saunajuoman kuningas'
         ],
         story: [
             "Juniper Pale Ale syntyi kaipuusta metsään – sinne, missä ilma on raikasta ja katajapensaat tuoksuvat auringon lämmössä. Tämä raikas, havuinen pale ale yhdistää modernin oluttyylin ja pohjoisen luonnon omaleimaisen sävyn: katajanmarjan. ",
@@ -119,8 +87,6 @@ export const products = [
     {
         id: 3,
         name: "Kaski Red Ale",
-        image: kaski,
-        image2: kaski2,
         sbg: kaskiSbg,
         bg: kaskiBg,
         bottle: kaskiBottle,
@@ -129,8 +95,8 @@ export const products = [
         volume: 0.33,
         style: "Red Ale",
         fits: [
-            'Ruokapöydän paras kaveri', 
-            'Nuotion äärelle'
+            'Nuotion äärelle',
+            'Ruokapöytään'
         ],
         story: [
             "Kaski Red Ale sai alkunsa tarinasta, joka on yhtä vanha kuin suomalainen maanviljelys – kasken poltosta. Siinä, missä metsä palaa hallitusti ja uusi kasvu versoo tuhkasta, syntyy myös tämä olut: lämmin, syvä ja mausteinen. ",
@@ -141,8 +107,6 @@ export const products = [
     {
         id: 4,
         name: "Kesäilta Session Ipa",
-        image: kesailta,
-        image2: kesailta2, 
         sbg: kesailtaSbg,
         bg: kesailtaBg,
         bottle: kesailtaBottle,
@@ -152,7 +116,7 @@ export const products = [
         style: "Session IPA",
         fits: [
             'Kesäpäivän pelastaja', 
-            'Mielen kohottaja'
+            'Darran selättäjä'
         ],
         story: [
             "Kesäilta Session IPA on pullotettu hetki suomalaista kesää. Se tuo mieleen lämpimän kallion, hyttysten surinan ja ilta-auringon, joka ei malta laskea horisonttiin. Tämä kepeä ja raikkaasti humaloitu session IPA on suunniteltu nautittavaksi silloin, kun illat venyvät – ja jano pysyy kevyenä. ", 
@@ -163,8 +127,6 @@ export const products = [
     {
         id: 5,
         name: "Kevätkylmä Lager",
-        image: kevatkylma,
-        image2: kevatkylma2,
         sbg: kevatkylmaSbg,
         bg: kevatkylmaBg,
         bottle: kevatkylmaBottle,
@@ -173,8 +135,8 @@ export const products = [
         volume: 0.33,
         style: "Helles Lager",
         fits: [
-            'Herää eloon -olut', 
-            'Darran selättäjä'
+            'Darran selättäjä',
+            'Kesäpäivän pelastaja'
         ],
         story: [
             "Kevät ei koskaan saavu huutaen. Se hiipii hiljaa yöpakkasten sekaan, rohkenee valoon ja sulattaa lumen kulman kerrallaan. Kevätkylmä Lager syntyi juuri tästä odotuksesta – siitä hetkestä, kun aurinko alkaa viipyä vähän pidempään ja ilma tuoksuu uudelta alulta. ",
@@ -184,8 +146,6 @@ export const products = [
     {
         id: 6,
         name: "Kuusenkerkkä Ipa",
-        image: kuusenkerkka,
-        image2: kuusenkerkka2,
         sbg: kuusenkerkkaSbg,
         bg: kuusenkerkkaBg,
         bottle: kuusenkerkkaBottle,
@@ -194,7 +154,7 @@ export const products = [
         volume: 0.33,
         style: "India Pale Ale maustettuna kuusenkerkällä",
         fits: [
-            'Mielen kohottaja', 
+            'Nuotion äärelle', 
             'Saunajuoman kuningas'
         ],
         story: [
@@ -206,8 +166,6 @@ export const products = [
     {
         id: 7,
         name: "Luotolampi Wheat Ale",
-        image: luotolampi,
-        image2: luotolampi2,
         sbg: luotolmapiSbg,
         bg: luotolampiBg,
         bottle: luotolampiBottle,
@@ -217,7 +175,7 @@ export const products = [
         style: "Vehnäolut",
         fits: [
             'Kesäpäivän pelastaja', 
-            'Herää eloon -olut'
+            'Darran selättäjä'
         ],
         story: [
             "Hiljainen lammen pinta, jossa heijastuu pilvetön kesätaivas. Kaskisen saariston kupeessa oleva luotolampi oli paikka, johon ystävykset vetäytyivät hengittämään, ideoimaan – ja joskus myös maistelemaan uusia kokeiluja. Siellä syntyi ajatus oluesta, joka olisi yhtä lempeä ja kirkas kuin tuo hetki veden äärellä. ",
@@ -227,8 +185,6 @@ export const products = [
     {
         id: 8,
         name: "Metsämarja Stout",
-        image: metsamarja,
-        image2: metsamarja2,
         sbg: metsamarjaSbg,
         bg: metsamarjaBg,
         bottle: metsamarjaBottle,
@@ -238,7 +194,7 @@ export const products = [
         style: "Marjastout",
         fits: [
             'Nuotion äärelle', 
-            'Ruokapöydän paras kaveri'
+            'Ruokapöytään'
         ],
         story: [
             "Kosteassa havumetsässä, poimittujen variksenmarjojen, mustikoiden ja puolukoiden keskellä syntyy muistoja, jotka eivät unohdu. Metsämarja Stout on kunnianosoitus suomalaiselle marjametsälle – hiljaiselle, mutta täynnä elämää. Se sai alkunsa, kun panijat halusivat yhdistää vahvan, paahteisen stoutin ja pohjoisen metsän omat makeat ja hapokkaat aarteet. ",
@@ -248,8 +204,6 @@ export const products = [
     {
         id: 9,
         name: "Pellava Blonde Ale",
-        image: pellava,
-        image2: pellava2,
         sbg: pellavaSbg,
         bg: pellavaBg,
         bottle: pellavaBottle,
@@ -269,8 +223,6 @@ export const products = [
     {
         id: 10,
         name: "Savusahti Farmhouse Ale",
-        image: savusahti,
-        image2: savusahti2,
         sbg: savusahtiSbg,
         bg: savusahtiBg,
         bottle: savusahtiBottle,
@@ -279,8 +231,9 @@ export const products = [
         volume: 0.33,
         style: "Farmhouse Ale, savumaltainen",
         fits: [
-            'Nuotion äärelle', 
-            'Saunajuoman kuningas'
+            'Saunajuoman kuningas',
+            'Nuotion äärelle',
+            'Ruokapöytään'
         ],
         story: [
             "Savusahti Farmhouse Ale on kunnianosoitus suomalaiselle sahtiperinteelle ja maatilan arjelle. Se yhdistää perinteisen savuisuuden rustiikkiseen farmhouse-tyyliin – syntyen jossain savusaunan, viljapellon ja vanhan navetan välimaastossa. ",
@@ -291,8 +244,6 @@ export const products = [
     {
         id: 11,
         name: "Talviyö Winter Ale",
-        image: talviyo,
-        image2: talviyo2,
         sbg: talviyoSbg,
         bg: talviyoBg,
         bottle: talviyoBottle,
@@ -302,7 +253,7 @@ export const products = [
         style: "Winter Ale",
         fits: [
             'Nuotion äärelle', 
-            'Ruokapöydän paras kaveri'
+            'Ruokapöytään'
         ],
         story: [
             "Talviyö on olut, joka syntyi pimeästä, mutta lämmittää valolla. Se on kunnianosoitus suomalaiselle talvelle – niille hetkille, kun pakkanen paukkuu nurkissa, tähdet näkyvät kirkkaina ja lumi hiljentää kaiken muun. ",
@@ -313,8 +264,6 @@ export const products = [
     {
         id: 12,
         name: "Tervaporter",
-        image: tervaporter,
-        image2: tervaporter2,
         sbg: tervaSbg,
         bg: tervaBg,
         bottle: tervaBottle,
@@ -323,8 +272,8 @@ export const products = [
         volume: 0.33,
         style: "Porter, tervalla maustettu",
         fits: [
-            'Nuotion äärelle', 
-            'Mielen kohottaja'
+            'Nuotion äärelle',
+            'Ruokapöytään'
         ],
         story: [
             "Tervaporter on kuin harmaa marraskuun ilta, jolloin sade ropisee kattoon ja ulkona tuoksuu märkä metsä ja vanha savusauna. Tämä olut ei ole kiireiselle – se on niille, jotka haluavat pysähtyä hetkeksi ja maistaa menneisyyttä. ",
@@ -335,8 +284,6 @@ export const products = [
     {
         id: 13,
         name: "Yötaivas Imperial Stout",
-        image: yotaivas,
-        image2: yotaivas2,
         sbg: yotaivasSbg,
         bg: yotaivasBg,
         bottle: yotaivasBottle,
@@ -346,7 +293,7 @@ export const products = [
         style: "Imperial Stout",
         fits: [
             'Nuotion äärelle', 
-            'Ruokapöydän paras kaveri'
+            'Ruokapöytään'
         ],
         story: [
             "Yötaivas syntyi hiljaisuudesta – siitä hetkestä, kun tähdet syttyvät metsän ylle ja koko maailma pysähtyy. Se on kunnianosoitus arktiselle pimeydelle, jonka keskellä pieni valo, lämpö ja vahva maku tuntuvat suuremmilta kuin koskaan. ",

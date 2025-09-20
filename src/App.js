@@ -3,7 +3,7 @@ import './App.css'
 import "./style/Nav.css"
 import "./style/Home.css"
 import "./style/Footer.css"
-import { Routes, Route, Router } from "react-router-dom"
+import { Routes, Route} from "react-router-dom"
 import About from "./pages/About"
 import Cart from "./pages/Cart"
 import Contact from "./pages/Contact"
@@ -14,40 +14,27 @@ import Nav from "./components/Nav"
 import Footer from "./components/Footer"
 import { CartProvider } from './contexts/CartContext'
 import { ReactLenis, useLenis } from '@studio-freight/react-lenis'
+import ScrollToTop from "./components/ScrollToTop"
 
 function App() {
-  // const [showNav, setShowNav] = useState(false)
+  // State that decides whether the nav bar should be shown or hidden
+  const [showNav, setShowNav] = useState(false)
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     // Showing nav when scrolled
-  //     if (window.scrollY > 50) {
-  //       setShowNav(true)
-  //     } else {
-  //       setShowNav(false)
-  //     }
-  //   }
-
-  //   window.addEventListener("scroll", handleScroll)
-
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll)
-  //   }
-
-  // }, [])
-
-  const [showNav, setShowNav] = useState(false);
-  const lenis = useLenis();
+  // Hook that gives access to scroll events
+  const lenis = useLenis()
 
   useEffect(() => {
-    if (!lenis) return;
-    const onScroll = ({ scroll }) => setShowNav(scroll > 50);
-    lenis.on('scroll', onScroll);
-    return () => lenis.off('scroll', onScroll);
-  }, [lenis]);
+    if (!lenis) return    // Do nothing until lenis is ready
+    // If more than 50px is scrolled -> show nav
+    const onScroll = ({ scroll }) => setShowNav(scroll > 50)
+    lenis.on('scroll', onScroll)    // Listen for scroll events
+    return () => lenis.off('scroll', onScroll)    // Cleanup on unmount
+  }, [lenis])
 
   return (
+    // Lenis provides smooth scrolling for the entire app
     <ReactLenis root>
+      <ScrollToTop />   {/* Scroll to top when changing routes */}
       <CartProvider>
         <Nav showNav={showNav} />
         <Routes>

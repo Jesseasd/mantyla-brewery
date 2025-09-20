@@ -11,3 +11,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+:root {
+  /* Colors */
+  --color-bg-primary: #071111;
+  --color-bg-secondary: #D1D28D;
+  --color-text-primary: #fff;
+  --color-text-secondary: #D1D28D;
+  --color-text-third: #071111;
+  
+  /* Font sizes */
+  --font-size-heading-large: clamp(7rem, 15vw, 30rem);
+  --font-size-heading-medium: clamp(3rem, 9vw, 12rem);
+  --font-size-paragraph-medium: clamp(1.6rem, 4vw, 8rem);
+  --font-size-paragraph-small: clamp(1.2rem, 1.5vw, 3rem);
+  --font-size-button-medium: clamp(1.4rem, 1.6vw, 2.4rem);
+  --font-size-button-small: clamp(1.4rem, 1.6vw, 1.8rem);
+}

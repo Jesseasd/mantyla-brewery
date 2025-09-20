@@ -1,3 +1,14 @@
-# https://www.robotstxt.org/robotstxt.html
+# Robots.txt for Mäntylä Brewery
+# Learn more: https://www.robotstxt.org/robotstxt.html
+
+# Apply to all crawlers
 User-agent: *
-Disallow:
+
+# Don't let bots crawl shopping related pages (not useful for SEO)
+Disallow: /cart/
+
+# Allow everything else
+Allow: /
+
+# Point bots to sitemap
+Sitemap: https://www.mantylabrewery.fi/sitemap.xml

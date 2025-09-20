@@ -4,13 +4,17 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ReactLenis } from '@studio-freight/react-lenis'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    {/* Lenis provides smooth scrolling for the entire app */}
+    <ReactLenis root>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ReactLenis>
   </React.StrictMode>
 );
 

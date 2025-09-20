@@ -101,6 +101,7 @@ export default function Cart() {
                 </button>
 
                 <input
+                  id="cart-input"
                   className='cart-input'
                   type='number'
                   min="1"

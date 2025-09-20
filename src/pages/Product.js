@@ -208,6 +208,7 @@ export default function Product() {
                                         <p className="amount-minus">-</p>
                                     </button>
                                     <input
+                                        id="custom-input"
                                         className={`custom-input ${showInput ? "visible" : ""}`}
                                         type="number"
                                         min="1"

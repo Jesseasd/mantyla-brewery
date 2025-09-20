@@ -64,7 +64,7 @@ export default function Home() {
 
         <div className='section'>
           <div className='image'>
-            <img src={require('../images/beers-wide.png')} />
+            <img src={require('../images/beers-wide.png')} alt='' />
 
             <div className='home-wrapper'>
               <h3>Tutustu oluisiimme</h3>
@@ -86,7 +86,7 @@ export default function Home() {
 
         <div className='section'>
           <div className='image'>
-            <img src={require('../images/garage.png')} className='image2' />
+            <img src={require('../images/garage.png')} className='image2' alt='' />
 
             <div className='home-wrapper'>
               <h3>Panimon juuret</h3>
@@ -108,7 +108,7 @@ export default function Home() {
 
         <div className='section'>
           <div className='image'>
-            <img src={require('../images/contact-us.png')} className='image2' />
+            <img src={require('../images/contact-us.png')} className='image2' alt='' />
 
             <div className='home-wrapper'>
               <h3>Kerro asiasi</h3>

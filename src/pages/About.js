@@ -14,11 +14,12 @@ export default function About() {
   const component = useRef(null)
   const horizontalRef = useRef(null)
 
-  // Media query handler for responsive animations
-  let mm = gsap.matchMedia()
-
+  
   useEffect(() => {
     const splitTypes = document.querySelectorAll(".reveal")
+    
+    // Media query handler for responsive animations
+    let mm = gsap.matchMedia()
 
     let ctx = gsap.context(() => {
       const horizontal = horizontalRef.current

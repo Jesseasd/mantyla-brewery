@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useCart } from "../contexts/CartContext"
 import { ReactComponent as DeleteIcon } from "../images//icons/close.svg"
 import "../style/Cart.css"

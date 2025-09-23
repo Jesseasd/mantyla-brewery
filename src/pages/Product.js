@@ -169,7 +169,14 @@ export default function Product() {
                     <picture>
                         <source srcSet={product.bg.avif} type="image/avif" />
                         <source srcSet={product.bg.webp} type="image/webp" />
-                        <img className="product-page-bg-image" src={product.bg} alt={product.name} />
+                        <img 
+                            className="product-page-bg-image" 
+                            src={product.bg} 
+                            alt={product.name} 
+                            loading="eager"
+                            fetchPriority="high"
+                            decoding="async"
+                        />
                     </picture>
                     <img className="product-page-bottle-image" src={product.bottle} alt={product.name} ref={bottleRef} />
                 </div>

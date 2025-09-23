@@ -1,29 +1,28 @@
-import { useEffect, useRef } from 'react'
+import { useRef, useLayoutEffect } from 'react'
 import "../style/About.css"
-import bg from "../videos/about-hero-video.mp4"
-import video1 from "../videos/water-droplets-on-a-branch.mp4"
+import aboutHeroMp4 from "../assets/videos/about-hero-video/about-hero-video.mp4"
+import aboutHeroWebm from "../assets/videos/about-hero-video/about-hero-video.webm"
+import waterDropletsMp4 from "../assets/videos/water-droplets-on-a-branch/water-droplets-on-a-branch.mp4"
+import waterDropletsWebm from "../assets/videos/water-droplets-on-a-branch/water-droplets-on-a-branch.webm"
 import { gsap } from "gsap"
 import { useGSAP } from "@gsap/react"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import SplitType from 'split-type'
-import { ReactComponent as Cone } from "../images/pine-cone/cone.svg"
+import { ReactComponent as Cone } from "../assets/icons/cone.svg"
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
 export default function About() {
   const component = useRef(null)
   const horizontalRef = useRef(null)
-
   
-  useEffect(() => {
+  useLayoutEffect(() => {
     const splitTypes = document.querySelectorAll(".reveal")
-    
+
     // Media query handler for responsive animations
     let mm = gsap.matchMedia()
 
     let ctx = gsap.context(() => {
-      const horizontal = horizontalRef.current
-
       // Collect all horizontal panels into an array
       const sections = gsap.utils.toArray(".panel")
 
@@ -37,7 +36,7 @@ export default function About() {
             end: "bottom bottom",
             scrub: true,
             markers: false,
-          },
+          }
         }
       )
 
@@ -62,7 +61,8 @@ export default function About() {
             end: "bottom bottom",
             pin: ".story-wrapper",
           }
-        })
+        }
+      )
 
       // Video opacity
       gsap.to(".video-container2",
@@ -74,20 +74,29 @@ export default function About() {
             //end: "bottom bottom",
             toggleActions: "play reverse play reverse",
           }
-        })
+        }
+      )
 
-      // Video size
-      gsap.to(".video-container2",
+      // Initial state
+      gsap.set(".video-container2", 
+        { 
+          width: "25rem", 
+          height: "40rem", 
+        }
+      )
+
+      // Animate video size
+      gsap.to(".video-container2", 
         {
-          width: "100vw",
-          height: "100vh",
+          width: "100%",
+          height: "100%",
+          ease: "none",
           scrollTrigger: {
             trigger: ".story",
             start: "top+=1000 top",
             end: "top+=2500 top",
             scrub: true,
-            markers: false,
-          },
+          }
         }
       )
 
@@ -102,24 +111,29 @@ export default function About() {
             end: "bottom-=300 bottom",
             scrub: true,
             markers: false,
-          },
+          }
         }
       )
 
       // Horizontal scroll
       mm.add("(min-width: 1024px)", () => {
-        gsap.to(sections,
-          {
-            xPercent: -100 * (sections.length - 1),
-            ease: "none",
-            scrollTrigger: {
-              trigger: horizontal,
-              pin: true,
-              scrub: true,
-              end: "+=5500",
-            }
-          }
-        )
+        ScrollTrigger.create({
+          trigger: horizontalRef.current,
+          start: "top top",
+          end: "+=5500",
+          pin: true,
+          scrub: 0.2,
+          snap: {
+            snapTo: 1 / (sections.length - 1),
+            duration: 0.5,
+            delay: 0,
+            ease: "none"
+          },
+          animation: gsap.to(sections, { 
+            xPercent: -100 * (sections.length - 1), 
+            ease: "none" 
+          })
+        })
       })
 
       // Long section text pin
@@ -199,9 +213,10 @@ export default function About() {
             playsInline
             webkit-playsinline="true"
             controls={false}
-            preload='auto'
+            preload='metadata'
           >
-            <source src={bg} type='video/mp4' />
+            <source src={aboutHeroWebm} type='video/Webm' />
+            <source src={aboutHeroMp4} type='video/mp4' />
           </video>
           <div className='shadow'></div>
           <Cone className='cone' />
@@ -211,30 +226,36 @@ export default function About() {
       <div className='story'>
         <div className='story-wrapper'>
           <p className='text'>Tarinamme</p>
-          <div className='video-container2'>
-            <video
-              className='video'
-              autoPlay
-              loop
-              muted
-              playsInline
-              webkit-playsinline="true"
-              controls={false}
-              preload='auto'
-            >
-              <source src={video1} type='video/mp4' />
-            </video>
-            <p className='text-item1'>Mäntylän Panimo sai alkunsa yksinkertaisesta ideasta ja kolmen ystävän intohimosta. Kaikki alkoi pienestä autotallista Mäntylän naapurustossa, jossa kokeiltiin rohkeasti reseptejä ja hiottiin oluenvalmistuksen taitoja. Aluksi kyse oli vain yhdessä tekemisestä, mutta nopeasti kävi selväksi, että näistä oluista voisi tulla jotain enemmän.</p>
+
+          <div className='video-stage'>
+            <div className='video-container2'>
+              <video
+                className='video'
+                autoPlay
+                loop
+                muted
+                playsInline
+                webkit-playsinline="true"
+                controls={false}
+                preload='auto'
+              >
+                <source src={waterDropletsWebm} type='video/Webm' />
+                <source src={waterDropletsMp4} type='video/mp4' />
+              </video>
+              <p className='text-item1'>Mäntylän Panimo sai alkunsa yksinkertaisesta ideasta ja kolmen ystävän intohimosta. Kaikki alkoi pienestä autotallista Mäntylän naapurustossa, jossa kokeiltiin rohkeasti reseptejä ja hiottiin oluenvalmistuksen taitoja. Aluksi kyse oli vain yhdessä tekemisestä, mutta nopeasti kävi selväksi, että näistä oluista voisi tulla jotain enemmän.</p>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className='horizontal' ref={horizontalRef}>
-        <div className='horizontal-image horizontal-image1 panel'></div>
-        <div className='horizontal-image horizontal-image2 panel'></div>
-        <div className='horizontal-image horizontal-image3 panel'></div>
-        <div className='horizontal-image horizontal-image4 panel'></div>
-        <div className='horizontal-image horizontal-image5 panel'></div>
+      <div className='horizonatl-section' ref={horizontalRef}>
+        <div className='horizontal'>
+            <div className='horizontal-image horizontal-image1 panel'></div>
+            <div className='horizontal-image horizontal-image2 panel'></div>
+            <div className='horizontal-image horizontal-image3 panel'></div>
+            <div className='horizontal-image horizontal-image4 panel'></div>
+            <div className='horizontal-image horizontal-image5 panel'></div>
+        </div>
       </div>
 
       <div className='wrapper'>

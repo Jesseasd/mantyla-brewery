@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useCart } from "../contexts/CartContext"
-import { ReactComponent as DeleteIcon } from "../images//icons/close.svg"
+import { ReactComponent as DeleteIcon } from "../assets/icons/close.svg"
 import "../style/Cart.css"
 
 export default function Cart() {

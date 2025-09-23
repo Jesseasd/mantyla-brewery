@@ -1,15 +1,15 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useLayoutEffect, useRef } from "react"
 import { useParams } from "react-router-dom"
 import { products } from "../data/Products"
 import "../style/Product.css"
 import { gsap } from "gsap"
 import { useGSAP } from "@gsap/react"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { ReactComponent as PillIcon } from "../images/icons/pill.svg"
-import { ReactComponent as SaunaIcon } from "../images/icons/sauna.svg"
-import { ReactComponent as DiningIcon } from "../images/icons/dining.svg"
-import { ReactComponent as SunsetIcon } from "../images/icons/sunset.svg"
-import { ReactComponent as CampfireIcon } from "../images/icons/campfire.svg"
+import { ReactComponent as PillIcon } from "../assets/icons/pill.svg"
+import { ReactComponent as SaunaIcon } from "../assets/icons/sauna.svg"
+import { ReactComponent as DiningIcon } from "../assets/icons/dining.svg"
+import { ReactComponent as SunsetIcon } from "../assets/icons/sunset.svg"
+import { ReactComponent as CampfireIcon } from "../assets/icons/campfire.svg"
 import { useCart } from "../contexts/CartContext"
 
 // Register gsap
@@ -83,7 +83,7 @@ export default function Product() {
     }
 
     // Run gsap animations once on mount
-    useEffect(() => {
+    useLayoutEffect(() => {
         let ctx = gsap.context(() => {
             // Place bottle in the center first
             gsap.set(bottleRef.current, {
@@ -166,7 +166,11 @@ export default function Product() {
                     </div>
                 </div>
                 <div className="product-page-image-wrapper">
-                    <img className="product-page-bg-image" src={product.bg} alt={product.name} />
+                    <picture>
+                        <source srcSet={product.bg.avif} type="image/avif" />
+                        <source srcSet={product.bg.webp} type="image/webp" />
+                        <img className="product-page-bg-image" src={product.bg} alt={product.name} />
+                    </picture>
                     <img className="product-page-bottle-image" src={product.bottle} alt={product.name} ref={bottleRef} />
                 </div>
                 <div className="add-to-cart-section" ref={amountRef}>

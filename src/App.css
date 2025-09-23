@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@font-face {
+    font-family: heap;
+    src: local(heavyHeap),
+        url("assets/fonts/heavyHeap.ttf") format("truetype");
+}
 
 html {
   font-size: 62.5%;

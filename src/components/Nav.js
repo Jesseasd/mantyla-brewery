@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { ReactComponent as Cone } from "../images/pine-cone/cone.svg"
-import { ReactComponent as Cart } from "../images/icons/cart.svg"
+import { ReactComponent as Cone } from "../assets/icons/cone.svg"
+import { ReactComponent as Cart } from "../assets/icons/cart.svg"
 import { NavLink } from "react-router-dom"
-import { ReactComponent as Menu } from "../images/icons/menu.svg"
-import { ReactComponent as Close } from "../images/icons/close.svg"
+import { ReactComponent as Menu } from "../assets/icons/menu.svg"
+import { ReactComponent as Close } from "../assets/icons/close.svg"
 import "../style/Nav.css"
 import { useCart } from "../contexts/CartContext"
 

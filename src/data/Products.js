@@ -1,55 +1,139 @@
 // Shop background
-import bockSbg from "../images/beers/bg/bock-bg1024.png"
-import juniperSbg from "../images/beers/bg/juniper-bg1024.png"
-import kaskiSbg from "../images/beers/bg/kaski-bg1024.png"
-import kesailtaSbg from "../images/beers/bg/kesailta-bg1024.png"
-import kevatkylmaSbg from "../images/beers/bg/kevatkylma-bg1024.png"
-import kuusenkerkkaSbg from "../images/beers/bg/kuusenkerkka-bg1024.png"
-import luotolmapiSbg from "../images/beers/bg/luotolampi-bg1024.png"
-import metsamarjaSbg from "../images/beers/bg/metsamarja-bg1024.png"
-import pellavaSbg from "../images/beers/bg/pellava-bg1024.png"
-import savusahtiSbg from "../images/beers/bg/savusahti-bg1024.png"
-import talviyoSbg from "../images/beers/bg/talviyo-bg1024.png"
-import tervaSbg from "../images/beers/bg/terva-bg1024.png"
-import yotaivasSbg from "../images/beers/bg/yotaivas-bg1024.png"
+import bockSbgAvif from "../assets/images/beers/bg/bock/bock-bg1024.avif"
+import bockSbgWebp from "../assets/images/beers/bg/bock/bock-bg1024.webp"
+import bockSbgJpg from "../assets/images/beers/bg/bock/bock-bg1024.jpg"
 
-// Backgrounds
-import bockBg from "../images/beers/bg/bock-bg.png"
-import juniperBg from "../images/beers/bg/juniper-bg.png"
-import kaskiBg from "../images/beers/bg/kaski-bg.png"
-import kesailtaBg from "../images/beers/bg/kesailta-bg.png"
-import kevatkylmaBg from "../images/beers/bg/kevatkylma-bg.png"
-import kuusenkerkkaBg from "../images/beers/bg/kuusenkerkka-bg.png"
-import luotolampiBg from "../images/beers/bg/luotolampi-bg.png"
-import metsamarjaBg from "../images/beers/bg/metsamarja-bg.png"
-import pellavaBg from "../images/beers/bg/pellava-bg.png"
-import savusahtiBg from "../images/beers/bg/savusahti-bg.png"
-import talviyoBg from "../images/beers/bg/talviyo-bg.png"
-import tervaBg from "../images/beers/bg/terva-bg.png"
-import yotaivasBg from "../images/beers/bg/yotaivas-bg.png"
+import juniperSbgAvif from "../assets/images/beers/bg/juniper/juniper-bg1024.avif"
+import juniperSbgWebp from "../assets/images/beers/bg/juniper/juniper-bg1024.webp"
+import juniperSbgJpg from "../assets/images/beers/bg/juniper/juniper-bg1024.jpg"
+
+import kaskiSbgAvif from "../assets/images/beers/bg/kaski/kaski-bg1024.avif"
+import kaskiSbgWebp from "../assets/images/beers/bg/kaski/kaski-bg1024.webp"
+import kaskiSbgJpg from "../assets/images/beers/bg/kaski/kaski-bg1024.jpg"
+
+import kesailtaSbgAvif from "../assets/images/beers/bg/kesailta/kesailta-bg1024.avif"
+import kesailtaSbgWebp from "../assets/images/beers/bg/kesailta/kesailta-bg1024.webp"
+import kesailtaSbgJpg from "../assets/images/beers/bg/kesailta/kesailta-bg1024.jpg"
+
+import kevatkylmaSbgAvif from "../assets/images/beers/bg/kevatkylma/kevatkylma-bg1024.avif"
+import kevatkylmaSbgWebp from "../assets/images/beers/bg/kevatkylma/kevatkylma-bg1024.webp"
+import kevatkylmaSbgJpg from "../assets/images/beers/bg/kevatkylma/kevatkylma-bg1024.jpg"
+
+import kuusenkerkkaSbgAvif from "../assets/images/beers/bg/kuusenkerkka/kuusenkerkka-bg1024.avif"
+import kuusenkerkkaSbgWebp from "../assets/images/beers/bg/kuusenkerkka/kuusenkerkka-bg1024.webp"
+import kuusenkerkkaSbgJpg from "../assets/images/beers/bg/kuusenkerkka/kuusenkerkka-bg1024.jpg"
+
+import luotolampiSbgAvif from "../assets/images/beers/bg/luotolampi/luotolampi-bg1024.avif"
+import luotolampiSbgWebp from "../assets/images/beers/bg/luotolampi/luotolampi-bg1024.webp"
+import luotolampiSbgJpg from "../assets/images/beers/bg/luotolampi/luotolampi-bg1024.jpg"
+
+import metsamarjaSbgAvif from "../assets/images/beers/bg/metsamarja/metsamarja-bg1024.avif"
+import metsamarjaSbgWebp from "../assets/images/beers/bg/metsamarja/metsamarja-bg1024.webp"
+import metsamarjaSbgJpg from "../assets/images/beers/bg/metsamarja/metsamarja-bg1024.jpg"
+
+import pellavaSbgAvif from "../assets/images/beers/bg/pellava/pellava-bg1024.avif"
+import pellavaSbgWebp from "../assets/images/beers/bg/pellava/pellava-bg1024.webp"
+import pellavaSbgJpg from "../assets/images/beers/bg/pellava/pellava-bg1024.jpg"
+
+import savusahtiSbgAvif from "../assets/images/beers/bg/savusahti/savusahti-bg1024.avif"
+import savusahtiSbgWebp from "../assets/images/beers/bg/savusahti/savusahti-bg1024.webp"
+import savusahtiSbgJpg from "../assets/images/beers/bg/savusahti/savusahti-bg1024.jpg"
+
+import talviyoSbgAvif from "../assets/images/beers/bg/talviyo/talviyo-bg1024.avif"
+import talviyoSbgWebp from "../assets/images/beers/bg/talviyo/talviyo-bg1024.webp"
+import talviyoSbgJpg from "../assets/images/beers/bg/talviyo/talviyo-bg1024.jpg"
+
+import tervaSbgAvif from "../assets/images/beers/bg/terva/terva-bg1024.avif"
+import tervaSbgWebp from "../assets/images/beers/bg/terva/terva-bg1024.webp"
+import tervaSbgJpg from "../assets/images/beers/bg/terva/terva-bg1024.jpg"
+
+import yotaivasSbgAvif from "../assets/images/beers/bg/yotaivas/yotaivas-bg1024.avif"
+import yotaivasSbgWebp from "../assets/images/beers/bg/yotaivas/yotaivas-bg1024.webp"
+import yotaivasSbgJpg from "../assets/images/beers/bg/yotaivas/yotaivas-bg1024.jpg"
+
+// Product background
+import bockBgAvif from "../assets/images/beers/bg/bock/bock-bg.avif"
+import bockBgWebp from "../assets/images/beers/bg/bock/bock-bg.webp"
+import bockBgJpg from "../assets/images/beers/bg/bock/bock-bg.jpg"
+
+import juniperBgAvif from "../assets/images/beers/bg/juniper/juniper-bg.avif"
+import juniperBgWebp from "../assets/images/beers/bg/juniper/juniper-bg.webp"
+import juniperBgJpg from "../assets/images/beers/bg/juniper/juniper-bg.jpg"
+
+import kaskiBgAvif from "../assets/images/beers/bg/kaski/kaski-bg.avif"
+import kaskiBgWebp from "../assets/images/beers/bg/kaski/kaski-bg.webp"
+import kaskiBgJpg from "../assets/images/beers/bg/kaski/kaski-bg.jpg"
+
+import kesailtaBgAvif from "../assets/images/beers/bg/kesailta/kesailta-bg.avif"
+import kesailtaBgWebp from "../assets/images/beers/bg/kesailta/kesailta-bg.webp"
+import kesailtaBgJpg from "../assets/images/beers/bg/kesailta/kesailta-bg.jpg"
+
+import kevatkylmaBgAvif from "../assets/images/beers/bg/kevatkylma/kevatkylma-bg.avif"
+import kevatkylmaBgWebp from "../assets/images/beers/bg/kevatkylma/kevatkylma-bg.webp"
+import kevatkylmaBgJpg from "../assets/images/beers/bg/kevatkylma/kevatkylma-bg.jpg"
+
+import kuusenkerkkaBgAvif from "../assets/images/beers/bg/kuusenkerkka/kuusenkerkka-bg.avif"
+import kuusenkerkkaBgWebp from "../assets/images/beers/bg/kuusenkerkka/kuusenkerkka-bg.webp"
+import kuusenkerkkaBgJpg from "../assets/images/beers/bg/kuusenkerkka/kuusenkerkka-bg.jpg"
+
+import luotolampiBgAvif from "../assets/images/beers/bg/luotolampi/luotolampi-bg.avif"
+import luotolampiBgWebp from "../assets/images/beers/bg/luotolampi/luotolampi-bg.webp"
+import luotolampiBgJpg from "../assets/images/beers/bg/luotolampi/luotolampi-bg.jpg"
+
+import metsamarjaBgAvif from "../assets/images/beers/bg/metsamarja/metsamarja-bg.avif"
+import metsamarjaBgWebp from "../assets/images/beers/bg/metsamarja/metsamarja-bg.webp"
+import metsamarjaBgJpg from "../assets/images/beers/bg/metsamarja/metsamarja-bg.jpg"
+
+import pellavaBgAvif from "../assets/images/beers/bg/pellava/pellava-bg.avif"
+import pellavaBgWebp from "../assets/images/beers/bg/pellava/pellava-bg.webp"
+import pellavaBgJpg from "../assets/images/beers/bg/pellava/pellava-bg.jpg"
+
+import savusahtiBgAvif from "../assets/images/beers/bg/savusahti/savusahti-bg.avif"
+import savusahtiBgWebp from "../assets/images/beers/bg/savusahti/savusahti-bg.webp"
+import savusahtiBgJpg from "../assets/images/beers/bg/savusahti/savusahti-bg.jpg"
+
+import talviyoBgAvif from "../assets/images/beers/bg/talviyo/talviyo-bg.avif"
+import talviyoBgWebp from "../assets/images/beers/bg/talviyo/talviyo-bg.webp"
+import talviyoBgJpg from "../assets/images/beers/bg/talviyo/talviyo-bg.jpg"
+
+import tervaBgAvif from "../assets/images/beers/bg/terva/terva-bg.avif"
+import tervaBgWebp from "../assets/images/beers/bg/terva/terva-bg.webp"
+import tervaBgJpg from "../assets/images/beers/bg/terva/terva-bg.jpg"
+
+import yotaivasBgAvif from "../assets/images/beers/bg/yotaivas/yotaivas-bg.avif"
+import yotaivasBgWebp from "../assets/images/beers/bg/yotaivas/yotaivas-bg.webp"
+import yotaivasBgJpg from "../assets/images/beers/bg/yotaivas/yotaivas-bg.jpg"
 
 // Bottles
-import bockBottle from "../images/beers/no-bg/bock.png"
-import juniperBottle from "../images/beers/no-bg/juniper.png"
-import kaskiBottle from "../images/beers/no-bg/kaski.png"
-import kesailtaBottle from "../images/beers/no-bg/kesailta.png"
-import kevatkylmaBottle from "../images/beers/no-bg/kevatkylma.png"
-import kuusenkerkkaBottle from "../images/beers/no-bg/kuusenkerkka.png"
-import luotolampiBottle from "../images/beers/no-bg/luotolampi.png"
-import metsamarjaBottle from "../images/beers/no-bg/metsamarja.png"
-import pellavaBottle from "../images/beers/no-bg/pellava.png"
-import savusahtiBottle from "../images/beers/no-bg/savusahti.png"
-import talviyoBottle from "../images/beers/no-bg/talviyo.png"
-import tervaBottle from "../images/beers/no-bg/terva.png"
-import yotaivasBottle from "../images/beers/no-bg/yotaivas.png"
+import bockBottlePng from "../assets/images/beers/no-bg/bock/bock.png"
+import juniperBottlePng from "../assets/images/beers/no-bg/juniper/juniper.png"
+import kaskiBottlePng from "../assets/images/beers/no-bg/kaski/kaski.png"
+import kesailtaBottlePng from "../assets/images/beers/no-bg/kesailta/kesailta.png"
+import kevatkylmaBottlePng from "../assets/images/beers/no-bg/kevatkylma/kevatkylma.png"
+import kuusenkerkkaBottlePng from "../assets/images/beers/no-bg/kuusenkerkka/kuusenkerkka.png"
+import luotolampiBottlePng from "../assets/images/beers/no-bg/luotolampi/luotolampi.png"
+import metsamarjaBottlePng from "../assets/images/beers/no-bg/metsamarja/metsamarja.png"
+import pellavaBottlePng from "../assets/images/beers/no-bg/pellava/pellava.png"
+import savusahtiBottlePng from "../assets/images/beers/no-bg/savusahti/savusahti.png"
+import talviyoBottlePng from "../assets/images/beers/no-bg/talviyo/talviyo.png"
+import tervaBottlePng from "../assets/images/beers/no-bg/terva/terva.png"
+import yotaivasBottlePng from "../assets/images/beers/no-bg/yotaivas/yotaivas.png"
 
 export const products = [
     {
         id: 1,
         name: "Mänty Bock",
-        sbg: bockSbg,
-        bg: bockBg,
-        bottle: bockBottle,
+        sbg: {
+            avif: bockSbgAvif,
+            webp: bockSbgWebp,
+            fallback: bockSbgJpg
+        },
+        bg: {
+            avif: bockBgAvif,
+            webp: bockBgWebp,
+            fallback: bockBgJpg
+        },
+        bottle: bockBottlePng,
         price: 4.90,
         alcohol: 6.7,
         volume: 0.33,
@@ -67,9 +151,17 @@ export const products = [
     {
         id: 2,
         name: "Juniper Pale Ale",
-        sbg: juniperSbg,
-        bg: juniperBg,
-        bottle: juniperBottle,
+        sbg: {
+            avif: juniperSbgAvif,
+            webp: juniperSbgWebp,
+            fallback: juniperSbgJpg
+        },
+        bg: {
+            avif: juniperBgAvif,
+            webp: juniperBgWebp,
+            fallback: juniperBgJpg
+        },
+        bottle: juniperBottlePng,
         price: 4.70,
         alcohol: 5.2,
         volume: 0.33,
@@ -87,9 +179,17 @@ export const products = [
     {
         id: 3,
         name: "Kaski Red Ale",
-        sbg: kaskiSbg,
-        bg: kaskiBg,
-        bottle: kaskiBottle,
+        sbg: {
+            avif: kaskiSbgAvif,
+            webp: kaskiSbgWebp,
+            fallback: kaskiSbgJpg
+        },
+        bg: {
+            avif: kaskiBgAvif,
+            webp: kaskiBgWebp,
+            fallback: kaskiBgJpg
+        },
+        bottle: kaskiBottlePng,
         price: 4.80,
         alcohol: 5.5,
         volume: 0.33,
@@ -107,9 +207,17 @@ export const products = [
     {
         id: 4,
         name: "Kesäilta Session Ipa",
-        sbg: kesailtaSbg,
-        bg: kesailtaBg,
-        bottle: kesailtaBottle,
+        sbg: {
+            avif: kesailtaSbgAvif,
+            webp: kesailtaSbgWebp,
+            fallback: kesailtaSbgJpg
+        },
+        bg: {
+            avif: kesailtaBgAvif,
+            webp: kesailtaBgWebp,
+            fallback: kesailtaBgJpg
+        },
+        bottle: kesailtaBottlePng,
         price: 4.50,
         alcohol: 4.2,
         volume: 0.33,
@@ -127,9 +235,17 @@ export const products = [
     {
         id: 5,
         name: "Kevätkylmä Lager",
-        sbg: kevatkylmaSbg,
-        bg: kevatkylmaBg,
-        bottle: kevatkylmaBottle,
+        sbg: {
+            avif: kevatkylmaSbgAvif,
+            webp: kevatkylmaSbgWebp,
+            fallback: kevatkylmaSbgJpg
+        },
+        bg: {
+            avif: kevatkylmaBgAvif,
+            webp: kevatkylmaBgWebp,
+            fallback: kevatkylmaBgJpg
+        },
+        bottle: kevatkylmaBottlePng,
         price: 4.50,
         alcohol: 4.7,
         volume: 0.33,
@@ -146,9 +262,17 @@ export const products = [
     {
         id: 6,
         name: "Kuusenkerkkä Ipa",
-        sbg: kuusenkerkkaSbg,
-        bg: kuusenkerkkaBg,
-        bottle: kuusenkerkkaBottle,
+        sbg: {
+            avif: kuusenkerkkaSbgAvif,
+            webp: kuusenkerkkaSbgWebp,
+            fallback: kuusenkerkkaSbgJpg
+        },
+        bg: {
+            avif: kuusenkerkkaBgAvif,
+            webp: kuusenkerkkaBgWebp,
+            fallback: kuusenkerkkaBgJpg
+        },
+        bottle: kuusenkerkkaBottlePng,
         price: 5.20,
         alcohol: 5.5,
         volume: 0.33,
@@ -166,9 +290,17 @@ export const products = [
     {
         id: 7,
         name: "Luotolampi Wheat Ale",
-        sbg: luotolmapiSbg,
-        bg: luotolampiBg,
-        bottle: luotolampiBottle,
+        sbg: {
+            avif: luotolampiSbgAvif,
+            webp: luotolampiSbgWebp,
+            fallback: luotolampiSbgJpg
+        },
+        bg: {
+            avif: luotolampiBgAvif,
+            webp: luotolampiBgWebp,
+            fallback: luotolampiBgJpg
+        },
+        bottle: luotolampiBottlePng,
         price: 4.80,
         alcohol: 4.8,
         volume: 0.33,
@@ -185,9 +317,17 @@ export const products = [
     {
         id: 8,
         name: "Metsämarja Stout",
-        sbg: metsamarjaSbg,
-        bg: metsamarjaBg,
-        bottle: metsamarjaBottle,
+        sbg: {
+            avif: metsamarjaSbgAvif,
+            webp: metsamarjaSbgWebp,
+            fallback: metsamarjaSbgJpg
+        },
+        bg: {
+            avif: metsamarjaBgAvif,
+            webp: metsamarjaBgWebp,
+            fallback: metsamarjaBgJpg
+        },
+        bottle: metsamarjaBottlePng,
         price: 5.40,
         alcohol: 5.9,
         volume: 0.33,
@@ -204,9 +344,17 @@ export const products = [
     {
         id: 9,
         name: "Pellava Blonde Ale",
-        sbg: pellavaSbg,
-        bg: pellavaBg,
-        bottle: pellavaBottle,
+        sbg: {
+            avif: pellavaSbgAvif,
+            webp: pellavaSbgWebp,
+            fallback: pellavaSbgJpg
+        },
+        bg: {
+            avif: pellavaBgAvif,
+            webp: pellavaBgWebp,
+            fallback: pellavaBgJpg
+        },
+        bottle: pellavaBottlePng,
         price: 4.80,
         alcohol: 4.9,
         volume: 0.33,
@@ -223,9 +371,17 @@ export const products = [
     {
         id: 10,
         name: "Savusahti Farmhouse Ale",
-        sbg: savusahtiSbg,
-        bg: savusahtiBg,
-        bottle: savusahtiBottle,
+        sbg: {
+            avif: savusahtiSbgAvif,
+            webp: savusahtiSbgWebp,
+            fallback: savusahtiSbgJpg
+        },
+        bg: {
+            avif: savusahtiBgAvif,
+            webp: savusahtiBgWebp,
+            fallback: savusahtiBgJpg
+        },
+        bottle: savusahtiBottlePng,
         price: 5.60,
         alcohol: 6.2,
         volume: 0.33,
@@ -244,9 +400,17 @@ export const products = [
     {
         id: 11,
         name: "Talviyö Winter Ale",
-        sbg: talviyoSbg,
-        bg: talviyoBg,
-        bottle: talviyoBottle,
+        sbg: {
+            avif: talviyoSbgAvif,
+            webp: talviyoSbgWebp,
+            fallback: talviyoSbgJpg
+        },
+        bg: {
+            avif: talviyoBgAvif,
+            webp: talviyoBgWebp,
+            fallback: talviyoBgJpg
+        },
+        bottle: talviyoBottlePng,
         price: 5.60,
         alcohol: 6.5,
         volume: 0.33,
@@ -264,9 +428,17 @@ export const products = [
     {
         id: 12,
         name: "Tervaporter",
-        sbg: tervaSbg,
-        bg: tervaBg,
-        bottle: tervaBottle,
+        sbg: {
+            avif: tervaSbgAvif,
+            webp: tervaSbgWebp,
+            fallback: tervaSbgJpg
+        },
+        bg: {
+            avif: tervaBgAvif,
+            webp: tervaBgWebp,
+            fallback: tervaBgJpg
+        },
+        bottle: tervaBottlePng,
         price: 5.60,
         alcohol: 6.8,
         volume: 0.33,
@@ -284,9 +456,17 @@ export const products = [
     {
         id: 13,
         name: "Yötaivas Imperial Stout",
-        sbg: yotaivasSbg,
-        bg: yotaivasBg,
-        bottle: yotaivasBottle,
+        sbg: {
+            avif: yotaivasSbgAvif,
+            webp: yotaivasSbgWebp,
+            fallback: yotaivasSbgJpg
+        },
+        bg: {
+            avif: yotaivasBgAvif,
+            webp: yotaivasBgWebp,
+            fallback: yotaivasBgJpg
+        },
+        bottle: yotaivasBottlePng,
         price: 6.20,
         alcohol: 9.2,
         volume: 0.33,

@@ -1,9 +1,12 @@
 import { useRef, useState } from 'react'
 import "../style/Contact.css"
-import contactImage from "../images/contact.png"
 import emailjs from '@emailjs/browser'
-import { ReactComponent as CorrectSVG } from "../images/icons/correct.svg"
-import { ReactComponent as WrongSVG } from "../images/icons/wrong.svg"
+import { ReactComponent as CorrectSVG } from "../assets/icons/correct.svg"
+import { ReactComponent as WrongSVG } from "../assets/icons/wrong.svg"
+
+import contactAvif from "../assets/images/contact/contact.avif"
+import contactWebp from "../assets/images/contact/contact.webp"
+import contactJpg from "../assets/images/contact/contact.jpg"
 
 export default function Contact() {
   const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID
@@ -50,7 +53,11 @@ export default function Contact() {
   return (
     <div className='contact-page'>
       <div className="contact-image-container">
-        <img className="contact-image" src={contactImage} alt="A man holding two beers" />
+        <picture>
+          <source srcSet={contactAvif} type='image/avif' />
+          <source srcSet={contactWebp} type='image/webp' />
+          <img src={contactJpg} className="contact-image" alt='A man holding two beers' />
+        </picture>
       </div>
 
       <div className='contact-info-wrapper'>

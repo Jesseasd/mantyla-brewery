@@ -18,17 +18,23 @@ html {
   height: 100vh;
 }
 
+.video-stage {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  pointer-events: none;
+}
+
 .video-container2 {
+  position: absolute;
+  left: 50%;
+  top: 50%;
   width: 25rem;
   height: 40rem;
-  position: absolute;
-  transform-origin: center center;
-  will-change: width, height;
+  transform: translate(-50%, -50%);
   opacity: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
 }
 
 video {
@@ -99,25 +105,44 @@ video {
 }
 
 .horizontal-image1 {
-  background-image: url(../images/about-images/garage.png);
+  background-image: image-set(
+    url("../assets/images/about-images/garage/garage.avif") type("image/avif"),
+    url("../assets/images/about-images/garage/garage.webp") type("image/webp"),
+    url("../assets/images/about-images/garage/garage.jpg") type("image/jpeg")
+  );
   background-position: 25% 60%;
 }
 
 .horizontal-image2 {
-  background-image: url(../images/about-images/acid.png)
+  background-image: image-set(
+    url("../assets/images/about-images/acid/acid.avif") type("image/avif"),
+    url("../assets/images/about-images/acid/acid.webp") type("image/webp"),
+    url("../assets/images/about-images/acid/acid.jpg") type("image/jpeg")
+  );
 }
 
-.horizontal-image3 {
-  
-  background-image: url(../images/about-images/barrels.jpg);
+.horizontal-image3 { 
+  background-image: image-set(
+    url("../assets/images/about-images/barrels/barrels.avif") type("image/avif"),
+    url("../assets/images/about-images/barrels/barrels.webp") type("image/webp"),
+    url("../assets/images/about-images/barrels/barrels.jpg") type("image/jpeg")
+  );
 }
 
 .horizontal-image4 {
-  background-image: url(../images/about-images/pour.png);
+  background-image: image-set(
+    url("../assets/images/about-images/pour/pour.avif") type("image/avif"),
+    url("../assets/images/about-images/pour/pour.webp") type("image/webp"),
+    url("../assets/images/about-images/pour/pour.png") type("image/png")
+  );
 }
 
 .horizontal-image5 {
-  background-image: url(../images/about-images/beers.png);
+  background-image: image-set(
+    url("../assets/images/about-images/beers/beers.avif") type("image/avif"),
+    url("../assets/images/about-images/beers/beers.webp") type("image/webp"),
+    url("../assets/images/about-images/beers/beers.jpg") type("image/jpeg")
+  );
 }
 
 .wrapper {
@@ -128,7 +153,11 @@ video {
   width: 100vw;
   height: 300vh;
   top: 0;
-  background-image: url(../images/about-images/cheers.png);
+  background-image: image-set(
+    url("../assets/images/about-images/cheers/cheers.avif") type("image/avif"),
+    url("../assets/images/about-images/cheers/cheers.webp") type("image/webp"),
+    url("../assets/images/about-images/cheers/cheers.jpg") type("image/jpeg")
+  );
   display: flex;
   justify-content: center;
   background-position: 10% 80%;
@@ -157,13 +186,17 @@ video {
 }
 
 .text-item1 {
-  z-index: 998;
   position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  text-align: center;
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
   color: var(--color-text-primary);
   font-size: var(--font-size-paragraph-small);
   opacity: 0;
+  z-index: 998;
   padding: 0 10vw;
   transform: scale(.5);
 }

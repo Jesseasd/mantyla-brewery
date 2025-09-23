@@ -1,8 +1,38 @@
 import { useEffect } from 'react'
-import { ReactComponent as Cone } from "../images/pine-cone/cone.svg"
-import { ReactComponent as ButtonArrow } from "../images/icons/button-arrow.svg"
+import { ReactComponent as Cone } from "../assets/icons/cone.svg"
+import { ReactComponent as ButtonArrow } from "../assets/icons/button-arrow.svg"
 import "../style/Home.css"
 import { useNavigate } from 'react-router-dom'
+
+// Call to action images
+import beersWideAvif from "../assets/images/beers-wide/beers-wide.avif"
+import beersWideWebp from "../assets/images/beers-wide/beers-wide.webp"
+import beersWideJpg from "../assets/images/beers-wide/beers-wide.jpg"
+
+import garageAvif from "../assets/images/garage/garage.avif"
+import garageWebp from "../assets/images/garage/garage.webp"
+import garageJpg from "../assets/images/garage/garage.jpg"
+
+import contactUsAvif from "../assets/images/contact-us/contact-us.avif"
+import contactUsWebp from "../assets/images/contact-us/contact-us.webp"
+import contactUsJpg from "../assets/images/contact-us/contact-us.jpg"
+
+// Highlights images
+import metsamarjaAvif from "../assets/images/metsamarja/metsamarja.avif"
+import metsamarjaWebp from "../assets/images/metsamarja/metsamarja.webp"
+import metsamarjaJpg from "../assets/images/metsamarja/metsamarja.jpg"
+
+import juniperAvif from "../assets/images/juniper/juniper.avif"
+import juniperWebp from "../assets/images/juniper/juniper.webp"
+import juniperJpg from "../assets/images/juniper/juniper.jpg"
+
+import pellavaAvif from "../assets/images/pellava/pellava.avif"
+import pellavaWebp from "../assets/images/pellava/pellava.webp"
+import pellavaJpg from "../assets/images/pellava/pellava.jpg"
+
+import kuusenkerkkaAvif from "../assets/images/kuusenkerkka/kuusenkerkka.avif"
+import kuusenkerkkaWebp from "../assets/images/kuusenkerkka/kuusenkerkka.webp"
+import kuusenkerkkaJpg from "../assets/images/kuusenkerkka/kuusenkerkka.jpg"
 
 export default function Home() {
   const navigate = useNavigate()
@@ -64,7 +94,11 @@ export default function Home() {
 
         <div className='section'>
           <div className='image'>
-            <img src={require('../images/beers-wide.png')} alt='' />
+            <picture>
+              <source srcSet={beersWideAvif} type='image/avif' />
+              <source srcSet={beersWideWebp} type='image/webp' />
+              <img src={beersWideJpg} alt='' />
+            </picture>
 
             <div className='home-wrapper'>
               <h3>Tutustu oluisiimme</h3>
@@ -86,7 +120,11 @@ export default function Home() {
 
         <div className='section'>
           <div className='image'>
-            <img src={require('../images/garage.png')} className='image2' alt='' />
+            <picture>
+              <source srcSet={garageAvif} type='image/avif' />
+              <source srcSet={garageWebp} type='image/webp' />
+              <img src={garageJpg} alt='' />
+            </picture>
 
             <div className='home-wrapper'>
               <h3>Panimon juuret</h3>
@@ -108,7 +146,11 @@ export default function Home() {
 
         <div className='section'>
           <div className='image'>
-            <img src={require('../images/contact-us.png')} className='image2' alt='' />
+            <picture>
+              <source srcSet={contactUsAvif} type='image/avif' />
+              <source srcSet={contactUsWebp} type='image/webp' />
+              <img src={contactUsJpg} alt='' />
+            </picture>
 
             <div className='home-wrapper'>
               <h3>Kerro asiasi</h3>
@@ -139,7 +181,11 @@ export default function Home() {
             onClick={() => navigate("/product/8")}
           >
             <p>Metsämarja Stout</p>
-            <img src={require("../images/metsamarja.png")} alt='metsämarja stout' />
+            <picture>
+              <source srcSet={metsamarjaAvif} type='image/avif' />
+              <source srcSet={metsamarjaWebp} type='image/webp' />
+              <img src={metsamarjaJpg} alt='Metsämarja Stout' />
+            </picture>
           </div>
 
           <div 
@@ -147,7 +193,11 @@ export default function Home() {
             onClick={() => navigate("/product/2")}
           >
             <p>Juniper Pale Ale</p>
-            <img src={require("../images/juniper.png")} alt='metsämarja stout' />
+            <picture>
+              <source srcSet={juniperAvif} type='image/avif' />
+              <source srcSet={juniperWebp} type='image/webp' />
+              <img src={juniperJpg} alt='Juniper Pale Ale' />
+            </picture>
           </div>
 
           <div 
@@ -155,7 +205,11 @@ export default function Home() {
             onClick={() => navigate("/product/9")}
           >
             <p>Pellava Blonde Ale</p>
-            <img src={require("../images/pellava.png")} alt='metsämarja stout' />
+            <picture>
+              <source srcSet={pellavaAvif} type='image/avif' />
+              <source srcSet={pellavaWebp} type='image/webp' />
+              <img src={pellavaJpg} alt='Pellava Blonde Ale' />
+            </picture>
           </div>
 
           <div 
@@ -163,7 +217,11 @@ export default function Home() {
             onClick={() => navigate("/product/6")}
           >
             <p>kuusenkerkkä IPA</p>
-            <img src={require("../images/kuusenkerkka.png")} alt='metsämarja stout' />
+            <picture>
+              <source srcSet={kuusenkerkkaAvif} type='image/avif' />
+              <source srcSet={kuusenkerkkaWebp} type='image/webp' />
+              <img src={kuusenkerkkaJpg} alt='Kuusenkerkkä IPA' />
+            </picture>
           </div>
         </div>
 

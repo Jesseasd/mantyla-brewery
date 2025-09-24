@@ -10,6 +10,7 @@ import { ReactComponent as SaunaIcon } from "../assets/icons/sauna.svg"
 import { ReactComponent as DiningIcon } from "../assets/icons/dining.svg"
 import { ReactComponent as SunsetIcon } from "../assets/icons/sunset.svg"
 import { ReactComponent as CampfireIcon } from "../assets/icons/campfire.svg"
+import { ReactComponent as ConeIcon } from "../assets/icons/cone.svg"
 import { useCart } from "../contexts/CartContext"
 
 // Register gsap
@@ -21,6 +22,18 @@ export default function Product() {
     const bottleRef = useRef(null)
     const infoRef = useRef(null)
     const amountRef = useRef(null)
+    const bgRef = useRef(null)
+
+    // Image loading state
+    const [imagesLoaded, setImagesLoaded] = useState(false)
+    const toLoadCount = 2       // Two images to load
+    const loadedCountRef = useRef(0)    // How many images have finished loading
+
+    // When all images have loaded -> setImagesLoaded(true)
+    const markLoaded = () => {
+        loadedCountRef.current += 1
+        if (loadedCountRef.current >= toLoadCount) setImagesLoaded(true)
+    }
 
     // Hook for adding items to cart (from cartContext)
     const { addToCart } = useCart()
@@ -84,6 +97,7 @@ export default function Product() {
 
     // Run gsap animations once on mount
     useLayoutEffect(() => {
+        if (!imagesLoaded) return   // Wait for images to load
         let ctx = gsap.context(() => {
             // Place bottle in the center first
             gsap.set(bottleRef.current, {
@@ -133,15 +147,24 @@ export default function Product() {
 
         // Cleanup gsap on unmount
         return () => ctx.revert()
-    }, [])
+    }, [imagesLoaded])
 
     // If no product found for this id -> fallback
     if (!product) {
         return <div>Tuotetta ei löytynyt.</div>
     }
 
+    // Loader
+    
+
     return (
-        <div className="product-page" ref={component}>
+        <div className={`product-page ${!imagesLoaded ? "is-loading" : ""}`} ref={component}>
+            {!imagesLoaded && (
+                <div className="loader-overlay" role="status" aria-live="polite">
+                    <ConeIcon className="loader-cone" />
+                </div>
+            )}
+            
             <div className="product-page-container">
                 <div className="product-page-info" ref={infoRef}>
                     <h1>
@@ -169,16 +192,26 @@ export default function Product() {
                     <picture>
                         <source srcSet={product.bg.avif} type="image/avif" />
                         <source srcSet={product.bg.webp} type="image/webp" />
-                        <img 
+                        <img
+                            ref={bgRef}
                             className="product-page-bg-image" 
                             src={product.bg} 
                             alt={product.name} 
                             loading="eager"
-                            fetchPriority="high"
+                            fetchpriority="high"
                             decoding="async"
+                            onLoad={markLoaded}
+                            onError={markLoaded}
                         />
                     </picture>
-                    <img className="product-page-bottle-image" src={product.bottle} alt={product.name} ref={bottleRef} />
+                    <img 
+                        className="product-page-bottle-image" 
+                        src={product.bottle} 
+                        alt={product.name} 
+                        ref={bottleRef}
+                        onLoad={markLoaded}
+                        onError={markLoaded}
+                    />
                 </div>
                 <div className="add-to-cart-section" ref={amountRef}>
                     <div className="amount-wrapper">

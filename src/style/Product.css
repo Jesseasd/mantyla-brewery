@@ -2,6 +2,32 @@
   margin-bottom: clamp(5rem, 15vw, 50rem);
 }
 
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background-color: var(--color-bg-primary);
+  z-index: 999;
+}
+
+.loader-cone {
+  width: 2.4rem;
+  height: auto;
+  display: inline-block;
+  opacity: 0.6;
+  animation: fadePulse 1.1s ease-in-out infinite alternate;
+  will-change: opacity;
+}
+
+.loader-cone .cls-1 {
+  stroke: #fff;
+}
+
+@keyframes fadePulse {
+  to { opacity: 1; }
+}
+
 .product-page-container {
   position: relative;
   display: flex;

@@ -1,59 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://www.mantylabrewery.fi/</loc>
+        <loc>https://mantylabrewery.netlify.app/</loc>
     </url>
     <url>
-        <loc>https://www.mantylabrewery.fi/about</loc>
+        <loc>https://mantylabrewery.netlify.app/about</loc>
     </url>
     <url>
-        <loc>https://www.mantylabrewery.fi/shop</loc>
+        <loc>https://mantylabrewery.netlify.app/shop</loc>
     </url>
     <url>
-        <loc>https://www.mantylabrewery.fi/contact</loc>
+        <loc>https://mantylabrewery.netlify.app/contact</loc>
     </url>
     <url>
-        <loc>https://www.mantylabrewery.fi/cart</loc>
+        <loc>https://mantylabrewery.netlify.app/cart</loc>
     </url>
 
     <!-- Products -->
     <url>
-        <loc>https://www.mantylabrewery.fi/product/1</loc>
+        <loc>https://mantylabrewery.netlify.app/product/1</loc>
     </url>
     <url>
-        <loc>https://www.mantylabrewery.fi/product/2</loc>
+        <loc>https://mantylabrewery.netlify.app/product/2</loc>
     </url>
     <url>
-        <loc>https://www.mantylabrewery.fi/product/3</loc>
+        <loc>https://mantylabrewery.netlify.app/product/3</loc>
     </url>
     <url>
-        <loc>https://www.mantylabrewery.fi/product/4</loc>
+        <loc>https://mantylabrewery.netlify.app/product/4</loc>
     </url>
     <url>
-        <loc>https://www.mantylabrewery.fi/product/5</loc>
+        <loc>https://mantylabrewery.netlify.app/product/5</loc>
     </url>
     <url>
-        <loc>https://www.mantylabrewery.fi/product/6</loc>
+        <loc>https://mantylabrewery.netlify.app/product/6</loc>
     </url>
     <url>
-        <loc>https://www.mantylabrewery.fi/product/7</loc>
+        <loc>https://mantylabrewery.netlify.app/product/7</loc>
     </url>
     <url>
-        <loc>https://www.mantylabrewery.fi/product/8</loc>
+        <loc>https://mantylabrewery.netlify.app/product/8</loc>
     </url>
     <url>
-        <loc>https://www.mantylabrewery.fi/product/9</loc>
+        <loc>https://mantylabrewery.netlify.app/product/9</loc>
     </url>
     <url>
-        <loc>https://www.mantylabrewery.fi/product/10</loc>
+        <loc>https://mantylabrewery.netlify.app/product/10</loc>
     </url>
     <url>
-        <loc>https://www.mantylabrewery.fi/product/11</loc>
+        <loc>https://mantylabrewery.netlify.app/product/11</loc>
     </url>
     <url>
-        <loc>https://www.mantylabrewery.fi/product/12</loc>
+        <loc>https://mantylabrewery.netlify.app/product/12</loc>
     </url>
     <url>
-        <loc>https://www.mantylabrewery.fi/product/13</loc>
+        <loc>https://mantylabrewery.netlify.app/product/13</loc>
     </url>
 </urlset>

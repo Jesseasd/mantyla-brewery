@@ -1,8 +1,14 @@
-import { useEffect } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { ReactComponent as Cone } from "../assets/icons/cone.svg"
 import { ReactComponent as ButtonArrow } from "../assets/icons/button-arrow.svg"
 import "../style/Home.css"
 import { useNavigate } from 'react-router-dom'
+import Loader from '../components/Loader'
+
+// Hero image
+import bgAvif from "../assets/images/bg/bg.avif"
+import bgWebp from "../assets/images/bg/bg.webp"
+import bgJpg from "../assets/images/bg/bg.jpg"
 
 // Call to action images
 import beersWideAvif from "../assets/images/beers-wide/beers-wide.avif"
@@ -37,6 +43,17 @@ import kuusenkerkkaJpg from "../assets/images/kuusenkerkka/kuusenkerkka.jpg"
 export default function Home() {
   const navigate = useNavigate()
 
+  // Image loading state
+  const [imagesLoaded, setImagesLoaded] = useState(false)
+  const toLoadCount = 8       // Two images to load
+  const loadedCountRef = useRef(0)    // How many images have finished loading
+
+  // When all images have loaded -> setImagesLoaded(true)
+  const markLoaded = () => {
+    loadedCountRef.current += 1
+    if (loadedCountRef.current >= toLoadCount) setImagesLoaded(true)
+  }
+
   useEffect(() => {
     // Only run this on touch devices (no hover)
     const mm = window.matchMedia('(hover: none) and (pointer: coarse)')
@@ -70,7 +87,21 @@ export default function Home() {
   }, [])
 
   return (
-    <div className='home-container'>
+    <div className={`home-container ${!imagesLoaded ? "is-loading" : ""}`}>
+      {!imagesLoaded && (
+        <Loader />
+      )}
+
+      <picture className="bg-picture">
+        <source srcSet={bgAvif} type="image/avif" />
+        <source srcSet={bgWebp} type="image/webp" />
+        <img
+          src={bgJpg}
+          alt=""
+          onLoad={markLoaded}
+          onError={markLoaded}
+        />
+      </picture>
 
       <div className='home-hero'>
         <h1 className='heading1'>Mäntylä</h1>
@@ -97,7 +128,12 @@ export default function Home() {
             <picture>
               <source srcSet={beersWideAvif} type='image/avif' />
               <source srcSet={beersWideWebp} type='image/webp' />
-              <img src={beersWideJpg} alt='' />
+              <img 
+                src={beersWideJpg} 
+                alt='' 
+                onLoad={markLoaded}
+                onError={markLoaded}
+              />
             </picture>
 
             <div className='home-wrapper'>
@@ -123,7 +159,12 @@ export default function Home() {
             <picture>
               <source srcSet={garageAvif} type='image/avif' />
               <source srcSet={garageWebp} type='image/webp' />
-              <img src={garageJpg} alt='' />
+              <img 
+                src={garageJpg} 
+                alt='' 
+                onLoad={markLoaded}
+                onError={markLoaded}
+              />
             </picture>
 
             <div className='home-wrapper'>
@@ -149,7 +190,12 @@ export default function Home() {
             <picture>
               <source srcSet={contactUsAvif} type='image/avif' />
               <source srcSet={contactUsWebp} type='image/webp' />
-              <img src={contactUsJpg} alt='' />
+              <img 
+                src={contactUsJpg} 
+                alt='' 
+                onLoad={markLoaded}
+                onError={markLoaded}
+              />
             </picture>
 
             <div className='home-wrapper'>
@@ -184,7 +230,12 @@ export default function Home() {
             <picture>
               <source srcSet={metsamarjaAvif} type='image/avif' />
               <source srcSet={metsamarjaWebp} type='image/webp' />
-              <img src={metsamarjaJpg} alt='Metsämarja Stout' />
+              <img 
+                src={metsamarjaJpg} 
+                alt='Metsämarja Stout'
+                onLoad={markLoaded}
+                onError={markLoaded}
+              />
             </picture>
           </div>
 
@@ -196,7 +247,12 @@ export default function Home() {
             <picture>
               <source srcSet={juniperAvif} type='image/avif' />
               <source srcSet={juniperWebp} type='image/webp' />
-              <img src={juniperJpg} alt='Juniper Pale Ale' />
+              <img 
+                src={juniperJpg} 
+                alt='Juniper Pale Ale' 
+                onLoad={markLoaded}
+                onError={markLoaded}
+              />
             </picture>
           </div>
 
@@ -208,7 +264,12 @@ export default function Home() {
             <picture>
               <source srcSet={pellavaAvif} type='image/avif' />
               <source srcSet={pellavaWebp} type='image/webp' />
-              <img src={pellavaJpg} alt='Pellava Blonde Ale' />
+              <img 
+                src={pellavaJpg} 
+                alt='Pellava Blonde Ale'
+                onLoad={markLoaded}
+                onError={markLoaded}
+              />
             </picture>
           </div>
 
@@ -220,7 +281,12 @@ export default function Home() {
             <picture>
               <source srcSet={kuusenkerkkaAvif} type='image/avif' />
               <source srcSet={kuusenkerkkaWebp} type='image/webp' />
-              <img src={kuusenkerkkaJpg} alt='Kuusenkerkkä IPA' />
+              <img 
+                src={kuusenkerkkaJpg} 
+                alt='Kuusenkerkkä IPA' 
+                onLoad={markLoaded}
+                onError={markLoaded}
+              />
             </picture>
           </div>
         </div>

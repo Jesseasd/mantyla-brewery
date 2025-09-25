@@ -1,4 +1,4 @@
-import { useRef, useLayoutEffect } from 'react'
+import { useRef, useLayoutEffect, useState } from 'react'
 import "../style/About.css"
 import aboutHeroMp4 from "../assets/videos/about-hero-video/about-hero-video.mp4"
 import aboutHeroWebm from "../assets/videos/about-hero-video/about-hero-video.webm"
@@ -9,14 +9,62 @@ import { useGSAP } from "@gsap/react"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import SplitType from 'split-type'
 import { ReactComponent as Cone } from "../assets/icons/cone.svg"
+import Loader from "../components/Loader"
+
+// Horizontal images
+import garageAvif from "../assets/images/about-images/garage/garage.avif"
+import garageWebp from "../assets/images/about-images/garage/garage.webp"
+import garageJpg from "../assets/images/about-images/garage/garage.jpg"
+
+import acidAvif from "../assets/images/about-images/acid/acid.avif"
+import acidWebp from "../assets/images/about-images/acid/acid.webp"
+import acidJpg from "../assets/images/about-images/acid/acid.jpg"
+
+import barrelsAvif from "../assets/images/about-images/barrels/barrels.avif"
+import barrelsWebp from "../assets/images/about-images/barrels/barrels.webp"
+import barrelsJpg from "../assets/images/about-images/barrels/barrels.jpg"
+
+import pourAvif from "../assets/images/about-images/pour/pour.avif"
+import pourWebp from "../assets/images/about-images/pour/pour.webp"
+import pourPng from "../assets/images/about-images/pour/pour.png"
+
+import beersAvif from "../assets/images/about-images/beers/beers.avif"
+import beersWebp from "../assets/images/about-images/beers/beers.webp"
+import beersJpg from "../assets/images/about-images/beers/beers.jpg"
+
+// Long section image
+import cheersAvif from "../assets/images/about-images/cheers/cheers.avif"
+import cheersWebp from "../assets/images/about-images/cheers/cheers.webp"
+import cheersJpg from "../assets/images/about-images/cheers/cheers.jpg"
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
 export default function About() {
+  // Loading state
+  const [videosLoaded, setVideosLoaded] = useState(false)
+  const [imagesLoaded, setImagesLoaded] = useState(false)
+  const videosToLoadCount = 2
+  const imagesToLoadCount = 6
+  const videosLoadedCountRef = useRef(0)
+  const imagesLoadedCountRef = useRef(0)
+
+  // When all images have loaded -> setVideosLoaded(true)
+  const markVideosLoaded = () => {
+    videosLoadedCountRef.current += 1
+    if (videosLoadedCountRef.current >= videosToLoadCount) setVideosLoaded(true)
+  }
+
+  const markImagesLoaded = () => {
+    imagesLoadedCountRef.current += 1
+    if (imagesLoadedCountRef.current >= imagesToLoadCount) setImagesLoaded(true)
+  }
+
   const component = useRef(null)
   const horizontalRef = useRef(null)
   
   useLayoutEffect(() => {
+    if (!videosLoaded || !imagesLoaded) return
+
     const splitTypes = document.querySelectorAll(".reveal")
 
     // Media query handler for responsive animations
@@ -198,10 +246,13 @@ export default function About() {
     // Clean up all animations when component unmounts
     return () => ctx.revert()
 
-  }, [])
+  }, [videosLoaded, imagesLoaded])
 
   return (
-    <div className='about-container' ref={component}>
+    <div className={`about-container ${!videosLoaded || !imagesLoaded ? "is-loading" : ""}`} ref={component}>
+      {(!videosLoaded || !imagesLoaded) && (
+        <Loader />
+      )}
 
       <div className='about-hero'>
         <div className='video-container'>
@@ -214,6 +265,8 @@ export default function About() {
             webkit-playsinline="true"
             controls={false}
             preload='metadata'
+            onLoadedData={markVideosLoaded}
+            onError={markVideosLoaded}
           >
             <source src={aboutHeroWebm} type='video/Webm' />
             <source src={aboutHeroMp4} type='video/mp4' />
@@ -238,6 +291,8 @@ export default function About() {
                 webkit-playsinline="true"
                 controls={false}
                 preload='auto'
+                onLoadedData={markVideosLoaded}
+                onError={markVideosLoaded}
               >
                 <source src={waterDropletsWebm} type='video/Webm' />
                 <source src={waterDropletsMp4} type='video/mp4' />
@@ -250,16 +305,111 @@ export default function About() {
 
       <div className='horizonatl-section' ref={horizontalRef}>
         <div className='horizontal'>
-            <div className='horizontal-image horizontal-image1 panel'></div>
-            <div className='horizontal-image horizontal-image2 panel'></div>
-            <div className='horizontal-image horizontal-image3 panel'></div>
-            <div className='horizontal-image horizontal-image4 panel'></div>
-            <div className='horizontal-image horizontal-image5 panel'></div>
+            <div className='horizontal-image horizontal-image1 panel'>
+
+              <picture>
+                <source srcSet={garageAvif} type="image/avif" />
+                <source srcSet={garageWebp} type="image/webp" />
+                <img
+                  className="product-page-bg-image" 
+                  src={garageJpg} 
+                  alt="Garage"
+                  loading="eager"
+                  fetchpriority="high"
+                  decoding="async"
+                  onLoad={markImagesLoaded}
+                  onError={markImagesLoaded}
+                />
+              </picture>
+            </div>
+
+            <div className='horizontal-image horizontal-image2 panel'>
+              <picture>
+                <source srcSet={acidAvif} type="image/avif" />
+                <source srcSet={acidWebp} type="image/webp" />
+                <img
+                  className="product-page-bg-image" 
+                  src={acidJpg} 
+                  alt="Laboratory"
+                  loading="eager"
+                  fetchpriority="high"
+                  decoding="async"
+                  onLoad={markImagesLoaded}
+                  onError={markImagesLoaded}
+                />
+              </picture>
+            </div>
+
+            <div className='horizontal-image horizontal-image3 panel'>
+              <picture>
+                <source srcSet={barrelsAvif} type="image/avif" />
+                <source srcSet={barrelsWebp} type="image/webp" />
+                <img
+                  className="product-page-bg-image" 
+                  src={barrelsJpg} 
+                  alt="Beer barrels"
+                  loading="eager"
+                  fetchpriority="high"
+                  decoding="async"
+                  onLoad={markImagesLoaded}
+                  onError={markImagesLoaded}
+                />
+              </picture>
+            </div>
+
+            <div className='horizontal-image horizontal-image4 panel'>
+              <picture>
+                <source srcSet={pourAvif} type="image/avif" />
+                <source srcSet={pourWebp} type="image/webp" />
+                <img
+                  className="product-page-bg-image" 
+                  src={pourPng} 
+                  alt="Beer poured to glass" 
+                  loading="eager"
+                  fetchpriority="high"
+                  decoding="async"
+                  onLoad={markImagesLoaded}
+                  onError={markImagesLoaded}
+                />
+              </picture>
+            </div>
+
+            <div className='horizontal-image horizontal-image5 panel'>
+              <picture>
+                <source srcSet={beersAvif} type="image/avif" />
+                <source srcSet={beersWebp} type="image/webp" />
+                <img
+                  className="product-page-bg-image" 
+                  src={beersJpg} 
+                  alt="beer"
+                  loading="eager"
+                  fetchpriority="high"
+                  decoding="async"
+                  onLoad={markImagesLoaded}
+                  onError={markImagesLoaded}
+                />
+              </picture>
+            </div>
+
         </div>
       </div>
 
       <div className='wrapper'>
         <div className='long'>
+          <picture>
+            <source srcSet={cheersAvif} type="image/avif" />
+            <source srcSet={cheersWebp} type="image/webp" />
+            <img
+              
+              src={cheersJpg} 
+              alt="Cheers"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+              onLoad={markImagesLoaded}
+              onError={markImagesLoaded}
+            />
+          </picture>
           <div className='text-section text-section2'>
             <div className='text-item text-item2'>
               <p className='text2'>Ensimmäinen erä, katajalla maustettu Pale Ale, tarjottiin ystäville ja perheelle – ja palaute oli ylitsevuotavan positiivista. Tämä kannusti kolmikkoa panostamaan panimotoimintaan kunnolla. Laitteet rakennettiin pääosin itse, ja reseptit kehitettiin huolella paikallisia raaka-aineita hyödyntäen.</p>

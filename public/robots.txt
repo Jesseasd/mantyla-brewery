@@ -11,4 +11,4 @@ Disallow: /cart/
 Allow: /
 
 # Point bots to sitemap
-Sitemap: https://www.mantylabrewery.fi/sitemap.xml
+Sitemap: https://mantylabrewery.netlify.app/sitemap.xml

@@ -2,6 +2,7 @@ import { useState, useLayoutEffect, useRef } from "react"
 import { useParams } from "react-router-dom"
 import { products } from "../data/Products"
 import "../style/Product.css"
+import "../style/Loader.css"
 import { gsap } from "gsap"
 import { useGSAP } from "@gsap/react"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
@@ -10,8 +11,8 @@ import { ReactComponent as SaunaIcon } from "../assets/icons/sauna.svg"
 import { ReactComponent as DiningIcon } from "../assets/icons/dining.svg"
 import { ReactComponent as SunsetIcon } from "../assets/icons/sunset.svg"
 import { ReactComponent as CampfireIcon } from "../assets/icons/campfire.svg"
-import { ReactComponent as ConeIcon } from "../assets/icons/cone.svg"
 import { useCart } from "../contexts/CartContext"
+import Loader from "../components/Loader"
 
 // Register gsap
 gsap.registerPlugin(useGSAP, ScrollTrigger)
@@ -154,15 +155,10 @@ export default function Product() {
         return <div>Tuotetta ei löytynyt.</div>
     }
 
-    // Loader
-    
-
     return (
         <div className={`product-page ${!imagesLoaded ? "is-loading" : ""}`} ref={component}>
             {!imagesLoaded && (
-                <div className="loader-overlay" role="status" aria-live="polite">
-                    <ConeIcon className="loader-cone" />
-                </div>
+                <Loader />
             )}
             
             <div className="product-page-container">

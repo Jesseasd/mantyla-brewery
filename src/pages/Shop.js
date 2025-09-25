@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import "../style/Shop.css"
 import { gsap } from "gsap"
 import { useGSAP } from "@gsap/react"
@@ -7,6 +7,7 @@ import { products } from "../data/Products"
 import { Link } from "react-router-dom"
 import shopHeroMp4 from "../assets/videos/shop-hero-video/shop-hero-video.mp4"
 import shopHeroWebm from "../assets/videos/shop-hero-video/shop-hero-video.webm"
+import Loader from '../components/Loader'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
@@ -14,7 +15,28 @@ export default function Shop() {
   const gridRef = useRef(null)
   const component = useRef(null)
 
+  // Loading state
+  const [videosLoaded, setVideosLoaded] = useState(false)
+  const [imagesLoaded, setImagesLoaded] = useState(false)
+  const videosToLoadCount = 1
+  const imagesToLoadCount = products.length
+  const videosLoadedCountRef = useRef(0)
+  const imagesLoadedCountRef = useRef(0)
+
+  // When all images have loaded -> setVideosLoaded(true)
+  const markVideosLoaded = () => {
+    videosLoadedCountRef.current += 1
+    if (videosLoadedCountRef.current >= videosToLoadCount) setVideosLoaded(true)
+  }
+
+  const markImagesLoaded = () => {
+    imagesLoadedCountRef.current += 1
+    if (imagesLoadedCountRef.current >= imagesToLoadCount) setImagesLoaded(true)
+  }
+
   useEffect(() => {
+    if (!videosLoaded || !imagesLoaded) return
+
     requestAnimationFrame(() => {
       // Animate product items in batches as they enter the viewport
       ScrollTrigger.batch(".product", {
@@ -55,10 +77,13 @@ export default function Shop() {
     // Cleanup
     return () => ctx.revert()
 
-  }, [])
+  }, [videosLoaded, imagesLoaded])
 
   return (
-    <div className='shop-container' ref={component}>
+    <div className={`shop-container ${!videosLoaded || !imagesLoaded ? "is-loading" : ""}`} ref={component}>
+      {!videosLoaded && (
+        <Loader />
+      )}
 
       <div className='title-container'>
         <div className='mask'></div>
@@ -71,6 +96,8 @@ export default function Shop() {
           webkit-playsinline="true"
           preload='metadata'
           controls={false}
+          onLoadedData={markVideosLoaded}
+          onError={markVideosLoaded}
         >
           <source src={shopHeroWebm} type='video/webm' />
           <source src={shopHeroMp4} type='video/mp4' />
@@ -88,7 +115,13 @@ export default function Shop() {
               <picture>
                 <source srcSet={product.sbg.avif} type="image/avif" />
                 <source srcSet={product.sbg.webp} type="image/webp" />
-                <img className='product-bg-image' src={product.sbg} alt={product.name} />
+                <img 
+                  className='product-bg-image'
+                  src={product.sbg}
+                  alt={product.name}
+                  onLoad={markImagesLoaded}
+                  onError={markImagesLoaded}
+                />
               </picture>
               <img className="product-bottle-image" src={product.bottle} alt={product.name} />
             </div>

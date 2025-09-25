@@ -3,6 +3,7 @@ import "../style/Contact.css"
 import emailjs from '@emailjs/browser'
 import { ReactComponent as CorrectSVG } from "../assets/icons/correct.svg"
 import { ReactComponent as WrongSVG } from "../assets/icons/wrong.svg"
+import Loader from '../components/Loader'
 
 import contactAvif from "../assets/images/contact/contact.avif"
 import contactWebp from "../assets/images/contact/contact.webp"
@@ -12,6 +13,17 @@ export default function Contact() {
   const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID
   const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID
   const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+
+  // Image loading state
+  const [imagesLoaded, setImagesLoaded] = useState(false)
+  const toLoadCount = 1       // Two images to load
+  const loadedCountRef = useRef(0)    // How many images have finished loading
+
+  // When all images have loaded -> setImagesLoaded(true)
+  const markLoaded = () => {
+      loadedCountRef.current += 1
+      if (loadedCountRef.current >= toLoadCount) setImagesLoaded(true)
+  }
 
   // Ref to access <form> element
   const form = useRef()
@@ -51,12 +63,21 @@ export default function Contact() {
   const isDisabled = status === "loading"
 
   return (
-    <div className='contact-page'>
+    <div className={`contact-page ${!imagesLoaded ? "is-loading" : ""}`}>
+      {!imagesLoaded && (
+        <Loader />
+      )}
       <div className="contact-image-container">
         <picture>
           <source srcSet={contactAvif} type='image/avif' />
           <source srcSet={contactWebp} type='image/webp' />
-          <img src={contactJpg} className="contact-image" alt='A man holding two beers' />
+          <img 
+            src={contactJpg} 
+            className="contact-image" 
+            alt='A man holding two beers' 
+            onLoad={markLoaded}
+            onError={markLoaded}
+          />
         </picture>
       </div>
 

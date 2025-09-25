@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
+import { gsap } from "gsap"
 import { ReactComponent as Cone } from "../assets/icons/cone.svg"
 import { ReactComponent as ButtonArrow } from "../assets/icons/button-arrow.svg"
 import "../style/Home.css"
@@ -42,6 +43,8 @@ import kuusenkerkkaJpg from "../assets/images/kuusenkerkka/kuusenkerkka.jpg"
 
 export default function Home() {
   const navigate = useNavigate()
+  const heading1Ref = useRef(null)
+  const heading2Ref = useRef(null)
 
   // Image loading state
   const [imagesLoaded, setImagesLoaded] = useState(false)
@@ -86,6 +89,33 @@ export default function Home() {
     return () => io.disconnect()
   }, [])
 
+  useEffect(() => {
+    if (!imagesLoaded) return
+
+    gsap.set([heading1Ref.current, heading2Ref.current], { y: 100, opacity: 0})
+    gsap.set(".cone-svg", { opacity: 0})
+
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } })
+    tl.to(heading1Ref.current, {
+      y: 0, 
+      opacity: 1, 
+      duration: 1,
+      delay: .5
+    })
+    .to(heading2Ref.current, { 
+      y: 0, 
+      opacity: 1, 
+      duration: 1 
+    }, "-=.75")
+    .to(".cone-svg", { 
+      opacity: 1, 
+      duration: 1,
+      delay: 1
+    }, "-=.5")
+
+    return () => tl.kill()
+  }, [imagesLoaded])
+
   return (
     <div className={`home-container ${!imagesLoaded ? "is-loading" : ""}`}>
       {!imagesLoaded && (
@@ -96,6 +126,7 @@ export default function Home() {
         <source srcSet={bgAvif} type="image/avif" />
         <source srcSet={bgWebp} type="image/webp" />
         <img
+          className='bg-image'
           src={bgJpg}
           alt=""
           onLoad={markLoaded}
@@ -104,8 +135,8 @@ export default function Home() {
       </picture>
 
       <div className='home-hero'>
-        <h1 className='heading1'>Mäntylä</h1>
-        <h1 className='heading2'>Brewery</h1>
+        <h1 className='heading1' ref={heading1Ref}>Mäntylä</h1>
+        <h1 className='heading2' ref={heading2Ref}>Brewery</h1>
 
         <Cone className="cone-svg" />
       </div>

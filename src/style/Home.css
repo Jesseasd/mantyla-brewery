@@ -10,6 +10,10 @@
   z-index: 1;
 }
 
+.bg-image {
+    width: 100%;
+}
+
 .home-container {
     background-color: var(--color-bg-primary);
     background-repeat: no-repeat;
@@ -27,12 +31,19 @@
     height: 100vh;
 }
 
+.heading1,
+.heading2 {
+    transform: translateY(50px);
+    opacity: 0;
+}
+
 .home-hero .cone-svg {
     width: clamp(24px, 5vw, 32px);
     position: absolute;
     bottom: 8vh;
     z-index: 2;
     animation: bounce 2s infinite ease-in-out;
+    animation-delay: 3s;
 }
 
 .cone-svg .cls-1 {

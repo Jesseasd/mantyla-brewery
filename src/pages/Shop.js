@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import "../style/Shop.css"
 import { gsap } from "gsap"
 import { useGSAP } from "@gsap/react"
@@ -15,35 +15,14 @@ export default function Shop() {
   const gridRef = useRef(null)
   const component = useRef(null)
 
-  // Loading state
-  const [videosLoaded, setVideosLoaded] = useState(false)
-  const [imagesLoaded, setImagesLoaded] = useState(false)
-  const videosToLoadCount = 1
-  const imagesToLoadCount = products.length
-  const videosLoadedCountRef = useRef(0)
-  const imagesLoadedCountRef = useRef(0)
-
-  // When all images have loaded -> setVideosLoaded(true)
-  const markVideosLoaded = () => {
-    videosLoadedCountRef.current += 1
-    if (videosLoadedCountRef.current >= videosToLoadCount) setVideosLoaded(true)
-  }
-
-  const markImagesLoaded = () => {
-    imagesLoadedCountRef.current += 1
-    if (imagesLoadedCountRef.current >= imagesToLoadCount) setImagesLoaded(true)
-  }
-
   useEffect(() => {
-    if (!videosLoaded || !imagesLoaded) return
-
     requestAnimationFrame(() => {
       // Animate product items in batches as they enter the viewport
       ScrollTrigger.batch(".product", {
         batchMax: 3,    // Animate max 3 items together
-        onEnter: batch => gsap.to(batch, { 
+        onEnter: batch => gsap.to(batch, {
           opacity: 1,
-          y: -50, 
+          y: -50,
           stagger: .3   // Delay between items
         }),
       })
@@ -77,62 +56,57 @@ export default function Shop() {
     // Cleanup
     return () => ctx.revert()
 
-  }, [videosLoaded, imagesLoaded])
+  }, [])
 
   return (
-    <div className={`shop-container ${!videosLoaded || !imagesLoaded ? "is-loading" : ""}`} ref={component}>
-      {!videosLoaded && (
-        <Loader />
-      )}
+    <Loader>
+      <div className="shop-container" ref={component}>
 
-      <div className='title-container'>
-        <div className='mask'></div>
-        <video
-          className='beers-video'
-          autoPlay
-          loop
-          muted
-          playsInline
-          webkit-playsinline="true"
-          preload='metadata'
-          controls={false}
-          onLoadedData={markVideosLoaded}
-          onError={markVideosLoaded}
-        >
-          <source src={shopHeroWebm} type='video/webm' />
-          <source src={shopHeroMp4} type='video/mp4' />
-        </video>
-        <h1>Kauppa</h1>
-        <div className='beers-text'>
-          <p>Mäntylän Panimo syntyi intohimosta käsityöläisolueen, metsän tuoksuun ja jaettuihin hetkiin ystävien kesken. Jokainen oluemme kantaa mukanaan tarinaa – mausta, paikasta tai muistosta, joka inspiroi sen syntyä. Valikoimastamme löydät monipuolisen kattauksen pienpanimo oluita: raikkaista vehnäoluista syviin porttereihin, metsän makuisista kokeiluista klassisiin tyyleihin. Kaikki oluet valmistetaan huolella, käsityönä ja rakkaudella – Mäntylän hengessä. Olitpa sitten mökillä, saunan jälkeen, pitkällä illallisella tai retkellä metsässä, meiltä löydät oluen juuri siihen hetkeen. Tutustu valikoimaan – ehkä löydät uuden suosikkisi.</p>
+        <div className='title-container'>
+          <div className='mask'></div>
+          <video
+            className='beers-video'
+            autoPlay
+            loop
+            muted
+            playsInline
+            webkit-playsinline="true"
+            preload='metadata'
+            controls={false}
+          >
+            <source src={shopHeroWebm} type='video/webm' />
+            <source src={shopHeroMp4} type='video/mp4' />
+          </video>
+          <h1>Kauppa</h1>
+          <div className='beers-text'>
+            <p>Mäntylän Panimo syntyi intohimosta käsityöläisolueen, metsän tuoksuun ja jaettuihin hetkiin ystävien kesken. Jokainen oluemme kantaa mukanaan tarinaa – mausta, paikasta tai muistosta, joka inspiroi sen syntyä. Valikoimastamme löydät monipuolisen kattauksen pienpanimo oluita: raikkaista vehnäoluista syviin porttereihin, metsän makuisista kokeiluista klassisiin tyyleihin. Kaikki oluet valmistetaan huolella, käsityönä ja rakkaudella – Mäntylän hengessä. Olitpa sitten mökillä, saunan jälkeen, pitkällä illallisella tai retkellä metsässä, meiltä löydät oluen juuri siihen hetkeen. Tutustu valikoimaan – ehkä löydät uuden suosikkisi.</p>
+          </div>
         </div>
-      </div>
 
-      <div className='shop-grid' ref={gridRef}>
-        {products.map((product) => (
-          <Link className='product' key={product.id} to={`/product/${product.id}`}>
-            <div className='product-image-wrapper'>
-              <picture>
-                <source srcSet={product.sbg.avif} type="image/avif" />
-                <source srcSet={product.sbg.webp} type="image/webp" />
-                <img 
-                  className='product-bg-image'
-                  src={product.sbg}
-                  alt={product.name}
-                  onLoad={markImagesLoaded}
-                  onError={markImagesLoaded}
-                />
-              </picture>
-              <img className="product-bottle-image" src={product.bottle} alt={product.name} />
-            </div>
+        <div className='shop-grid' ref={gridRef}>
+          {products.map((product) => (
+            <Link className='product' key={product.id} to={`/product/${product.id}`}>
+              <div className='product-image-wrapper'>
+                <picture>
+                  <source srcSet={product.sbg.avif} type="image/avif" />
+                  <source srcSet={product.sbg.webp} type="image/webp" />
+                  <img
+                    className='product-bg-image'
+                    src={product.sbg}
+                    alt={product.name}
+                  />
+                </picture>
+                <img className="product-bottle-image" src={product.bottle} alt={product.name} />
+              </div>
 
-            <h3>{product.name}</h3>
-            <p>{product.price.toFixed(2)}e</p>
-            <p>{product.volume}l</p>
-          </Link>
-        ))}
+              <h3>{product.name}</h3>
+              <p>{product.price.toFixed(2)}e</p>
+              <p>{product.volume}l</p>
+            </Link>
+          ))}
+        </div>
+
       </div>
-      
-    </div>
+    </Loader>
   )
 }

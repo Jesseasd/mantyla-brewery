@@ -104,15 +104,65 @@ video {
   background-size: cover;
 }
 
+.horizontal-image1 {
+  background-image: image-set(
+    url(../assets/images/about-images/garage/garage.avif) type("image/avif"),
+    url(../assets/images/about-images/garage/garage.webp) type("image/webp"),
+    url(../assets/images/about-images/garage/garage.jpg) type("image/jpg")
+  );
+  background-position: 25% 60%;
+}
+
+.horizontal-image2 {
+  background-image: image-set(
+    url(../assets/images/about-images/acid/acid.avif) type("image/avif"),
+    url(../assets/images/about-images/acid/acid.webp) type("image/webp"),
+    url(../assets/images/about-images/acid/acid.jpg) type("image/jpg")
+  );
+}
+
+.horizontal-image3 {
+  background-image: image-set(
+    url(../assets/images/about-images/barrels/barrels.avif) type("image/avif"),
+    url(../assets/images/about-images/barrels/barrels.webp) type("image/webp"),
+    url(../assets/images/about-images/barrels/barrels.jpg) type("image/jpg")
+  );
+}
+
+.horizontal-image4 {
+  background-image: image-set(
+    url(../assets/images/about-images/pour/pour.avif) type("image/avif"),
+    url(../assets/images/about-images/pour/pour.webp) type("image/webp"),
+    url(../assets/images/about-images/pour/pour.png) type("image/png")
+  );
+}
+
+.horizontal-image5 {
+  background-image: image-set(
+    url(../assets/images/about-images/beers/beers.avif) type("image/avif"),
+    url(../assets/images/about-images/beers/beers.webp) type("image/webp"),
+    url(../assets/images/about-images/beers/beers.jpg) type("image/jpg")
+  );
+}
+
 .wrapper {
   min-width: 100vw;
 }
 
 .long {
-  position: relative;
   width: 100vw;
   height: 300vh;
-  overflow: hidden;
+  top: 0;
+  background-image: image-set(
+    url(../assets/images/about-images/cheers/cheers.avif) type("image/avif"),
+    url(../assets/images/about-images/cheers/cheers.webp) type("image/webp"),
+    url(../assets/images/about-images/cheers/cheers.jpg) type("image/jpg")
+  );
+  display: flex;
+  justify-content: center;
+  background-position: 10% 80%;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .long picture {

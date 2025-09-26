@@ -25,17 +25,6 @@ export default function Product() {
     const amountRef = useRef(null)
     const bgRef = useRef(null)
 
-    // Image loading state
-    const [imagesLoaded, setImagesLoaded] = useState(false)
-    const toLoadCount = 2       // Two images to load
-    const loadedCountRef = useRef(0)    // How many images have finished loading
-
-    // When all images have loaded -> setImagesLoaded(true)
-    const markLoaded = () => {
-        loadedCountRef.current += 1
-        if (loadedCountRef.current >= toLoadCount) setImagesLoaded(true)
-    }
-
     // Hook for adding items to cart (from cartContext)
     const { addToCart } = useCart()
 
@@ -98,7 +87,6 @@ export default function Product() {
 
     // Run gsap animations once on mount
     useLayoutEffect(() => {
-        if (!imagesLoaded) return   // Wait for images to load
         let ctx = gsap.context(() => {
             // Place bottle in the center first
             gsap.set(bottleRef.current, {
@@ -148,7 +136,7 @@ export default function Product() {
 
         // Cleanup gsap on unmount
         return () => ctx.revert()
-    }, [imagesLoaded])
+    }, [])
 
     // If no product found for this id -> fallback
     if (!product) {
@@ -156,177 +144,172 @@ export default function Product() {
     }
 
     return (
-        <div className={`product-page ${!imagesLoaded ? "is-loading" : ""}`} ref={component}>
-            {!imagesLoaded && (
-                <Loader />
-            )}
-            
-            <div className="product-page-container">
-                <div className="product-page-info" ref={infoRef}>
-                    <h1>
-                        {(() => {
-                            // If product name is long, break into two lines
-                            const words = product.name.split(" ")
-                            if (words.length > 2) {
-                                return (
-                                    <>
-                                        {words[0]}
-                                        <br />
-                                        {words.slice(1).join(" ")}
-                                    </>
-                                )
-                            }
-                            return product.name
-                        })()}
-                    </h1>
-                    <div className="vol-alc">
-                        <p>{product.price.toFixed(2)}€ / {product.volume}L</p>
-                        <p className="alcohol">{product.alcohol}%</p>
-                    </div>
-                </div>
-                <div className="product-page-image-wrapper">
-                    <picture>
-                        <source srcSet={product.bg.avif} type="image/avif" />
-                        <source srcSet={product.bg.webp} type="image/webp" />
-                        <img
-                            ref={bgRef}
-                            className="product-page-bg-image" 
-                            src={product.bg} 
-                            alt={product.name} 
-                            loading="eager"
-                            fetchpriority="high"
-                            decoding="async"
-                            onLoad={markLoaded}
-                            onError={markLoaded}
-                        />
-                    </picture>
-                    <img 
-                        className="product-page-bottle-image" 
-                        src={product.bottle} 
-                        alt={product.name} 
-                        ref={bottleRef}
-                        onLoad={markLoaded}
-                        onError={markLoaded}
-                    />
-                </div>
-                <div className="add-to-cart-section" ref={amountRef}>
-                    <div className="amount-wrapper">
-                        <div
-                            className={`amount-section ${showInput ? "expanded" : ""}`}
-                            onClick={() => {
-                                // On small screen -> expand custom input
-                                if (window.innerWidth <= 1000 && !showInput) setShowInput(true)
-                            }}
-                        >
-                            {/* Presets */}
-                            {[1, 2, 4, 6, 8, 12, 18, 24].map(num => (
-                                <p
-                                    key={num}
-                                    // If the current num is the one user selected -> add "selected" classname
-                                    className={`amount-option ${selectedAmount === num ? "selected" : ""}`}
-                                    onClick={() => handleAmountClick(num)}
-                                >
-                                    {num}
-                                </p>
-                            ))}
+        <Loader>
+            <div className="product-page" ref={component}>
 
-                            <div className="input-container">
-                                <div
-                                    className="custom-input-wrapper"
-                                >
-                                    <button
-                                        className="arrow-button"
-                                        onClick={() => {
-                                            // Take current customAmount or 0 if it's empty / null
-                                            // Convert to number and subtract 1
-                                            const value = Math.max(1, Number(customAmount || 0) - 1)
-                                            setCustomAmount(value)
-                                            setSelectedAmount(value)
-                                        }}
-                                        aria-label="decrease"
+                <div className="product-page-container">
+                    <div className="product-page-info" ref={infoRef}>
+                        <h1>
+                            {(() => {
+                                // If product name is long, break into two lines
+                                const words = product.name.split(" ")
+                                if (words.length > 2) {
+                                    return (
+                                        <>
+                                            {words[0]}
+                                            <br />
+                                            {words.slice(1).join(" ")}
+                                        </>
+                                    )
+                                }
+                                return product.name
+                            })()}
+                        </h1>
+                        <div className="vol-alc">
+                            <p>{product.price.toFixed(2)}€ / {product.volume}L</p>
+                            <p className="alcohol">{product.alcohol}%</p>
+                        </div>
+                    </div>
+                    <div className="product-page-image-wrapper">
+                        <picture>
+                            <source srcSet={product.bg.avif} type="image/avif" />
+                            <source srcSet={product.bg.webp} type="image/webp" />
+                            <img
+                                ref={bgRef}
+                                className="product-page-bg-image"
+                                src={product.bg}
+                                alt={product.name}
+                                loading="eager"
+                                fetchpriority="high"
+                                decoding="async"
+                            />
+                        </picture>
+                        <img
+                            className="product-page-bottle-image"
+                            src={product.bottle}
+                            alt={product.name}
+                            ref={bottleRef}
+                        />
+                    </div>
+                    <div className="add-to-cart-section" ref={amountRef}>
+                        <div className="amount-wrapper">
+                            <div
+                                className={`amount-section ${showInput ? "expanded" : ""}`}
+                                onClick={() => {
+                                    // On small screen -> expand custom input
+                                    if (window.innerWidth <= 1000 && !showInput) setShowInput(true)
+                                }}
+                            >
+                                {/* Presets */}
+                                {[1, 2, 4, 6, 8, 12, 18, 24].map(num => (
+                                    <p
+                                        key={num}
+                                        // If the current num is the one user selected -> add "selected" classname
+                                        className={`amount-option ${selectedAmount === num ? "selected" : ""}`}
+                                        onClick={() => handleAmountClick(num)}
                                     >
-                                        <p className="amount-minus">-</p>
-                                    </button>
-                                    <input
-                                        id="custom-input"
-                                        className={`custom-input ${showInput ? "visible" : ""}`}
-                                        type="number"
-                                        min="1"
-                                        value={customAmount}
-                                        onChange={(e) => {
-                                            setCustomAmount(e.target.valueAsNumber)
-                                            setSelectedAmount(e.target.valueAsNumber)
-                                        }}
-                                    />
-                                    <button
-                                        className="arrow-button"
-                                        onClick={() => {
-                                            // Take current customAmount or 0 if it's empty / null
-                                            // Convert to number and add 1
-                                            const value = Math.max(1, Number(customAmount || 0) + 1)
-                                            setCustomAmount(value)
-                                            setSelectedAmount(value)
-                                        }}
-                                        aria-label="increase"
+                                        {num}
+                                    </p>
+                                ))}
+
+                                <div className="input-container">
+                                    <div
+                                        className="custom-input-wrapper"
                                     >
-                                        <p className="amount-plus">+</p>
-                                    </button>
+                                        <button
+                                            className="arrow-button"
+                                            onClick={() => {
+                                                // Take current customAmount or 0 if it's empty / null
+                                                // Convert to number and subtract 1
+                                                const value = Math.max(1, Number(customAmount || 0) - 1)
+                                                setCustomAmount(value)
+                                                setSelectedAmount(value)
+                                            }}
+                                            aria-label="decrease"
+                                        >
+                                            <p className="amount-minus">-</p>
+                                        </button>
+                                        <input
+                                            id="custom-input"
+                                            className={`custom-input ${showInput ? "visible" : ""}`}
+                                            type="number"
+                                            min="1"
+                                            value={customAmount}
+                                            onChange={(e) => {
+                                                setCustomAmount(e.target.valueAsNumber)
+                                                setSelectedAmount(e.target.valueAsNumber)
+                                            }}
+                                        />
+                                        <button
+                                            className="arrow-button"
+                                            onClick={() => {
+                                                // Take current customAmount or 0 if it's empty / null
+                                                // Convert to number and add 1
+                                                const value = Math.max(1, Number(customAmount || 0) + 1)
+                                                setCustomAmount(value)
+                                                setSelectedAmount(value)
+                                            }}
+                                            aria-label="increase"
+                                        >
+                                            <p className="amount-plus">+</p>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="plus-container">
-                        <p
-                            className="plus"
+                        <div className="plus-container">
+                            <p
+                                className="plus"
+                                onClick={() => {
+                                    if (!showInput && selectedAmount) {
+                                        setCustomAmount(selectedAmount)
+                                    }
+                                    setShowInput(!showInput)
+                                }}
+                            >
+                                {showInput ? "-" : "+"}
+                            </p>
+                        </div>
+                        <button
+                            className="add-to-cart-button"
+                            // If preset is not selected and there is no amount inside input -> disable button
+                            disabled={!selectedAmount && customAmount < 1}
                             onClick={() => {
-                                if (!showInput && selectedAmount) {
-                                    setCustomAmount(selectedAmount)
-                                }
-                                setShowInput(!showInput)
+                                const quantity = showInput && customAmount
+                                    ? parseInt(customAmount)
+                                    : selectedAmount
+
+                                if (!quantity || quantity < 1) return
+
+                                addToCart(product, quantity)
                             }}
                         >
-                            {showInput ? "-" : "+"}
-                        </p>
+                            <div className="slide-container">
+                                <span className="text-default">Maistuuko?</span>
+                                <span className="text-hover">Maistuu!</span>
+                            </div>
+                        </button>
                     </div>
-                    <button
-                        className="add-to-cart-button"
-                        // If preset is not selected and there is no amount inside input -> disable button
-                        disabled={!selectedAmount && customAmount < 1}
-                        onClick={() => {
-                            const quantity = showInput && customAmount
-                                ? parseInt(customAmount)
-                                : selectedAmount
-
-                            if (!quantity || quantity < 1) return
-
-                            addToCart(product, quantity)
-                        }}
-                    >
-                        <div className="slide-container">
-                            <span className="text-default">Maistuuko?</span>
-                            <span className="text-hover">Maistuu!</span>
+                </div>
+                <div className="product-page-details">
+                    <div className="product-page-details-info-wrapper">
+                        <h1>{product.name}</h1>
+                        <div className="vol-alc">
+                            <p>{product.price.toFixed(2)}€ / {product.volume}L</p>
+                            <p className="alcohol">{product.alcohol}%</p>
                         </div>
-                    </button>
-                </div>
-            </div>
-            <div className="product-page-details">
-                <div className="product-page-details-info-wrapper">
-                    <h1>{product.name}</h1>
-                    <div className="vol-alc">
-                        <p>{product.price.toFixed(2)}€ / {product.volume}L</p>
-                        <p className="alcohol">{product.alcohol}%</p>
+                    </div>
+                    <div className="info-wrapper">
+                        <p>{product.story}</p>
+                        <div className='fits'>
+                            {getIconsForFits(product.fits)}
+                        </div>
+                    </div>
+                    <div className="product-page-details-image-wrapper">
+                        <img className="prduct-page-details-bottle-image" src={product.bottle} alt={product.name} />
                     </div>
                 </div>
-                <div className="info-wrapper">
-                    <p>{product.story}</p>
-                    <div className='fits'>
-                        {getIconsForFits(product.fits)}
-                    </div>
-                </div>
-                <div className="product-page-details-image-wrapper">
-                    <img className="prduct-page-details-bottle-image" src={product.bottle} alt={product.name} />
-                </div>
             </div>
-        </div>
+        </Loader>
     )
 }

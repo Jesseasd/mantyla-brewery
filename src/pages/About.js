@@ -1,4 +1,4 @@
-import { useRef, useLayoutEffect, useState } from 'react'
+import { useRef, useLayoutEffect } from 'react'
 import "../style/About.css"
 import aboutHeroMp4 from "../assets/videos/about-hero-video/about-hero-video.mp4"
 import aboutHeroWebm from "../assets/videos/about-hero-video/about-hero-video.webm"
@@ -11,60 +11,13 @@ import SplitType from 'split-type'
 import { ReactComponent as Cone } from "../assets/icons/cone.svg"
 import Loader from "../components/Loader"
 
-// Horizontal images
-import garageAvif from "../assets/images/about-images/garage/garage.avif"
-import garageWebp from "../assets/images/about-images/garage/garage.webp"
-import garageJpg from "../assets/images/about-images/garage/garage.jpg"
-
-import acidAvif from "../assets/images/about-images/acid/acid.avif"
-import acidWebp from "../assets/images/about-images/acid/acid.webp"
-import acidJpg from "../assets/images/about-images/acid/acid.jpg"
-
-import barrelsAvif from "../assets/images/about-images/barrels/barrels.avif"
-import barrelsWebp from "../assets/images/about-images/barrels/barrels.webp"
-import barrelsJpg from "../assets/images/about-images/barrels/barrels.jpg"
-
-import pourAvif from "../assets/images/about-images/pour/pour.avif"
-import pourWebp from "../assets/images/about-images/pour/pour.webp"
-import pourPng from "../assets/images/about-images/pour/pour.png"
-
-import beersAvif from "../assets/images/about-images/beers/beers.avif"
-import beersWebp from "../assets/images/about-images/beers/beers.webp"
-import beersJpg from "../assets/images/about-images/beers/beers.jpg"
-
-// Long section image
-import cheersAvif from "../assets/images/about-images/cheers/cheers.avif"
-import cheersWebp from "../assets/images/about-images/cheers/cheers.webp"
-import cheersJpg from "../assets/images/about-images/cheers/cheers.jpg"
-
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
 export default function About() {
-  // Loading state
-  const [videosLoaded, setVideosLoaded] = useState(false)
-  const [imagesLoaded, setImagesLoaded] = useState(false)
-  const videosToLoadCount = 2
-  const imagesToLoadCount = 6
-  const videosLoadedCountRef = useRef(0)
-  const imagesLoadedCountRef = useRef(0)
-
-  // When all images have loaded -> setVideosLoaded(true)
-  const markVideosLoaded = () => {
-    videosLoadedCountRef.current += 1
-    if (videosLoadedCountRef.current >= videosToLoadCount) setVideosLoaded(true)
-  }
-
-  const markImagesLoaded = () => {
-    imagesLoadedCountRef.current += 1
-    if (imagesLoadedCountRef.current >= imagesToLoadCount) setImagesLoaded(true)
-  }
-
   const component = useRef(null)
   const horizontalRef = useRef(null)
-  
-  useLayoutEffect(() => {
-    if (!videosLoaded || !imagesLoaded) return
 
+  useLayoutEffect(() => {
     const splitTypes = document.querySelectorAll(".reveal")
 
     // Media query handler for responsive animations
@@ -126,15 +79,15 @@ export default function About() {
       )
 
       // Initial state
-      gsap.set(".video-container2", 
-        { 
-          width: "25rem", 
-          height: "40rem", 
+      gsap.set(".video-container2",
+        {
+          width: "25rem",
+          height: "40rem",
         }
       )
 
       // Animate video size
-      gsap.to(".video-container2", 
+      gsap.to(".video-container2",
         {
           width: "100%",
           height: "100%",
@@ -177,9 +130,9 @@ export default function About() {
             delay: 0,
             ease: "none"
           },
-          animation: gsap.to(sections, { 
-            xPercent: -100 * (sections.length - 1), 
-            ease: "none" 
+          animation: gsap.to(sections, {
+            xPercent: -100 * (sections.length - 1),
+            ease: "none"
           })
         })
       })
@@ -246,184 +199,84 @@ export default function About() {
     // Clean up all animations when component unmounts
     return () => ctx.revert()
 
-  }, [videosLoaded, imagesLoaded])
+  }, [])
 
   return (
-    <div className={`about-container ${!videosLoaded || !imagesLoaded ? "is-loading" : ""}`} ref={component}>
-      {(!videosLoaded || !imagesLoaded) && (
-        <Loader />
-      )}
+    <Loader>
+      <div className="about-container" ref={component}>
 
-      <div className='about-hero'>
-        <div className='video-container'>
-          <video
-            className='video'
-            autoPlay
-            loop
-            muted
-            playsInline
-            webkit-playsinline="true"
-            controls={false}
-            preload='metadata'
-            onLoadedData={markVideosLoaded}
-            onError={markVideosLoaded}
-          >
-            <source src={aboutHeroWebm} type='video/Webm' />
-            <source src={aboutHeroMp4} type='video/mp4' />
-          </video>
-          <div className='shadow'></div>
-          <Cone className='cone' />
-        </div>
-      </div>
-
-      <div className='story'>
-        <div className='story-wrapper'>
-          <p className='text'>Tarinamme</p>
-
-          <div className='video-stage'>
-            <div className='video-container2'>
-              <video
-                className='video'
-                autoPlay
-                loop
-                muted
-                playsInline
-                webkit-playsinline="true"
-                controls={false}
-                preload='auto'
-                onLoadedData={markVideosLoaded}
-                onError={markVideosLoaded}
-              >
-                <source src={waterDropletsWebm} type='video/Webm' />
-                <source src={waterDropletsMp4} type='video/mp4' />
-              </video>
-              <p className='text-item1'>Mäntylän Panimo sai alkunsa yksinkertaisesta ideasta ja kolmen ystävän intohimosta. Kaikki alkoi pienestä autotallista Mäntylän naapurustossa, jossa kokeiltiin rohkeasti reseptejä ja hiottiin oluenvalmistuksen taitoja. Aluksi kyse oli vain yhdessä tekemisestä, mutta nopeasti kävi selväksi, että näistä oluista voisi tulla jotain enemmän.</p>
-            </div>
+        <div className='about-hero'>
+          <div className='video-container'>
+            <video
+              className='video'
+              autoPlay
+              loop
+              muted
+              playsInline
+              webkit-playsinline="true"
+              controls={false}
+              preload='metadata'
+            >
+              <source src={aboutHeroWebm} type='video/Webm' />
+              <source src={aboutHeroMp4} type='video/mp4' />
+            </video>
+            <div className='shadow'></div>
+            <Cone className='cone' />
           </div>
         </div>
-      </div>
 
-      <div className='horizonatl-section' ref={horizontalRef}>
-        <div className='horizontal'>
-            <div className='horizontal-image horizontal-image1 panel'>
+        <div className='story'>
+          <div className='story-wrapper'>
+            <p className='text'>Tarinamme</p>
 
-              <picture>
-                <source srcSet={garageAvif} type="image/avif" />
-                <source srcSet={garageWebp} type="image/webp" />
-                <img
-                  className="product-page-bg-image" 
-                  src={garageJpg} 
-                  alt="Garage"
-                  loading="eager"
-                  fetchpriority="high"
-                  decoding="async"
-                  onLoad={markImagesLoaded}
-                  onError={markImagesLoaded}
-                />
-              </picture>
-            </div>
-
-            <div className='horizontal-image horizontal-image2 panel'>
-              <picture>
-                <source srcSet={acidAvif} type="image/avif" />
-                <source srcSet={acidWebp} type="image/webp" />
-                <img
-                  className="product-page-bg-image" 
-                  src={acidJpg} 
-                  alt="Laboratory"
-                  loading="eager"
-                  fetchpriority="high"
-                  decoding="async"
-                  onLoad={markImagesLoaded}
-                  onError={markImagesLoaded}
-                />
-              </picture>
-            </div>
-
-            <div className='horizontal-image horizontal-image3 panel'>
-              <picture>
-                <source srcSet={barrelsAvif} type="image/avif" />
-                <source srcSet={barrelsWebp} type="image/webp" />
-                <img
-                  className="product-page-bg-image" 
-                  src={barrelsJpg} 
-                  alt="Beer barrels"
-                  loading="eager"
-                  fetchpriority="high"
-                  decoding="async"
-                  onLoad={markImagesLoaded}
-                  onError={markImagesLoaded}
-                />
-              </picture>
-            </div>
-
-            <div className='horizontal-image horizontal-image4 panel'>
-              <picture>
-                <source srcSet={pourAvif} type="image/avif" />
-                <source srcSet={pourWebp} type="image/webp" />
-                <img
-                  className="product-page-bg-image" 
-                  src={pourPng} 
-                  alt="Beer poured to glass" 
-                  loading="eager"
-                  fetchpriority="high"
-                  decoding="async"
-                  onLoad={markImagesLoaded}
-                  onError={markImagesLoaded}
-                />
-              </picture>
-            </div>
-
-            <div className='horizontal-image horizontal-image5 panel'>
-              <picture>
-                <source srcSet={beersAvif} type="image/avif" />
-                <source srcSet={beersWebp} type="image/webp" />
-                <img
-                  className="product-page-bg-image" 
-                  src={beersJpg} 
-                  alt="beer"
-                  loading="eager"
-                  fetchpriority="high"
-                  decoding="async"
-                  onLoad={markImagesLoaded}
-                  onError={markImagesLoaded}
-                />
-              </picture>
-            </div>
-
-        </div>
-      </div>
-
-      <div className='wrapper'>
-        <div className='long'>
-          <picture>
-            <source srcSet={cheersAvif} type="image/avif" />
-            <source srcSet={cheersWebp} type="image/webp" />
-            <img
-              
-              src={cheersJpg} 
-              alt="Cheers"
-              loading="eager"
-              fetchpriority="high"
-              decoding="async"
-              onLoad={markImagesLoaded}
-              onError={markImagesLoaded}
-            />
-          </picture>
-          <div className='text-section text-section2'>
-            <div className='text-item text-item2'>
-              <p className='text2'>Ensimmäinen erä, katajalla maustettu Pale Ale, tarjottiin ystäville ja perheelle – ja palaute oli ylitsevuotavan positiivista. Tämä kannusti kolmikkoa panostamaan panimotoimintaan kunnolla. Laitteet rakennettiin pääosin itse, ja reseptit kehitettiin huolella paikallisia raaka-aineita hyödyntäen.</p>
+            <div className='video-stage'>
+              <div className='video-container2'>
+                <video
+                  className='video'
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  webkit-playsinline="true"
+                  controls={false}
+                  preload='auto'
+                >
+                  <source src={waterDropletsWebm} type='video/Webm' />
+                  <source src={waterDropletsMp4} type='video/mp4' />
+                </video>
+                <p className='text-item1'>Mäntylän Panimo sai alkunsa yksinkertaisesta ideasta ja kolmen ystävän intohimosta. Kaikki alkoi pienestä autotallista Mäntylän naapurustossa, jossa kokeiltiin rohkeasti reseptejä ja hiottiin oluenvalmistuksen taitoja. Aluksi kyse oli vain yhdessä tekemisestä, mutta nopeasti kävi selväksi, että näistä oluista voisi tulla jotain enemmän.</p>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className='text-section text-section3'>
-          <div className='text-item text-item3'>
-            <p className='reveal text3'>Panimomme nimi on kunnianosoitus Mäntylän naapurustolle, jossa kaikki sai alkunsa. Samalla se muistuttaa meitä siitä, mistä tulemme – vaatimattomista juurista ja yhteisöllisyydestä. Oluemme, kuten raikas Juniper Pale Ale ja savuinen Sahti, heijastavat tätä henkeä: yhdistämme paikalliset perinteet ja luonnon maut moderniin käsityöläisyyteen.</p>
+        <div className='horizonatl-section' ref={horizontalRef}>
+          <div className='horizontal'>
+            <div className='horizontal-image horizontal-image1 panel'></div>
+            <div className='horizontal-image horizontal-image2 panel'></div>
+            <div className='horizontal-image horizontal-image3 panel'></div>
+            <div className='horizontal-image horizontal-image4 panel'></div>
+            <div className='horizontal-image horizontal-image5 panel'></div>
           </div>
         </div>
-      </div>
 
-    </div>
+        <div className='wrapper'>
+          <div className='long'>
+            <div className='text-section text-section2'>
+              <div className='text-item text-item2'>
+                <p className='text2'>Ensimmäinen erä, katajalla maustettu Pale Ale, tarjottiin ystäville ja perheelle – ja palaute oli ylitsevuotavan positiivista. Tämä kannusti kolmikkoa panostamaan panimotoimintaan kunnolla. Laitteet rakennettiin pääosin itse, ja reseptit kehitettiin huolella paikallisia raaka-aineita hyödyntäen.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className='text-section text-section3'>
+            <div className='text-item text-item3'>
+              <p className='reveal text3'>Panimomme nimi on kunnianosoitus Mäntylän naapurustolle, jossa kaikki sai alkunsa. Samalla se muistuttaa meitä siitä, mistä tulemme – vaatimattomista juurista ja yhteisöllisyydestä. Oluemme, kuten raikas Juniper Pale Ale ja savuinen Sahti, heijastavat tätä henkeä: yhdistämme paikalliset perinteet ja luonnon maut moderniin käsityöläisyyteen.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </Loader>
   )
 }

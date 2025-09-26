@@ -14,17 +14,6 @@ export default function Contact() {
   const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID
   const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY
 
-  // Image loading state
-  const [imagesLoaded, setImagesLoaded] = useState(false)
-  const toLoadCount = 1       // Two images to load
-  const loadedCountRef = useRef(0)    // How many images have finished loading
-
-  // When all images have loaded -> setImagesLoaded(true)
-  const markLoaded = () => {
-      loadedCountRef.current += 1
-      if (loadedCountRef.current >= toLoadCount) setImagesLoaded(true)
-  }
-
   // Ref to access <form> element
   const form = useRef()
 
@@ -63,97 +52,95 @@ export default function Contact() {
   const isDisabled = status === "loading"
 
   return (
-    <div className={`contact-page ${!imagesLoaded ? "is-loading" : ""}`}>
-      {!imagesLoaded && (
-        <Loader />
-      )}
-      <div className="contact-image-container">
-        <picture>
-          <source srcSet={contactAvif} type='image/avif' />
-          <source srcSet={contactWebp} type='image/webp' />
-          <img 
-            src={contactJpg} 
-            className="contact-image" 
-            alt='A man holding two beers' 
-            onLoad={markLoaded}
-            onError={markLoaded}
-          />
-        </picture>
-      </div>
+    <Loader>
+      <div className="contact-page" >
 
-      <div className='contact-info-wrapper'>
-        <form className='contact-info' ref={form} onSubmit={sendEmail}>
-          <h2>Ota yhteyttä</h2>
-
-          <label htmlFor='name'>
-            Nimi
-            
-            <input 
-              id='name' 
-              name="name" 
-              placeholder=" " 
-              required disabled={isDisabled} 
-              autoComplete='name' 
+        <div className="contact-image-container">
+          <picture>
+            <source srcSet={contactAvif} type='image/avif' />
+            <source srcSet={contactWebp} type='image/webp' />
+            <img
+              src={contactJpg}
+              className="contact-image"
+              alt='A man holding two beers'
             />
-          </label>
+          </picture>
+        </div>
 
-          <label htmlFor='email'>
-            Sähköposti
+        <div className='contact-info-wrapper'>
+          <form className='contact-info' ref={form} onSubmit={sendEmail}>
+            <h2>Ota yhteyttä</h2>
 
-            <input 
-              id='email' 
-              name="email" 
-              type='email' 
-              placeholder=" " 
-              required 
-              disabled={isDisabled} 
-              autoComplete='email' 
-            />
-          </label>
+            <label htmlFor='name'>
+              Nimi
 
-          <label htmlFor='message'>
-            Kerro asiasi
+              <input
+                id='name'
+                name="name"
+                placeholder=" "
+                required disabled={isDisabled}
+                autoComplete='name'
+              />
+            </label>
 
-            <textarea 
-              id='message' 
-              name="message" 
-              className='message' 
-              rows={8} 
-              placeholder=" " 
-              required 
-              disabled={isDisabled} 
-              autoComplete='message' 
-            />
-          </label>
+            <label htmlFor='email'>
+              Sähköposti
 
-          <div className="contact-actions">
-            <div className="status-message" role="status" aria-live="polite">
-              {status === "loading" && (
-                <span className="loading-message">
-                  <span className="spinner" aria-hidden />
-                  Lähetetään…
-                </span>
-              )}
-              {status === "success" && (
-                <span className="success-message">
-                  <CorrectSVG />
-                  Viestisi on lähetetty!
-                </span>
-              )}
-              {status === "error" && (
-                <span className="failure-message">
-                  <WrongSVG />
-                  Viestin lähetys epäonnistui
-                </span>
-              )}
+              <input
+                id='email'
+                name="email"
+                type='email'
+                placeholder=" "
+                required
+                disabled={isDisabled}
+                autoComplete='email'
+              />
+            </label>
+
+            <label htmlFor='message'>
+              Kerro asiasi
+
+              <textarea
+                id='message'
+                name="message"
+                className='message'
+                rows={8}
+                placeholder=" "
+                required
+                disabled={isDisabled}
+                autoComplete='message'
+              />
+            </label>
+
+            <div className="contact-actions">
+              <div className="status-message" role="status" aria-live="polite">
+                {status === "loading" && (
+                  <span className="loading-message">
+                    <span className="spinner" aria-hidden />
+                    Lähetetään…
+                  </span>
+                )}
+                {status === "success" && (
+                  <span className="success-message">
+                    <CorrectSVG />
+                    Viestisi on lähetetty!
+                  </span>
+                )}
+                {status === "error" && (
+                  <span className="failure-message">
+                    <WrongSVG />
+                    Viestin lähetys epäonnistui
+                  </span>
+                )}
+              </div>
+
+              <button className="contact-btn" type="submit" disabled={isDisabled}>
+                {status === "loading" ? "Lähetetään…" : "Lähetä"}
+              </button>
             </div>
-
-            <button className="contact-btn" type="submit" disabled={isDisabled}>
-              {status === "loading" ? "Lähetetään…" : "Lähetä"}
-            </button>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
-    </div>
+    </Loader>
   )
 }

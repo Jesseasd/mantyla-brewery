@@ -1,15 +1,10 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { gsap } from "gsap"
 import { ReactComponent as Cone } from "../assets/icons/cone.svg"
 import { ReactComponent as ButtonArrow } from "../assets/icons/button-arrow.svg"
 import "../style/Home.css"
 import { useNavigate } from 'react-router-dom'
 import Loader from '../components/Loader'
-
-// Hero image
-import bgAvif from "../assets/images/bg/bg.avif"
-import bgWebp from "../assets/images/bg/bg.webp"
-import bgJpg from "../assets/images/bg/bg.jpg"
 
 // Call to action images
 import beersWideAvif from "../assets/images/beers-wide/beers-wide.avif"
@@ -46,17 +41,6 @@ export default function Home() {
   const heading1Ref = useRef(null)
   const heading2Ref = useRef(null)
 
-  // Image loading state
-  const [imagesLoaded, setImagesLoaded] = useState(false)
-  const toLoadCount = 8       // Two images to load
-  const loadedCountRef = useRef(0)    // How many images have finished loading
-
-  // When all images have loaded -> setImagesLoaded(true)
-  const markLoaded = () => {
-    loadedCountRef.current += 1
-    if (loadedCountRef.current >= toLoadCount) setImagesLoaded(true)
-  }
-
   useEffect(() => {
     // Only run this on touch devices (no hover)
     const mm = window.matchMedia('(hover: none) and (pointer: coarse)')
@@ -78,7 +62,7 @@ export default function Home() {
       },
       {
         threshold: [0, .6, 1],
-        rootMargin: '0px 0px -10% 0px', 
+        rootMargin: '0px 0px -10% 0px',
       }
     )
 
@@ -90,242 +74,212 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
-    if (!imagesLoaded) return
-
-    gsap.set([heading1Ref.current, heading2Ref.current, ".cone-svg"], { y: 100, opacity: 0})
-    gsap.set(".cone-svg", { opacity: 0})
+    gsap.set([heading1Ref.current, heading2Ref.current, ".cone-svg"], { y: 100, opacity: 0 })
+    gsap.set(".cone-svg", { opacity: 0 })
 
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } })
     tl.to(heading1Ref.current, {
-      y: 0, 
-      opacity: 1, 
+      y: 0,
+      opacity: 1,
       duration: 1,
       delay: .5
     })
-    .to(heading2Ref.current, { 
-      y: 0, 
-      opacity: 1, 
-      duration: 1 
-    }, "-=.75")
-    .to(".cone-svg", { 
-      y: 0,
-      opacity: 1, 
-      duration: .8,
-      // delay: 1
-    }, "-=.7")
+      .to(heading2Ref.current, {
+        y: 0,
+        opacity: 1,
+        duration: 1
+      }, "-=.75")
+      .to(".cone-svg", {
+        y: 0,
+        opacity: 1,
+        duration: .8,
+        // delay: 1
+      }, "-=.7")
 
     return () => tl.kill()
-  }, [imagesLoaded])
+  }, [])
 
   return (
-    <div className={`home-container ${!imagesLoaded ? "is-loading" : ""}`}>
-      {!imagesLoaded && (
-        <Loader />
-      )}
+    <Loader>
+      <div className="home-container" >
 
-      <picture className="bg-picture">
-        <source srcSet={bgAvif} type="image/avif" />
-        <source srcSet={bgWebp} type="image/webp" />
-        <img
-          className='bg-image'
-          src={bgJpg}
-          alt=""
-          onLoad={markLoaded}
-          onError={markLoaded}
-        />
-      </picture>
+        <div className='home-hero'>
+          <h1 className='heading1' ref={heading1Ref}>Mäntylä</h1>
+          <h1 className='heading2' ref={heading2Ref}>Brewery</h1>
 
-      <div className='home-hero'>
-        <h1 className='heading1' ref={heading1Ref}>Mäntylä</h1>
-        <h1 className='heading2' ref={heading2Ref}>Brewery</h1>
-
-        <Cone className="cone-svg" />
-      </div>
-
-      <div className='marquee'>
-        <div className='marquee-group'>
-          <h2 className='marquee-text'>Ystävien kesken maistuu parhaalta.</h2>
-          <h2 className='marquee-text'>Ystävien kesken maistuu parhaalta.</h2>
+          <Cone className="cone-svg" />
         </div>
-        <div className='marquee-group'>
-          <h2 className='marquee-text'>Ystävien kesken maistuu parhaalta.</h2>
-          <h2 className='marquee-text'>Ystävien kesken maistuu parhaalta.</h2>
+
+        <div className='marquee'>
+          <div className='marquee-group'>
+            <h2 className='marquee-text'>Ystävien kesken maistuu parhaalta.</h2>
+            <h2 className='marquee-text'>Ystävien kesken maistuu parhaalta.</h2>
+          </div>
+          <div className='marquee-group'>
+            <h2 className='marquee-text'>Ystävien kesken maistuu parhaalta.</h2>
+            <h2 className='marquee-text'>Ystävien kesken maistuu parhaalta.</h2>
+          </div>
         </div>
-      </div>
 
-      <div className='call-to-action'>
+        <div className='call-to-action'>
 
-        <div className='section'>
-          <div className='image'>
-            <picture>
-              <source srcSet={beersWideAvif} type='image/avif' />
-              <source srcSet={beersWideWebp} type='image/webp' />
-              <img 
-                src={beersWideJpg} 
-                alt='' 
-                onLoad={markLoaded}
-                onError={markLoaded}
-              />
-            </picture>
+          <div className='section'>
+            <div className='image'>
+              <picture>
+                <source srcSet={beersWideAvif} type='image/avif' />
+                <source srcSet={beersWideWebp} type='image/webp' />
+                <img
+                  src={beersWideJpg}
+                  alt=''
+                />
+              </picture>
 
-            <div className='home-wrapper'>
-              <h3>Tutustu oluisiimme</h3>
-              <p>Sukella Mäntylän Panimon maailmaan ja tutustu ainutlaatuisiin oluihimme. Jokainen olut on huolella valmistettu, käsityöläisperinteitä kunnioittaen ja suomalaisen luonnon inspiroimana. Löydä suosikkisi klassikoistamme tai anna makunystyröillesi uusia elämyksiä kausioluillamme.</p>
-              <div className='btn-wrapper'>
-                <button 
-                  className="btn"
-                  onClick={() => navigate("/Shop")}
-                >
-                  <p className='text'>
-                    Oluet
-                  </p>
-                  <ButtonArrow className='button-arrow' />
-                </button>
+              <div className='home-wrapper'>
+                <h3>Tutustu oluisiimme</h3>
+                <p>Sukella Mäntylän Panimon maailmaan ja tutustu ainutlaatuisiin oluihimme. Jokainen olut on huolella valmistettu, käsityöläisperinteitä kunnioittaen ja suomalaisen luonnon inspiroimana. Löydä suosikkisi klassikoistamme tai anna makunystyröillesi uusia elämyksiä kausioluillamme.</p>
+                <div className='btn-wrapper'>
+                  <button
+                    className="btn"
+                    onClick={() => navigate("/Shop")}
+                  >
+                    <p className='text'>
+                      Oluet
+                    </p>
+                    <ButtonArrow className='button-arrow' />
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div className='section'>
-          <div className='image'>
-            <picture>
-              <source srcSet={garageAvif} type='image/avif' />
-              <source srcSet={garageWebp} type='image/webp' />
-              <img 
-                src={garageJpg} 
-                alt='' 
-                onLoad={markLoaded}
-                onError={markLoaded}
-              />
-            </picture>
+          <div className='section'>
+            <div className='image'>
+              <picture>
+                <source srcSet={garageAvif} type='image/avif' />
+                <source srcSet={garageWebp} type='image/webp' />
+                <img
+                  src={garageJpg}
+                  alt=''
+                />
+              </picture>
 
-            <div className='home-wrapper'>
-              <h3>Panimon juuret</h3>
-              <p>Kun avaat pullon, maistat muutakin kuin olutta. Maistat intohimoa, tarinoita ja hetkiä, jotka on valmistettu jakamista varten. Astu sisään Mäntylän Panimon maailmaan ja löydä, mistä kaikki alkoi.</p>
-              <div className='btn-wrapper'>
-                <button 
-                  className="btn"
-                  onClick={() => navigate("/About")}
-                >
-                  <p className='text'>
-                    Tarinamme
-                  </p>
-                  <ButtonArrow className='button-arrow' />
-                </button>
+              <div className='home-wrapper'>
+                <h3>Panimon juuret</h3>
+                <p>Kun avaat pullon, maistat muutakin kuin olutta. Maistat intohimoa, tarinoita ja hetkiä, jotka on valmistettu jakamista varten. Astu sisään Mäntylän Panimon maailmaan ja löydä, mistä kaikki alkoi.</p>
+                <div className='btn-wrapper'>
+                  <button
+                    className="btn"
+                    onClick={() => navigate("/About")}
+                  >
+                    <p className='text'>
+                      Tarinamme
+                    </p>
+                    <ButtonArrow className='button-arrow' />
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div className='section'>
-          <div className='image'>
-            <picture>
-              <source srcSet={contactUsAvif} type='image/avif' />
-              <source srcSet={contactUsWebp} type='image/webp' />
-              <img 
-                src={contactUsJpg} 
-                alt='' 
-                onLoad={markLoaded}
-                onError={markLoaded}
-              />
-            </picture>
+          <div className='section'>
+            <div className='image'>
+              <picture>
+                <source srcSet={contactUsAvif} type='image/avif' />
+                <source srcSet={contactUsWebp} type='image/webp' />
+                <img
+                  src={contactUsJpg}
+                  alt=''
+                />
+              </picture>
 
-            <div className='home-wrapper'>
-              <h3>Kerro asiasi</h3>
-              <p>Meille olut on enemmän kuin juoma. Se on yhteys ihmisten välillä. Kerro meille ajatuksesi, kysy rohkeasti tai ehdota yhteistyötä. Olemme aina valmiita kuuntelemaan.</p>
-              <div className='btn-wrapper'>
-                <button 
-                  className="btn"
-                  onClick={() => navigate("/Contact")}
-                >
-                  <p className='text'>
-                    Ota yhteyttä
-                  </p>
-                  <ButtonArrow className='button-arrow' />
-                </button>
+              <div className='home-wrapper'>
+                <h3>Kerro asiasi</h3>
+                <p>Meille olut on enemmän kuin juoma. Se on yhteys ihmisten välillä. Kerro meille ajatuksesi, kysy rohkeasti tai ehdota yhteistyötä. Olemme aina valmiita kuuntelemaan.</p>
+                <div className='btn-wrapper'>
+                  <button
+                    className="btn"
+                    onClick={() => navigate("/Contact")}
+                  >
+                    <p className='text'>
+                      Ota yhteyttä
+                    </p>
+                    <ButtonArrow className='button-arrow' />
+                  </button>
+                </div>
               </div>
             </div>
           </div>
+
+        </div>
+
+        <div className='highlights'>
+
+          <h2>Metsän makuja lasissasi</h2>
+          <div className='container'>
+            <div
+              className='grid-item metsamarja'
+              onClick={() => navigate("/product/8")}
+            >
+              <p>Metsämarja Stout</p>
+              <picture>
+                <source srcSet={metsamarjaAvif} type='image/avif' />
+                <source srcSet={metsamarjaWebp} type='image/webp' />
+                <img
+                  src={metsamarjaJpg}
+                  alt='Metsämarja Stout'
+                />
+              </picture>
+            </div>
+
+            <div
+              className='grid-item juniper'
+              onClick={() => navigate("/product/2")}
+            >
+              <p>Juniper Pale Ale</p>
+              <picture>
+                <source srcSet={juniperAvif} type='image/avif' />
+                <source srcSet={juniperWebp} type='image/webp' />
+                <img
+                  src={juniperJpg}
+                  alt='Juniper Pale Ale'
+                />
+              </picture>
+            </div>
+
+            <div
+              className='grid-item pellava'
+              onClick={() => navigate("/product/9")}
+            >
+              <p>Pellava Blonde Ale</p>
+              <picture>
+                <source srcSet={pellavaAvif} type='image/avif' />
+                <source srcSet={pellavaWebp} type='image/webp' />
+                <img
+                  src={pellavaJpg}
+                  alt='Pellava Blonde Ale'
+                />
+              </picture>
+            </div>
+
+            <div
+              className='grid-item kuusenkerkka'
+              onClick={() => navigate("/product/6")}
+            >
+              <p>kuusenkerkkä IPA</p>
+              <picture>
+                <source srcSet={kuusenkerkkaAvif} type='image/avif' />
+                <source srcSet={kuusenkerkkaWebp} type='image/webp' />
+                <img
+                  src={kuusenkerkkaJpg}
+                  alt='Kuusenkerkkä IPA'
+                />
+              </picture>
+            </div>
+          </div>
+
         </div>
 
       </div>
-
-      <div className='highlights'>
-
-        <h2>Metsän makuja lasissasi</h2>
-        <div className='container'>
-          <div 
-            className='grid-item metsamarja'
-            onClick={() => navigate("/product/8")}
-          >
-            <p>Metsämarja Stout</p>
-            <picture>
-              <source srcSet={metsamarjaAvif} type='image/avif' />
-              <source srcSet={metsamarjaWebp} type='image/webp' />
-              <img 
-                src={metsamarjaJpg} 
-                alt='Metsämarja Stout'
-                onLoad={markLoaded}
-                onError={markLoaded}
-              />
-            </picture>
-          </div>
-
-          <div 
-            className='grid-item juniper'
-            onClick={() => navigate("/product/2")}
-          >
-            <p>Juniper Pale Ale</p>
-            <picture>
-              <source srcSet={juniperAvif} type='image/avif' />
-              <source srcSet={juniperWebp} type='image/webp' />
-              <img 
-                src={juniperJpg} 
-                alt='Juniper Pale Ale' 
-                onLoad={markLoaded}
-                onError={markLoaded}
-              />
-            </picture>
-          </div>
-
-          <div 
-            className='grid-item pellava'
-            onClick={() => navigate("/product/9")}
-          >
-            <p>Pellava Blonde Ale</p>
-            <picture>
-              <source srcSet={pellavaAvif} type='image/avif' />
-              <source srcSet={pellavaWebp} type='image/webp' />
-              <img 
-                src={pellavaJpg} 
-                alt='Pellava Blonde Ale'
-                onLoad={markLoaded}
-                onError={markLoaded}
-              />
-            </picture>
-          </div>
-
-          <div 
-            className='grid-item kuusenkerkka'
-            onClick={() => navigate("/product/6")}
-          >
-            <p>kuusenkerkkä IPA</p>
-            <picture>
-              <source srcSet={kuusenkerkkaAvif} type='image/avif' />
-              <source srcSet={kuusenkerkkaWebp} type='image/webp' />
-              <img 
-                src={kuusenkerkkaJpg} 
-                alt='Kuusenkerkkä IPA' 
-                onLoad={markLoaded}
-                onError={markLoaded}
-              />
-            </picture>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-
+    </Loader>
   )
 }

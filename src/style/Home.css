@@ -2,7 +2,7 @@
     --nav-h: 10rem;
 }
 
-.bg-picture {
+/* .bg-picture {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -12,10 +12,15 @@
 
 .bg-image {
     width: 100%;
-}
+} */
 
 .home-container {
     background-color: var(--color-bg-primary);
+    background-image: image-set(
+        url(../assets/images/bg/bg.avif) type("image/avif"),
+        url(../assets/images/bg/bg.webp) type("image/webp"),
+        url(../assets/images/bg/bg.jpg) type("image/jpg")
+    );
     background-repeat: no-repeat;
     background-size: contain;
     overflow-x: hidden;

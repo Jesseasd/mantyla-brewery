@@ -43,7 +43,7 @@
     bottom: 8vh;
     z-index: 2;
     animation: bounce 2s infinite ease-in-out;
-    animation-delay: 3s;
+    animation-delay: 2s;
 }
 
 .cone-svg .cls-1 {

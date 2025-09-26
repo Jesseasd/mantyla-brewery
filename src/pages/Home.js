@@ -92,7 +92,7 @@ export default function Home() {
   useEffect(() => {
     if (!imagesLoaded) return
 
-    gsap.set([heading1Ref.current, heading2Ref.current], { y: 100, opacity: 0})
+    gsap.set([heading1Ref.current, heading2Ref.current, ".cone-svg"], { y: 100, opacity: 0})
     gsap.set(".cone-svg", { opacity: 0})
 
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } })
@@ -108,10 +108,11 @@ export default function Home() {
       duration: 1 
     }, "-=.75")
     .to(".cone-svg", { 
+      y: 0,
       opacity: 1, 
-      duration: 1,
-      delay: 1
-    }, "-=.5")
+      duration: .8,
+      // delay: 1
+    }, "-=.7")
 
     return () => tl.kill()
   }, [imagesLoaded])

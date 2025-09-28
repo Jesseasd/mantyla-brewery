@@ -2,24 +2,13 @@
     --nav-h: 10rem;
 }
 
-/* .bg-picture {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-.bg-image {
-    width: 100%;
-} */
-
 .home-container {
     background-color: var(--color-bg-primary);
+    background-image: url(../assets/images/bg/bg.jpg);
     background-image: image-set(
         url(../assets/images/bg/bg.avif) type("image/avif"),
         url(../assets/images/bg/bg.webp) type("image/webp"),
-        url(../assets/images/bg/bg.jpg) type("image/jpg")
+        url(../assets/images/bg/bg.jpg) type("image/jpeg")
     );
     background-repeat: no-repeat;
     background-size: contain;

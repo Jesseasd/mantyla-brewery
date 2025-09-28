@@ -105,31 +105,35 @@ video {
 }
 
 .horizontal-image1 {
+  background-image: url(../assets/images/about-images/garage/garage.jpg);
   background-image: image-set(
     url(../assets/images/about-images/garage/garage.avif) type("image/avif"),
     url(../assets/images/about-images/garage/garage.webp) type("image/webp"),
-    url(../assets/images/about-images/garage/garage.jpg) type("image/jpg")
+    url(../assets/images/about-images/garage/garage.jpg) type("image/jpeg")
   );
   background-position: 25% 60%;
 }
 
 .horizontal-image2 {
+  background-image: url(../assets/images/about-images/acid/acid.jpg);
   background-image: image-set(
     url(../assets/images/about-images/acid/acid.avif) type("image/avif"),
     url(../assets/images/about-images/acid/acid.webp) type("image/webp"),
-    url(../assets/images/about-images/acid/acid.jpg) type("image/jpg")
+    url(../assets/images/about-images/acid/acid.jpg) type("image/jpeg")
   );
 }
 
 .horizontal-image3 {
+  background-image: url(../assets/images/about-images/barrels/barrels.jpg);
   background-image: image-set(
     url(../assets/images/about-images/barrels/barrels.avif) type("image/avif"),
     url(../assets/images/about-images/barrels/barrels.webp) type("image/webp"),
-    url(../assets/images/about-images/barrels/barrels.jpg) type("image/jpg")
+    url(../assets/images/about-images/barrels/barrels.jpg) type("image/jpeg")
   );
 }
 
 .horizontal-image4 {
+  background-image: url(../assets/images/about-images/pour/pour.png);
   background-image: image-set(
     url(../assets/images/about-images/pour/pour.avif) type("image/avif"),
     url(../assets/images/about-images/pour/pour.webp) type("image/webp"),
@@ -138,10 +142,11 @@ video {
 }
 
 .horizontal-image5 {
+  background-image: url(../assets/images/about-images/beers/beers.jpg);
   background-image: image-set(
     url(../assets/images/about-images/beers/beers.avif) type("image/avif"),
     url(../assets/images/about-images/beers/beers.webp) type("image/webp"),
-    url(../assets/images/about-images/beers/beers.jpg) type("image/jpg")
+    url(../assets/images/about-images/beers/beers.jpg) type("image/jpeg")
   );
 }
 
@@ -153,10 +158,11 @@ video {
   width: 100vw;
   height: 300vh;
   top: 0;
+  background-image: url(../assets/images/about-images/cheers/cheers.jpg);
   background-image: image-set(
     url(../assets/images/about-images/cheers/cheers.avif) type("image/avif"),
     url(../assets/images/about-images/cheers/cheers.webp) type("image/webp"),
-    url(../assets/images/about-images/cheers/cheers.jpg) type("image/jpg")
+    url(../assets/images/about-images/cheers/cheers.jpg) type("image/jpeg")
   );
   display: flex;
   justify-content: center;

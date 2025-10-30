@@ -6,9 +6,8 @@
 .title-container {
     display: flex;
     position: relative;
-    flex-direction: column;
     justify-content: center;
-    text-align: center;
+    align-items: center;
     gap: 5vh;
     height: 100vh;
     font-weight: 300;
@@ -17,7 +16,8 @@
 
 .title-container h1 {
     font-family: heap;
-    font-size: var(--font-size-heading-large);
+    font-size: clamp(10rem, 20vw, 40rem);
+    /* font-size: var(--font-size-heading-large); */
     font-weight: 400;
     color: var(--color-text-primary);
     z-index: 2;
@@ -30,13 +30,6 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     transform: translateY(-50px);
-}
-
-.title-container p {
-  font-size: var(--font-size-paragraph-small);
-  font-family: "Montserrat", sans-serif;
-  font-weight: 400;
-  max-width: 200rem;
 }
 
 .mask {
@@ -58,13 +51,6 @@
   object-fit: cover;
   z-index: 1;
   pointer-events: none;
-}
-
-.beers-text {
-  display: flex;
-  align-self: center;
-  padding: 0 10vw;
-  z-index: 2;
 }
 
 .shop-grid {
@@ -145,12 +131,6 @@
 @media only screen and (max-width: 710px) {
     .shop-grid {
         grid-template-columns: repeat(1, 1fr);
-    }
-}
-
-@media only screen and (max-width: 500px) {
-    .beers-text {
-        display: none;
     }
 }
 

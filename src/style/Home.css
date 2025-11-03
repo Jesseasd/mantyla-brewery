@@ -62,13 +62,13 @@
 }
 
 .call-to-action {
-    margin: auto 10vw auto;
+    margin: 50rem 10vw 40rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    height: 80vh;
+    /* height: 80vh; */
     /* background-color: red; */
 }
 
@@ -79,7 +79,6 @@
 
 .beer-video {
     border-radius: 50px;
-    /* height: 100vh; */
 }
 
 .section {
@@ -111,41 +110,9 @@
     transition: filter .4s ease .5s;
 }
 
-.home-wrapper {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 60vw;
-    text-align: center;
-    pointer-events: none;
-    opacity: 0;
-}
-
-.home-wrapper > * {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity .5s ease, transform .5s ease;
-}
-
-.call-to-action h3 {
-    font-family: heap;
-    font-weight: 400;
-    color: var(--color-text-primary);
-    font-size: var(--font-size-heading-medium);
-    margin: 0;
-    margin-bottom: 2rem;
-}
-
 .call-to-action p {
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
-    /* font-size: 1.6vw; */
-    /* font-size: 1vw; */
-    /* font-size: 1vw; */
     font-size: clamp(1.6rem, 1.6vw, 3.6rem);
     /* font-size: var(--font-size-paragraph-small); */
     margin: 0;

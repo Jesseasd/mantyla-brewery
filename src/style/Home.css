@@ -62,7 +62,24 @@
 }
 
 .call-to-action {
-    margin-top: 17.5rem;
+    margin: auto 10vw auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 80vh;
+    /* background-color: red; */
+}
+
+.beer-video-container {
+    margin: auto 2vw;
+    height: 80vh;
+}
+
+.beer-video {
+    border-radius: 50px;
+    /* height: 100vh; */
 }
 
 .section {
@@ -126,20 +143,24 @@
 .call-to-action p {
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
-    font-size: var(--font-size-paragraph-small);
+    /* font-size: 1.6vw; */
+    /* font-size: 1vw; */
+    /* font-size: 1vw; */
+    font-size: clamp(1.6rem, 1.6vw, 3.6rem);
+    /* font-size: var(--font-size-paragraph-small); */
     margin: 0;
     margin-bottom: 8vh;
     color: var(--color-text-primary);
 }
 
-.home-wrapper .btn-wrapper {
+.call-to-action .btn-wrapper {
     display: flex;
     justify-content: center;
     height: 6rem;
     width: 22rem;
 }
 
-.home-wrapper .btn {
+.call-to-action .btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -156,26 +177,26 @@
     transition: border-radius .5s ease, width .5s ease;
 }
 
-.home-wrapper .text, .home-wrapper .button-arrow {
+.call-to-action .text, .call-to-action .button-arrow {
     position: absolute;
     transition: opacity .5s ease;
 }
 
-.home-wrapper .text {
+.call-to-action .text {
     font-size: var(--font-size-button-medium);
     margin: 0;
     opacity: 1;
     transition: opacity .5s ease .3s;
 }
 
-.home-wrapper .button-arrow {
+.call-to-action .button-arrow {
     opacity: 0;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.home-wrapper .button-arrow path {
+.call-to-action .button-arrow path {
     stroke: #D1D28D;
 }
 
@@ -195,6 +216,32 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 1rem;
+}
+
+.highlights-image-wrapper {
+    overflow: hidden;
+    display: flex;
+    position: relative;
+} 
+
+.highlights-bg-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.highlights-bottle-image {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 18%;
+  z-index: 2;
+  transition: transform 0.2s ease-out;
+}
+
+.highlights-image-wrapper:hover .highlights-bottle-image {
+    transform: scale(1.05);
 }
 
 .highlights h2 {
@@ -363,7 +410,7 @@
 }
 
 @media screen and (max-width: 1000px) {
-    .home-wrapper .btn {
+    .call-to-action .btn {
         height: 4.5rem;
     }
 
@@ -378,9 +425,9 @@
         font-size: 10rem;
     }
 
-    .home-wrapper {
+    /* .home-wrapper {
         width: 80vw;
-    }
+    } */
 }
 
 @media only screen and (max-width: 640px) {
@@ -418,7 +465,7 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-    .home-wrapper .btn-wrapper:hover .btn {
+    .call-to-action .btn-wrapper:hover .btn {
         border-radius: 50%;
         border-color: var(--color-bg-secondary);
         height: 6rem;
@@ -426,12 +473,12 @@
         padding: 0;
     }
 
-    .home-wrapper .btn-wrapper:hover .text {
+    .call-to-action .btn-wrapper:hover .text {
         opacity: 0;
         transition: opacity .2s ease;
     }
 
-    .home-wrapper .btn-wrapper:hover .button-arrow {
+    .call-to-action .btn-wrapper:hover .button-arrow {
         opacity: 1;
     }
 }

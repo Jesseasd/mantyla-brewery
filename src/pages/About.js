@@ -15,17 +15,11 @@ gsap.registerPlugin(useGSAP, ScrollTrigger)
 
 export default function About() {
   const component = useRef(null)
-  const horizontalRef = useRef(null)
 
   useLayoutEffect(() => {
     const splitTypes = document.querySelectorAll(".reveal")
 
-    // Media query handler for responsive animations
-    let mm = gsap.matchMedia()
-
     let ctx = gsap.context(() => {
-      // Collect all horizontal panels into an array
-      const sections = gsap.utils.toArray(".panel")
 
       // Pine cone opacity
       gsap.to(".cone",
@@ -115,27 +109,6 @@ export default function About() {
           }
         }
       )
-
-      // Horizontal scroll
-      mm.add("(min-width: 1024px)", () => {
-        ScrollTrigger.create({
-          trigger: horizontalRef.current,
-          start: "top top",
-          end: "+=5500",
-          pin: true,
-          scrub: 0.2,
-          snap: {
-            snapTo: 1 / (sections.length - 1),
-            duration: 0.5,
-            delay: 0,
-            ease: "none"
-          },
-          animation: gsap.to(sections, {
-            xPercent: -100 * (sections.length - 1),
-            ease: "none"
-          })
-        })
-      })
 
       // Long section text pin
       gsap.to(".text2",
@@ -247,16 +220,6 @@ export default function About() {
                 <p className='text-item1'>Mäntylän Panimo sai alkunsa yksinkertaisesta ideasta ja kolmen ystävän intohimosta. Kaikki alkoi pienestä autotallista Mäntylän naapurustossa, jossa kokeiltiin rohkeasti reseptejä ja hiottiin oluenvalmistuksen taitoja. Aluksi kyse oli vain yhdessä tekemisestä, mutta nopeasti kävi selväksi, että näistä oluista voisi tulla jotain enemmän.</p>
               </div>
             </div>
-          </div>
-        </div>
-
-        <div className='horizonatl-section' ref={horizontalRef}>
-          <div className='horizontal'>
-            <div className='horizontal-image horizontal-image1 panel'></div>
-            <div className='horizontal-image horizontal-image2 panel'></div>
-            <div className='horizontal-image horizontal-image3 panel'></div>
-            <div className='horizontal-image horizontal-image4 panel'></div>
-            <div className='horizontal-image horizontal-image5 panel'></div>
           </div>
         </div>
 
